@@ -603,19 +603,59 @@ namespace GlobalDataDefineClsLib
     [Serializable]
     public enum EnumTransferAction
     {
-        PositionSubmountBeforePickFromSubstrate,                   //打开烘箱内门
-        PickSubmountFromSubstrate,                //传送轴移动到烘箱前
-        AccuracySubmountPosition,             //把料盒从烘箱拉出来
-        PlaceSubmounttoChuck,                 //把料盒移动到buffer前
-        PositionBeforeBond,
-        PositionSubmountBeforePickFromChuck,
-        PickSubmountFromChuck,                //传送轴移动到烘箱前
-        PlaceSubmounttoSubstrate,                 //把料盒移动到buffer前
+        /// <summary>
+        /// 料盒钩爪到空闲位置
+        /// </summary>
+        MaterialboxHooktoSafePosition,
+        /// <summary>
+        /// 料盒出烘箱
+        /// </summary>
+        MaterialboxOutofoven,
+        /// <summary>
+        /// 料盒钩爪到料盒上方
+        /// </summary>
+        MaterialboxHooktoMaterialbox,
+        /// <summary>
+        /// 料盒钩爪拾起料盒
+        /// </summary>
+        MaterialboxHookPickupMaterialbox,
+        /// <summary>
+        /// 料盒钩爪到目标位置
+        /// </summary>
+        MaterialboxHooktoTargetPosition,
+        /// <summary>
+        /// 料盒钩爪放下料盒
+        /// </summary>
+        MaterialboxHookPutdownMaterialbox,
+        /// <summary>
+        /// 料盒进烘箱
+        /// </summary>
+        MaterialboxInofoven,
 
-        PositionComponent,                   //打开烘箱内门
-        PickComponent,                //传送轴移动到烘箱前
-        AccuracyComponentPosition,             //把料盒从烘箱拉出来
-        PlaceComponent,                 //把料盒移动到buffer前
+        /// <summary>
+        /// 物料钩爪到空闲位置
+        /// </summary>
+        MaterialHooktoSafePosition,
+        /// <summary>
+        /// 物料钩爪到物料上方
+        /// </summary>
+        MaterialHooktoMaterial,
+        /// <summary>
+        /// 物料钩爪拾起物料
+        /// </summary>
+        MaterialHookPickupMaterial,
+        /// <summary>
+        /// 物料钩爪到目标位置
+        /// </summary>
+        MaterialHooktoTargetPosition,
+        /// <summary>
+        /// 物料钩爪放下物料
+        /// </summary>
+        MaterialHookPutdownMaterial,
+
+
+
+
     }
     [Serializable]
     public enum EnumTransferStatus

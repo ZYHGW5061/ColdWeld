@@ -5,7 +5,6 @@ using ConfigurationClsLib;
 using GlobalDataDefineClsLib;
 using GlobalToolClsLib;
 using StageCtrlPanelLib;
-using MainGUI.Forms.ProductMenu;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -230,8 +229,6 @@ namespace BondTerminal
 
         private void 新建ToolStripMenuItem1_Click(object sender, EventArgs e)
         {
-            ProductConfigForm form = new ProductConfigForm();
-            form.Show();
         }
 
         private void MainForm_KeyDown(object sender, KeyEventArgs e)

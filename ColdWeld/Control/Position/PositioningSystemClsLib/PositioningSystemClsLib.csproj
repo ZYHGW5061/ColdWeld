@@ -68,6 +68,7 @@
     <Compile Include="PositioningSystem.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="StageMotionControl.cs" />
+    <Compile Include="TransportControl.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Global\ConfigurationClsLib\ConfigurationClsLib.csproj">

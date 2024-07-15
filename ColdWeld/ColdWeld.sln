@@ -141,6 +141,8 @@ Project("{2150E333-8FDC-42A3-9474-1A3956D46DE8}") = "TemperatureControlMeter", "
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TemperatureControllerClsLib", "Hardware\TemperatureControlMeter\TemperatureControllerClsLib\TemperatureControllerClsLib.csproj", "{9B720372-F8F4-4E86-A815-0FCE39F1F8E9}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "TransportPanelClsLib", "GUI\TransportPanelClsLib\TransportPanelClsLib.csproj", "{12CF69D0-23A1-4D63-8429-D1D7606D26B5}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -311,6 +313,10 @@ Global
 		{9B720372-F8F4-4E86-A815-0FCE39F1F8E9}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{9B720372-F8F4-4E86-A815-0FCE39F1F8E9}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{9B720372-F8F4-4E86-A815-0FCE39F1F8E9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{12CF69D0-23A1-4D63-8429-D1D7606D26B5}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{12CF69D0-23A1-4D63-8429-D1D7606D26B5}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{12CF69D0-23A1-4D63-8429-D1D7606D26B5}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{12CF69D0-23A1-4D63-8429-D1D7606D26B5}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
@@ -378,6 +384,7 @@ Global
 		{16700D44-FA4D-4277-944C-E1A8962DE346} = {62CC6226-BC78-4047-81CB-E5CA08A37B1C}
 		{E3890DEB-3531-4139-B7BD-4593F69DD01C} = {B984B073-3BBA-4FED-AC6F-56DC95FC5E7B}
 		{9B720372-F8F4-4E86-A815-0FCE39F1F8E9} = {E3890DEB-3531-4139-B7BD-4593F69DD01C}
+		{12CF69D0-23A1-4D63-8429-D1D7606D26B5} = {DDCE4D14-9E92-4F5D-A9D6-DF0CDD3F32F8}
 	EndGlobalSection
 	GlobalSection(ExtensibilityGlobals) = postSolution
 		SolutionGuid = {84875D5C-A4A6-41C7-904E-67BC0939814E}

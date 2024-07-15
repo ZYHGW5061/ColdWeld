@@ -66,19 +66,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="AutoBondJob.cs" />
-    <Compile Include="AutomaticJob.cs" />
-    <Compile Include="BondJobFactory.cs" />
-    <Compile Include="RecipeExecuter.cs" />
-    <Compile Include="PPUtility.cs" />
-    <Compile Include="IBondJob.cs" />
-    <Compile Include="JobInfosManager.cs" />
-    <Compile Include="MaterialsInfo.cs" />
-    <Compile Include="MaterialTranferPlanner.cs" />
-    <Compile Include="MaterialTransferExecutor.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="SimulatedBondJob.cs" />
-    <Compile Include="WaferTransferPlanner.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Global\ConfigurationClsLib\ConfigurationClsLib.csproj">
