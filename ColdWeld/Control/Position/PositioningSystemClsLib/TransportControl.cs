@@ -1,5 +1,6 @@
 ﻿using ConfigurationClsLib;
 using GlobalDataDefineClsLib;
+using RecipeClsLib;
 using StageControllerClsLib;
 using System;
 using System.Collections.Generic;
@@ -63,6 +64,13 @@ namespace PositioningSystemClsLib
         /// 搬送状态
         /// </summary>
         public int TransportStatus { get; set; } = -1;
+
+        private TransportRecipe _transportRecipe;
+        public TransportRecipe TransportRecipe
+        {
+            get { return _transportRecipe; }
+            set { _transportRecipe = value; }
+        }
 
         #endregion
 
@@ -165,76 +173,398 @@ namespace PositioningSystemClsLib
         #region public mothd
 
 
-        public int MaterialboxHooktoSafePositionAction()
+        public int SetTransportParam(TransportRecipe recipe)
         {
+            if (recipe != null)
+            {
+                try
+                {
+                    _transportRecipe = recipe;
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    _transportRecipe = null;
+                    return -1;
+                }
+            }
+            else
+            {
+                _transportRecipe = null;
+            }
 
             return -1;
+        }
+
+        public TransportRecipe GetTransportParam()
+        {
+
+            return _transportRecipe;
+        }
+
+
+        public int MaterialboxHooktoSafePositionAction()
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookSafePosition.Z);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHookSafePosition.Theta);
+
+                    MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHookSafePosition.X, _transportRecipe.MaterialboxHookSafePosition.Y, _transportRecipe.MaterialboxHookSafePosition.Z);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialboxOutofovenAction()
         {
 
-            return -1;
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrackMaterialboxOutofoven);
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialboxHooktoMaterialboxAction()
         {
 
-            return -1;
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookSafePosition.Z);
+
+                    double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
+                    double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Theta);
+
+                    MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Z);
+
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialboxHookPickupMaterialboxAction()
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
 
-            return -1;
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookPickupMaterialboxPosition.Z);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookClose);
+
+                    AxisRelativeMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookUp);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialboxHooktoTargetPositionAction()
         {
 
-            return -1;
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHooktoTargetPosition.Z);
+
+                    double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
+                    double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
+
+
+                    MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoTargetPosition.X, _transportRecipe.MaterialboxHooktoTargetPosition.Y, _transportRecipe.MaterialboxHooktoTargetPosition.Z);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Theta);
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public int MaterialboxHooktoWeldPositionAction()
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHooktoWeldPosition.Z);
+
+                    double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
+                    double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
+
+
+                    MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoWeldPosition.X, _transportRecipe.MaterialboxHooktoWeldPosition.Y, _transportRecipe.MaterialboxHooktoWeldPosition.Z);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoWeldPosition.Theta);
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialboxHookPutdownMaterialboxAction()
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookPutdownMaterialboxPosition.Z);
 
-            return -1;
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
+
+                    AxisRelativeMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookUp);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialboxInofovenAction()
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrackMaterialboxInofoven);
 
-            return -1;
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialHooktoSafePositionAction()
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialHookOpen);
 
-            return -1;
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHookSafePosition.Z);
+
+                    MaterialHookXYZAbsoluteMove(_transportRecipe.MaterialHookSafePosition.X, _transportRecipe.MaterialHookSafePosition.Y, _transportRecipe.MaterialHookSafePosition.Z);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialHooktoMaterialAction()
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialboxHookOpen);
 
-            return -1;
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHooktoMaterialPosition.Z);
+
+                    double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
+                    double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
+
+                    MaterialHookXYZAbsoluteMove(_transportRecipe.MaterialHooktoMaterialPosition.X, _transportRecipe.MaterialHooktoMaterialPosition.Y, _transportRecipe.MaterialHooktoMaterialPosition.Z);
+
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialHookPickupMaterialAction()
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialHookOpen);
 
-            return -1;
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHookPickupMaterialPosition.Z);
+
+                    AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialHookClose);
+
+                    AxisRelativeMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHookUp);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
-        public int MaterialHooktoTargetPositionAction()
+        public int MaterialHooktoTargetPositionAction(int Num)
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    if (_transportRecipe.MaterialHooktoTargetPosition.Count > Num)
+                    {
 
-            return -1;
+
+
+                        AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHooktoTargetPosition[Num].Z);
+
+                        double MaterialHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialX);
+                        double MaterialHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialY);
+
+
+                        MaterialHookXYZAbsoluteMove(_transportRecipe.MaterialHooktoTargetPosition[Num].X, _transportRecipe.MaterialHooktoTargetPosition[Num].Y, _transportRecipe.MaterialHooktoTargetPosition[Num].Z);
+
+                        return 0;
+                    }
+                    else
+                    {
+                        return -1;
+                    }
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
         public int MaterialHookPutdownMaterialAction()
         {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHookPutdownMaterialPosition.Z);
 
-            return -1;
+                    AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialHookOpen);
+
+                    AxisRelativeMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHookUp2);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
         }
 
 

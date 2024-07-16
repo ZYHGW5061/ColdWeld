@@ -411,20 +411,6 @@ namespace GlobalDataDefineClsLib
 
     }
     [Serializable]
-    public enum EnumMaskType
-    {
-        None = 0,
-        BondOrigion = 1,
-        TrackOrigion = 2,
-        WaferCameraOrigion = 3,
-        LookupCameraOrigion = 4,
-        WaferOrigion = 5,
-        LookupChipPPOrigion = 6,
-        LookupSubmountPPOrigion = 7,
-        LookupLaserSensorOrigion = 8,
-        EutecticWeldingOrigion = 9,
-    }
-    [Serializable]
     [XmlType("Mask")]
     public class RecogniseMaskSetting
     {

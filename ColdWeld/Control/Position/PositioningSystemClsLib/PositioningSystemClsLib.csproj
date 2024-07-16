@@ -115,6 +115,10 @@
       <Project>{8f2593f4-ddd8-4790-8182-2ede2a7e21bd}</Project>
       <Name>StageManagerClsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Process\RecipeClsLib\RecipeClsLib.csproj">
+      <Project>{633B7024-D607-496E-9800-84284C801D06}</Project>
+      <Name>RecipeClsLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

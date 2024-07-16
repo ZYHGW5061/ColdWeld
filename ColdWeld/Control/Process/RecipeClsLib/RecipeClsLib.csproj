@@ -63,6 +63,7 @@
   <ItemGroup>
     <Compile Include="BonderRecipe.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="TransportRecipe.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\..\..\Global\ConfigurationClsLib\ConfigurationClsLib.csproj">
