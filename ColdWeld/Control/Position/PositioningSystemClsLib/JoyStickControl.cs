@@ -37,7 +37,7 @@ namespace PositioningSystemClsLib
             }
         }
 
-        
+
 
         bool HeadMode = true;// true 机头模式 false 传送模式
 
@@ -75,16 +75,27 @@ namespace PositioningSystemClsLib
             Speeds[1] = (float)axisConfig.MaxAxisSpeed / 2;
             axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialboxZ);
             Speeds[2] = (float)axisConfig.MaxAxisSpeed / 2;
-            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialX);
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialboxT);
             Speeds[3] = (float)axisConfig.MaxAxisSpeed / 2;
-            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialY);
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialboxHook);
             Speeds[4] = (float)axisConfig.MaxAxisSpeed / 2;
-            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialZ);
+
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialX);
             Speeds[5] = (float)axisConfig.MaxAxisSpeed / 2;
-            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.OverTrack1);
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialY);
             Speeds[6] = (float)axisConfig.MaxAxisSpeed / 2;
-            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.OverTrack2);
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialZ);
             Speeds[7] = (float)axisConfig.MaxAxisSpeed / 2;
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.MaterialHook);
+            Speeds[8] = (float)axisConfig.MaxAxisSpeed / 2;
+
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.OverTrack1);
+            Speeds[9] = (float)axisConfig.MaxAxisSpeed / 2;
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.OverTrack2);
+            Speeds[10] = (float)axisConfig.MaxAxisSpeed / 2;
+
+            axisConfig = _hardwareConfig.StageConfig.GetAixsConfigByType(EnumStageAxis.Presslifting);
+            Speeds[11] = (float)axisConfig.MaxAxisSpeed / 2;
         }
 
         public void JoyStickEnable(bool Enable)
@@ -93,14 +104,14 @@ namespace PositioningSystemClsLib
 
             foreach (EnumStageAxis axis in Enum.GetValues(typeof(EnumStageAxis)))
             {
-                if(axis != EnumStageAxis.None)
+                if (axis != EnumStageAxis.None)
                 {
                     _positionSystem.StopJogPositive(axis);
                     Thread.Sleep(3);
                     _positionSystem.StopJogNegative(axis);
                     Thread.Sleep(3);
                 }
-                
+
             }
         }
 
@@ -130,15 +141,23 @@ namespace PositioningSystemClsLib
                                 directionX = true;
                                 break;
                             case EnumStageAxis.MaterialX:
-                                ValueX = Math.Abs((float)(JoyX - 32767.0f) / 32767.0f * Speeds[3]);
-                                directionX = false;
-                                break;
-                            case EnumStageAxis.OverTrack1:
                                 ValueX = Math.Abs((float)(JoyX - 32767.0f) / 32767.0f * Speeds[5]);
                                 directionX = false;
                                 break;
+                            case EnumStageAxis.MaterialboxHook:
+                                ValueX = Math.Abs((float)(JoyX - 32767.0f) / 32767.0f * Speeds[4]);
+                                directionX = false;
+                                break;
+                            case EnumStageAxis.MaterialHook:
+                                ValueX = Math.Abs((float)(JoyX - 32767.0f) / 32767.0f * Speeds[8]);
+                                directionX = false;
+                                break;
+                            case EnumStageAxis.OverTrack1:
+                                ValueX = Math.Abs((float)(JoyX - 32767.0f) / 32767.0f * Speeds[9]);
+                                directionX = false;
+                                break;
                             case EnumStageAxis.OverTrack2:
-                                ValueX = Math.Abs((float)(JoyX - 32767.0f) / 32767.0f * Speeds[7]);
+                                ValueX = Math.Abs((float)(JoyX - 32767.0f) / 32767.0f * Speeds[10]);
                                 directionX = true;
                                 break;
                         }
@@ -189,11 +208,15 @@ namespace PositioningSystemClsLib
                                 directionY = true;
                                 break;
                             case EnumStageAxis.MaterialY:
-                                ValueY = Math.Abs((float)(JoyY - 32767.0f) / 32767.0f * Speeds[4]);
+                                ValueY = Math.Abs((float)(JoyY - 32767.0f) / 32767.0f * Speeds[6]);
                                 directionY = true;
                                 break;
                             case EnumStageAxis.MaterialZ:
-                                ValueY = Math.Abs((float)(JoyY - 32767.0f) / 32767.0f * Speeds[5]);
+                                ValueY = Math.Abs((float)(JoyY - 32767.0f) / 32767.0f * Speeds[7]);
+                                directionY = true;
+                                break;
+                            case EnumStageAxis.Presslifting:
+                                ValueY = Math.Abs((float)(JoyY - 32767.0f) / 32767.0f * Speeds[11]);
                                 directionY = true;
                                 break;
                         }
@@ -300,6 +323,20 @@ namespace PositioningSystemClsLib
                                 //stageSystem = EnumStageSystem.Head;
                                 //systemAxis = EnumSystemAxis.XZ;
                                 break;
+                            case (int)Axisgroup.MaterialboxHookGrab:
+                                YGMode = false;
+                                Axis1 = EnumStageAxis.MaterialboxHook;
+                                Axis2 = EnumStageAxis.None;
+                                //stageSystem = EnumStageSystem.Head;
+                                //systemAxis = EnumSystemAxis.XZ;
+                                break;
+                            case (int)Axisgroup.MaterialHookGrab:
+                                YGMode = false;
+                                Axis1 = EnumStageAxis.MaterialHook;
+                                Axis2 = EnumStageAxis.Presslifting;
+                                //stageSystem = EnumStageSystem.Head;
+                                //systemAxis = EnumSystemAxis.XZ;
+                                break;
                             case (int)Axisgroup.OverTrack1:
                                 YGMode = false;
                                 Axis1 = EnumStageAxis.OverTrack1;
@@ -352,14 +389,22 @@ namespace PositioningSystemClsLib
         /// </summary>
         MaterialHookZ = 4,
         /// <summary>
+        /// (料盒钩爪抓取)。
+        /// </summary>
+        MaterialboxHookGrab = 5,
+        /// <summary>
+        /// (物料钩爪抓取)。
+        /// </summary>
+        MaterialHookGrab = 6,
+        /// <summary>
         /// (烘箱1)。
         /// </summary>
-        OverTrack1 = 5,
+        OverTrack1 = 7,
         /// <summary>
         /// (烘箱2)。
         /// </summary>
-        OverTrack2 = 6,
-        
+        OverTrack2 = 8,
+
 
     }
 

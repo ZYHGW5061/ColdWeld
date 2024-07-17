@@ -55,7 +55,10 @@ namespace GlobalDataDefineClsLib
         [Description("烘箱2轨道")]
         OverTrack2 = 11,
 
-        
+        [Description("压机顶升轴")]
+        Presslifting = 12,
+
+
     }
 
     [Serializable]
@@ -1234,49 +1237,564 @@ namespace GlobalDataDefineClsLib
         TowerGreenLight = 2,
         TowerRedLight = 3,
 
+        #region 烘箱
+
+
+        /// <summary>
+        /// 烘箱抽气阀 bool
+        /// </summary>
+        BakeOvenBleed,
+        /// <summary>
+        /// 烘箱排气阀 bool
+        /// </summary>
+        BakeOvenExhaust,
+        /// <summary>
+        /// 烘箱补气阀 bool
+        /// </summary>
+        BakeOvenAerate,
+        /// <summary>
+        /// 烘箱内门压紧 bool
+        /// </summary>
+        BakeOvenInnerdoor1Press,
+        /// <summary>
+        /// 烘箱外门压紧 bool
+        /// </summary>
+        BakeOvenOuterdoor1Press,
+        /// <summary>
+        /// 烘箱内门松开 bool
+        /// </summary>
+        BakeOvenInnerdoor1Release,
+        /// <summary>
+        /// 烘箱外门松开 bool
+        /// </summary>
+        BakeOvenOuterdoor1Release,
+        /// <summary>
+        /// 烘箱内门升 bool 按1松0
+        /// </summary>
+        BakeOvenInnerdoor2Up,
+        /// <summary>
+        /// 烘箱外门升 bool 按1松0
+        /// </summary>
+        BakeOvenOuterdoor2Up,
+        /// <summary>
+        /// 烘箱内门降 bool 按1松0
+        /// </summary>
+        BakeOvenInnerdoor2Down,
+        /// <summary>
+        /// 烘箱外门降 bool 按1松0
+        /// </summary>
+        BakeOvenOuterdoor2Down,
+        /// <summary>
+        /// 烘箱内门自动开 bool
+        /// </summary>
+        BakeOvenInnerdoorOpen,
+        /// <summary>
+        /// 烘箱外门自动开 bool
+        /// </summary>
+        BakeOvenOuterdoorOpen,
+        /// <summary>
+        /// 烘箱内门自动关 bool
+        /// </summary>
+        BakeOvenInnerdoorClose,
+        /// <summary>
+        /// 烘箱外门自动关 bool
+        /// </summary>
+        BakeOvenOuterdoorClose,
+        /// <summary>
+        /// 烘箱外门自动停 bool
+        /// </summary>
+        BakeOvenOuterdoorStop,
+        /// <summary>
+        /// 烘箱内门自动停 bool
+        /// </summary>
+        BakeOvenInnerdoorStop,
+
+
+        /// <summary>
+        /// 烘箱压力 float
+        /// </summary>
+        BakeOvenPressure,
+        /// <summary>
+        /// 烘箱真空 float 
+        /// </summary>
+        BakeOvenVacuum,
+        /// <summary>
+        /// 烘箱上板温度 float 
+        /// </summary>
+        BakeOvenUPtemp,
+        /// <summary>
+        /// 烘箱下板温度 float 
+        /// </summary>
+        BakeOvenDowntemp,
+        /// <summary>
+        /// 烘箱加热目标温度 float 
+        /// </summary>
+        BakeOvenTargettemp,
+        /// <summary>
+        /// 烘箱加热报警温度 float 
+        /// </summary>
+        BakeOvenAlarmtemp,
+        /// <summary>
+        /// 烘箱保温时间小时 short 小时
+        /// </summary>
+        BakeOvenHoldingTimeH,
+        /// <summary>
+        /// 烘箱保温时间分钟 short 分钟
+        /// </summary>
+        BakeOvenHoldingTimeM,
+        /// <summary>
+        /// 烘箱已保温时间小时 short 小时
+        /// </summary>
+        BakeOvenPassedTimeH,
+        /// <summary>
+        /// 烘箱已保温时间分钟 short 分钟
+        /// </summary>
+        BakeOvenPassedTimeM,
+        /// <summary>
+        /// 烘箱报警压力 float
+        /// </summary>
+        BakeOvenAlarmPressure,
+        /// <summary>
+        /// 烘箱上板P
+        /// </summary>
+        BakeOvenUpHeatPID_P,
+        /// <summary>
+        /// 烘箱上板I
+        /// </summary>
+        BakeOvenUpHeatPID_I,
+        /// <summary>
+        /// 烘箱上板D
+        /// </summary>
+        BakeOvenUpHeatPID_D,
+        /// <summary>
+        /// 烘箱上板P
+        /// </summary>
+        BakeOvenDownHeatPID_P,
+        /// <summary>
+        /// 烘箱上板I
+        /// </summary>
+        BakeOvenDownHeatPID_I,
+        /// <summary>
+        /// 烘箱上板D
+        /// </summary>
+        BakeOvenDownHeatPID_D,
+
+
+        /// <summary>
+        /// 烘箱抽充压力上限 float 
+        /// </summary>
+        BakeOvenPFUpPressure,
+        /// <summary>
+        /// 烘箱抽充压力下限 float 
+        /// </summary>
+        BakeOvenPFDownPressure,
+        /// <summary>
+        /// 烘箱抽充次数 short 
+        /// </summary>
+        BakeOvenPFnum,
+        /// <summary>
+        /// 烘箱抽充已完成次数 short 
+        /// </summary>
+        BakeOvenPFCompletednum,
+        /// <summary>
+        /// 烘箱抽充时间间隔 short 秒
+        /// </summary>
+        BakeOvenPFinterval,
+        /// <summary>
+        /// 烘箱手动抽充 bool
+        /// </summary>
+        BakeOvenPF,
+
+
+        /// <summary>
+        /// 烘箱自动加热1 bool 不包含抽充
+        /// </summary>
+        BakeOvenAutoHeat1,
+        /// <summary>
+        /// 烘箱自动加热1 bool 包含抽充
+        /// </summary>
+        BakeOvenAutoHeat2,
+
+        #endregion
+
+        #region 箱体
+
+
+        /// <summary>
+        /// 箱体抽气阀 bool
+        /// </summary>
+        BoxBleed,
+        /// <summary>
+        /// 箱体排气阀 short
+        /// </summary>
+        BoxExhaust,
+        /// <summary>
+        /// 箱体补气阀 short
+        /// </summary>
+        BoxAerate,
+        /// <summary>
+        /// 箱体外门压紧到位
+        /// </summary>
+        BoxOuterdoorPressSta,
+        /// <summary>
+        /// 箱体外门松开到位
+        /// </summary>
+        BoxOuterdoorReleaseSta,
+        /// <summary>
+        /// 箱体外门关闭到位
+        /// </summary>
+        BoxOuterdoorCloseSta,
+        /// <summary>
+        /// 箱体外门打开到位
+        /// </summary>
+        BoxOuterdoorOpenSta,
+        /// <summary>
+        /// 箱体外门电缸压紧 bool
+        /// </summary>
+        BoxOuterdoorElePress,
+        /// <summary>
+        /// 箱体外门电缸打开 bool
+        /// </summary>
+        BoxOuterdoorEleRelease,
+        /// <summary>
+        /// 箱体外门自动关 bool
+        /// </summary>
+        BoxOuterdoorClose,
+        /// <summary>
+        /// 箱体外门自动开 bool
+        /// </summary>
+        BoxOuterdoorOpen,
+        /// <summary>
+        /// 箱体外门自动停 bool
+        /// </summary>
+        BoxOuterdoorStop,
+        /// <summary>
+        /// 箱体外门电机压紧 bool 按1松0
+        /// </summary>
+        BoxOuterdoorPress,
+        /// <summary>
+        /// 箱体外门电机松开 bool 按1松0
+        /// </summary>
+        BoxOuterdoorRelease,
+        /// <summary>
+        /// 箱体压力 float 
+        /// </summary>
+        BoxPressure,
+        /// <summary>
+        /// 箱体真空 float 
+        /// </summary>
+        BoxVacuum,
+        /// <summary>
+        /// 箱体抽充压力上限 float 
+        /// </summary>
+        BoxPFUpPressure,
+        /// <summary>
+        /// 箱体抽充压力下限 float 
+        /// </summary>
+        BoxPFDownPressure,
+        /// <summary>
+        /// 箱体抽充次数 short 
+        /// </summary>
+        BoxPFnum,
+        /// <summary>
+        /// 箱体抽充已完成次数 short 
+        /// </summary>
+        BoxPFCompletednum,
+        /// <summary>
+        /// 箱体抽充时间间隔 short 秒
+        /// </summary>
+        BoxPFinterval,
+        /// <summary>
+        /// 箱体手动抽充 bool
+        /// </summary>
+        BoxPF,
+        /// <summary>
+        /// 箱体报警压力 float
+        /// </summary>
+        BoxAlarmPressure,
+        /// <summary>
+        /// 箱体外门速度
+        /// </summary>
+        BoxOuterdoorspeed,
 
 
 
-        ChipPPVaccumSwitch = 4,
-        SubmountPPVaccumSwitch = 5,
+        #endregion
 
-        ChipPPBlowSwitch = 7,
-        SubmountPPBlowSwitch = 6,
-
-        EjectionSystemVaccumSwitch = 13,
-        EutecticPlatformVaccumSwitch = 8,
-        WaferTableVaccumSwitch = 14,
-        MaterialPlatformVaccumSwitch = 9,
-
-
-
-        NitrogenValve = 12,
-        StartEctectic = 10,
-        ResetEutectic = 11,
-
-        //BondXLeftLimit = 5,
-        //BondXRightLimit = 6,
-        //BondYLeftLimit = 7,
-        //BondYRightLimit = 8,
-        //BondZLeftLimit = 7,
-        //BondZRightLimit = 8,
-        //WaferTableXLeftLimit = 7,
-        //WaferTableXRightLimit = 8,
-        //WaferTableYLeftLimit = 7,
-        //WaferTableYRightLimit = 8
 
     }
     [Serializable]
     public enum EnumBoardcardDefineInputIO
     {
-        ChipPPVaccumNormally = 8,
-        SubmountPPVaccumNormally = 9,
-        EjectionSystemVaccumNormally = 6,
-        EutecticPlatformVaccumNormally = 7,
+        #region 烘箱
 
-        EutecticError =2,
-        EutecticComplete=1,
-        
+        /// <summary>
+        /// 烘箱抽气阀状态 bool
+        /// </summary>
+        BakeOvenBleedstatus,
+        /// <summary>
+        /// 烘箱排气阀状态 bool
+        /// </summary>
+        BakeOvenExhauststatus,
+        /// <summary>
+        /// 烘箱补气阀状态 bool
+        /// </summary>
+        BakeOvenAeratestatus,
+        /// <summary>
+        /// 烘箱内门压紧状态 bool
+        /// </summary>
+        BakeOvenInnerdoor1Pressstatus,
+        /// <summary>
+        /// 烘箱外门压紧状态 bool
+        /// </summary>
+        BakeOvenOuterdoor1Pressstatus,
+        /// <summary>
+        /// 烘箱内门松开状态 bool
+        /// </summary>
+        BakeOvenInnerdoor1Releasestatus,
+        /// <summary>
+        /// 烘箱外门松开状态 bool
+        /// </summary>
+        BakeOvenOuterdoor1Releasestatus,
+        /// <summary>
+        /// 烘箱内门升状态 bool
+        /// </summary>
+        BakeOvenInnerdoor2Upstatus,
+        /// <summary>
+        /// 烘箱外门升状态 bool
+        /// </summary>
+        BakeOvenOuterdoor2Upstatus,
+        /// <summary>
+        /// 烘箱内门降状态 bool
+        /// </summary>
+        BakeOvenInnerdoor2Downstatus,
+        /// <summary>
+        /// 烘箱外门降状态 bool
+        /// </summary>
+        BakeOvenOuterdoor2Downstatus,
+
+
+
+
+        /// <summary>
+        /// 烘箱外门开到位
+        /// </summary>
+        BakeOvenOuterdoorUpSta,
+        /// <summary>
+        /// 烘箱外门关到位
+        /// </summary>
+        BakeOvenOuterdoorDownSta,
+        /// <summary>
+        /// 烘箱外门压紧到位
+        /// </summary>
+        BakeOvenOuterdoorPressSta,
+        /// <summary>
+        /// 烘箱外门松开到位
+        /// </summary>
+        BakeOvenOuterdoorReleaseSta,
+        /// <summary>
+        /// 烘箱内门开到位
+        /// </summary>
+        BakeOvenInnerdoorUpSta,
+        /// <summary>
+        /// 烘箱内门关到位
+        /// </summary>
+        BakeOvenInnerdoorDownSta,
+        /// <summary>
+        /// 烘箱内门压紧到位
+        /// </summary>
+        BakeOvenInnerdoorPressSta,
+        /// <summary>
+        /// 烘箱内门松开到位
+        /// </summary>
+        BakeOvenInnerdoorReleaseSta,
+
+
+        /// <summary>
+        /// 烘箱压力 float
+        /// </summary>
+        BakeOvenPressure,
+        /// <summary>
+        /// 烘箱真空 float 
+        /// </summary>
+        BakeOvenVacuum,
+        /// <summary>
+        /// 烘箱上板温度 float 
+        /// </summary>
+        BakeOvenUPtemp,
+        /// <summary>
+        /// 烘箱下板温度 float 
+        /// </summary>
+        BakeOvenDowntemp,
+        /// <summary>
+        /// 烘箱加热目标温度 float 
+        /// </summary>
+        BakeOvenTargettemp,
+        /// <summary>
+        /// 烘箱加热报警温度 float 
+        /// </summary>
+        BakeOvenAlarmtemp,
+        /// <summary>
+        /// 烘箱保温时间小时 short 小时
+        /// </summary>
+        BakeOvenHoldingTimeH,
+        /// <summary>
+        /// 烘箱保温时间分钟 short 分钟
+        /// </summary>
+        BakeOvenHoldingTimeM,
+        /// <summary>
+        /// 烘箱已保温时间小时 short 小时
+        /// </summary>
+        BakeOvenPassedTimeH,
+        /// <summary>
+        /// 烘箱已保温时间分钟 short 分钟
+        /// </summary>
+        BakeOvenPassedTimeM,
+        /// <summary>
+        /// 烘箱报警压力 float
+        /// </summary>
+        BakeOvenAlarmPressure,
+        /// <summary>
+        /// 烘箱上板P
+        /// </summary>
+        BakeOvenUpHeatPID_P,
+        /// <summary>
+        /// 烘箱上板I
+        /// </summary>
+        BakeOvenUpHeatPID_I,
+        /// <summary>
+        /// 烘箱上板D
+        /// </summary>
+        BakeOvenUpHeatPID_D,
+        /// <summary>
+        /// 烘箱上板P
+        /// </summary>
+        BakeOvenDownHeatPID_P,
+        /// <summary>
+        /// 烘箱上板I
+        /// </summary>
+        BakeOvenDownHeatPID_I,
+        /// <summary>
+        /// 烘箱上板D
+        /// </summary>
+        BakeOvenDownHeatPID_D,
+
+
+        /// <summary>
+        /// 烘箱抽充压力上限 float 
+        /// </summary>
+        BakeOvenPFUpPressure,
+        /// <summary>
+        /// 烘箱抽充压力下限 float 
+        /// </summary>
+        BakeOvenPFDownPressure,
+        /// <summary>
+        /// 烘箱抽充次数 short 
+        /// </summary>
+        BakeOvenPFnum,
+        /// <summary>
+        /// 烘箱抽充已完成次数 short 
+        /// </summary>
+        BakeOvenPFCompletednum,
+        /// <summary>
+        /// 烘箱抽充时间间隔 short 秒
+        /// </summary>
+        BakeOvenPFinterval,
+        /// <summary>
+        /// 烘箱手动抽充 bool
+        /// </summary>
+        BakeOvenPF,
+
+
+        #endregion
+
+        #region 箱体
+
+        /// <summary>
+        /// 箱体抽气阀状态 bool
+        /// </summary>
+        BoxBleedstatus,
+        /// <summary>
+        /// 箱体排气阀状态 short
+        /// </summary>
+        BoxExhauststatus,
+        /// <summary>
+        /// 箱体补气阀状态 short
+        /// </summary>
+        BoxAeratestatus,
+        /// 箱体外门电缸压紧状态 bool
+        /// </summary>
+        BoxOuterdoorElePressstatus,
+        /// <summary>
+        /// 箱体外门电缸打开状态 bool
+        /// </summary>
+        BoxOuterdoorEleReleasestatus,
+
+
+        /// <summary>
+        /// 箱体外门压紧到位
+        /// </summary>
+        BoxOuterdoorPressSta,
+        /// <summary>
+        /// 箱体外门松开到位
+        /// </summary>
+        BoxOuterdoorReleaseSta,
+        /// <summary>
+        /// 箱体外门关闭到位
+        /// </summary>
+        BoxOuterdoorCloseSta,
+        /// <summary>
+        /// 箱体外门打开到位
+        /// </summary>
+        BoxOuterdoorOpenSta,
+
+
+        /// <summary>
+        /// 箱体压力 float 
+        /// </summary>
+        BoxPressure,
+        /// <summary>
+        /// 箱体真空 float 
+        /// </summary>
+        BoxVacuum,
+        /// <summary>
+        /// 箱体抽充压力上限 float 
+        /// </summary>
+        BoxPFUpPressure,
+        /// <summary>
+        /// 箱体抽充压力下限 float 
+        /// </summary>
+        BoxPFDownPressure,
+        /// <summary>
+        /// 箱体抽充次数 short 
+        /// </summary>
+        BoxPFnum,
+        /// <summary>
+        /// 箱体抽充已完成次数 short 
+        /// </summary>
+        BoxPFCompletednum,
+        /// <summary>
+        /// 箱体抽充时间间隔 short 秒
+        /// </summary>
+        BoxPFinterval,
+        /// <summary>
+        /// 箱体手动抽充 bool
+        /// </summary>
+        BoxPF,
+        /// <summary>
+        /// 箱体报警压力 float
+        /// </summary>
+        BoxAlarmPressure,
+        /// <summary>
+        /// 箱体外门速度
+        /// </summary>
+        BoxOuterdoorspeed,
+
+
+
+        #endregion
+
+
     }
 
 

@@ -1,6 +1,4 @@
-﻿using BonderGUI.Forms;
-using BonderGUI.Manual;
-using CommonPanelClsLib;
+﻿using CommonPanelClsLib;
 using ConfigurationClsLib;
 using GlobalDataDefineClsLib;
 using GlobalToolClsLib;
@@ -72,26 +70,22 @@ namespace BondTerminal
 
         private void MenuItemBondHeaderTest_Click(object sender, EventArgs e)
         {
-            BondHeaderTest test = new BondHeaderTest();
-            test.Show();
+            
         }
 
         private void MenuItemTsTest_Click(object sender, EventArgs e)
         {
-            TSTest test = new TSTest();
-            test.Show();
+            
         }
 
         private void MenuItemWaferTableTest_Click(object sender, EventArgs e)
         {
-            WaferTableTest test = new WaferTableTest();
-            test.Show();
+            
         }
 
         private void MenuItemNeedleTest_Click(object sender, EventArgs e)
         {
-            NeedleSysTest test = new NeedleSysTest();
-            test.Show();
+            
         }
 
         private void MainForm_Load(object sender, EventArgs e)

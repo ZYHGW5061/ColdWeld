@@ -160,10 +160,6 @@
       <Project>{b0f0bd56-7eff-414b-9d41-f4e7aca2a8b2}</Project>
       <Name>GlobalDataDefineClsLib</Name>
     </ProjectReference>
-    <ProjectReference Include="..\GUI\BonderGUI\BonderGUI.csproj">
-      <Project>{f4b8585d-262a-433d-804c-c1a43d7ca4a5}</Project>
-      <Name>BonderGUI</Name>
-    </ProjectReference>
     <ProjectReference Include="..\GUI\CommonPanelClsLib\CommonPanelClsLib.csproj">
       <Project>{377c6c14-f0d1-4b37-ac89-1d3716369b00}</Project>
       <Name>CommonPanelClsLib</Name>

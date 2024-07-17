@@ -71,6 +71,7 @@ namespace StageManagerClsLib
                 stageInfo.AxisControllerDic.Add(EnumStageAxis.MaterialHook, new MaterialHookSingleAxisController());
                 stageInfo.AxisControllerDic.Add(EnumStageAxis.OverTrack1, new OverTrack1SingleAxisController());
                 stageInfo.AxisControllerDic.Add(EnumStageAxis.OverTrack2, new OverTrack2SingleAxisController());
+                stageInfo.AxisControllerDic.Add(EnumStageAxis.Presslifting, new PressliftingSingleAxisController());
                 //添加其他轴
 
                 StageCore.Instance.StageInfo = stageInfo;

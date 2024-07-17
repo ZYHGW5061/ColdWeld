@@ -145,7 +145,7 @@ namespace StageControllerClsLib
         public void CloseSoftLeftAndRightLimit()
         {
 
-                StageCore.CloseSoftLeftAndRightLimit(Axis);
+            StageCore.CloseSoftLeftAndRightLimit(Axis);
         }
         /// <summary>
         /// 当前轴下使能
@@ -166,7 +166,7 @@ namespace StageControllerClsLib
 
         public void JogPositive(float speed)
         {
-            StageCore.JogPositive(Axis,speed);
+            StageCore.JogPositive(Axis, speed);
         }
         public void JogNegative(float speed)
         {
@@ -192,7 +192,7 @@ namespace StageControllerClsLib
         /// <returns></returns>
         public double GetAxisSpeed()
         {
-            var speed=StageCore.GetAxisSpeed(Axis);
+            var speed = StageCore.GetAxisSpeed(Axis);
             return speed;
         }
 
@@ -376,7 +376,7 @@ namespace StageControllerClsLib
         /// </summary>
         protected void WaitMoveDone()
         {
-            
+
         }
 
         /// <summary>
@@ -573,7 +573,7 @@ namespace StageControllerClsLib
         //{
         //}
     }
-    
+
     /// <summary>
     /// Z轴控制的特定实现
     /// </summary>
@@ -657,7 +657,28 @@ namespace StageControllerClsLib
         //{
         //}
     }
-    
+
+    /// <summary>
+    /// Presslifting轴控制的特定实现
+    /// </summary>
+    internal sealed class PressliftingSingleAxisController : ASingleAxisController
+    {
+        /// <summary>
+        /// 当前轴为Tarck
+        /// </summary>
+        public override EnumStageAxis Axis
+        {
+            get { return EnumStageAxis.Presslifting; }
+        }
+
+        ///// <summary>
+        ///// 执行Z轴的Home操作
+        ///// </summary>
+        //public override void Home()
+        //{
+        //}
+    }
+
 
     #endregion
 

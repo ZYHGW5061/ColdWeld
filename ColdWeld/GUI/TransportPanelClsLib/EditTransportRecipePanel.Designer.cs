@@ -32,6 +32,7 @@ namespace TransportPanelClsLib
             this.TransportTab = new System.Windows.Forms.TabControl();
             this.MaterialboxTabPage = new System.Windows.Forms.TabPage();
             this.MaterialTabPage = new System.Windows.Forms.TabPage();
+            this.textBox1 = new System.Windows.Forms.TextBox();
             this.TransportTab.SuspendLayout();
             this.SuspendLayout();
             // 
@@ -41,6 +42,7 @@ namespace TransportPanelClsLib
             this.TransportTab.Controls.Add(this.MaterialTabPage);
             this.TransportTab.Location = new System.Drawing.Point(3, 98);
             this.TransportTab.Name = "TransportTab";
+            this.TransportTab.Padding = new System.Drawing.Point(320, 3);
             this.TransportTab.SelectedIndex = 0;
             this.TransportTab.Size = new System.Drawing.Size(1438, 775);
             this.TransportTab.TabIndex = 0;
@@ -65,22 +67,31 @@ namespace TransportPanelClsLib
             this.MaterialTabPage.Text = "物料搬送";
             this.MaterialTabPage.UseVisualStyleBackColor = true;
             // 
+            // textBox1
+            // 
+            this.textBox1.Location = new System.Drawing.Point(7, 13);
+            this.textBox1.Name = "textBox1";
+            this.textBox1.Size = new System.Drawing.Size(114, 25);
+            this.textBox1.TabIndex = 1;
+            // 
             // EditTransportRecipePanel
             // 
             this.AutoScaleDimensions = new System.Drawing.SizeF(8F, 15F);
             this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
+            this.Controls.Add(this.textBox1);
             this.Controls.Add(this.TransportTab);
             this.Name = "EditTransportRecipePanel";
             this.Size = new System.Drawing.Size(1444, 876);
             this.TransportTab.ResumeLayout(false);
             this.ResumeLayout(false);
+            this.PerformLayout();
 
         }
 
         #endregion
-
-        private System.Windows.Forms.TabControl TransportTab;
         private System.Windows.Forms.TabPage MaterialboxTabPage;
         private System.Windows.Forms.TabPage MaterialTabPage;
+        private System.Windows.Forms.TabControl TransportTab;
+        private System.Windows.Forms.TextBox textBox1;
     }
 }

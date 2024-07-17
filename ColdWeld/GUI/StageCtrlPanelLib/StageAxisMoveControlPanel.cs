@@ -76,7 +76,7 @@ namespace StageCtrlPanelLib
                 _currentStageAxis = value;
             }
         }
-        
+
 
         /// <summary>
         /// 构造函数
@@ -158,9 +158,9 @@ namespace StageCtrlPanelLib
         }
         private void ReadAxis()
         {
-                var pos = _positionSystem.ReadCurrentStagePosition(_currentStageAxis);
-                this.teCurrentPos.Text = pos.ToString("0.0000");
-                this.seVelocity.Text = _positionSystem.GetAxisSpeed(_currentStageAxis).ToString("0.0000");
+            var pos = _positionSystem.ReadCurrentStagePosition(_currentStageAxis);
+            this.teCurrentPos.Text = pos.ToString("0.0000");
+            this.seVelocity.Text = _positionSystem.GetAxisSpeed(_currentStageAxis).ToString("0.0000");
         }
 
         private void btnOpenPPVacuum_Click(object sender, EventArgs e)
@@ -206,7 +206,7 @@ namespace StageCtrlPanelLib
                     WarningBox.FormShow("错误", "绝对移动目标无效。", "Error");
                 }
             }
-            catch(Exception ex)
+            catch (Exception ex)
             {
                 LogRecorder.RecordLog(EnumLogContentType.Error, $"AbsoluteMove,Error.Axis:{_currentStageAxis}", ex);
             }
@@ -215,7 +215,7 @@ namespace StageCtrlPanelLib
                 ReadAxis();
                 CloseWaitDialog();
             }
-                
+
         }
 
         private void StageAxisAbsoluteMovePanel_Load(object sender, EventArgs e)
@@ -272,9 +272,15 @@ namespace StageCtrlPanelLib
             if (_currentStageAxis == EnumStageAxis.MaterialboxX
                 || _currentStageAxis == EnumStageAxis.MaterialboxY
                 || _currentStageAxis == EnumStageAxis.MaterialboxZ
+                || _currentStageAxis == EnumStageAxis.MaterialboxT
+                || _currentStageAxis == EnumStageAxis.MaterialboxHook
                 || _currentStageAxis == EnumStageAxis.MaterialX
                 || _currentStageAxis == EnumStageAxis.MaterialY
-                || _currentStageAxis == EnumStageAxis.MaterialZ)
+                || _currentStageAxis == EnumStageAxis.MaterialZ
+                || _currentStageAxis == EnumStageAxis.MaterialHook
+                || _currentStageAxis == EnumStageAxis.OverTrack1
+                || _currentStageAxis == EnumStageAxis.OverTrack2
+                || _currentStageAxis == EnumStageAxis.Presslifting)
             {
                 try
                 {
@@ -296,9 +302,15 @@ namespace StageCtrlPanelLib
             if (_currentStageAxis == EnumStageAxis.MaterialboxX
                 || _currentStageAxis == EnumStageAxis.MaterialboxY
                 || _currentStageAxis == EnumStageAxis.MaterialboxZ
+                || _currentStageAxis == EnumStageAxis.MaterialboxT
+                || _currentStageAxis == EnumStageAxis.MaterialboxHook
                 || _currentStageAxis == EnumStageAxis.MaterialX
                 || _currentStageAxis == EnumStageAxis.MaterialY
-                || _currentStageAxis == EnumStageAxis.MaterialZ)
+                || _currentStageAxis == EnumStageAxis.MaterialZ
+                || _currentStageAxis == EnumStageAxis.MaterialHook
+                || _currentStageAxis == EnumStageAxis.OverTrack1
+                || _currentStageAxis == EnumStageAxis.OverTrack2
+                || _currentStageAxis == EnumStageAxis.Presslifting)
             {
                 try
                 {
