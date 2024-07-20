@@ -191,6 +191,7 @@ namespace GlobalDataDefineClsLib
         VisionPosition
     }
 
+    
 
 
     [Serializable]
@@ -340,6 +341,62 @@ namespace GlobalDataDefineClsLib
         UplookingCamera,
         CalibrationTable
     }
+
+
+    [Serializable]
+    public class EnumTrainsportMaterialParam
+    {
+        public EnumTrainsportMaterialParam()
+        {
+            MaterialSize = new XYZTCoordinateConfig();
+        }
+
+        [XmlElement("Name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 物料宽度、长度、厚度
+        /// </summary>
+        [XmlElement("MaterialSize")]
+        public XYZTCoordinateConfig MaterialSize { get; set; }
+    }
+
+
+    [Serializable]
+    public class EnumTrainsportMaterialboxParam
+    {
+        public EnumTrainsportMaterialboxParam()
+        {
+            MaterialboxSize = new XYZTCoordinateConfig();
+        }
+
+        [XmlElement("Name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 料盒宽度、长度、厚度
+        /// </summary>
+        [XmlElement("MaterialboxSize")]
+        public XYZTCoordinateConfig MaterialboxSize { get; set; }
+
+        /// <summary>
+        /// 物料行数
+        /// </summary>
+        [XmlElement("MaterialRowNumber")]
+        public int MaterialRowNumber { get; set; }
+        /// <summary>
+        /// 物料行数
+        /// </summary>
+        [XmlElement("MaterialColNumber")]
+        public int MaterialColNumber { get; set; }
+    }
+
+
+
+
+
+
+
     [Serializable]
     public class ShapeMatchParameters
     {

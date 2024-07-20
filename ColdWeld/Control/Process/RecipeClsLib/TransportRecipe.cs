@@ -61,10 +61,16 @@ namespace RecipeClsLib
         public XYZTCoordinateConfig MaterialboxSize { get; set; }
 
         /// <summary>
-        /// 料盒层数
+        /// 烘箱1中的料盒层数
         /// </summary>
-        [XmlElement("MaterialBoxLayerNumber")]
-        public int MaterialBoxLayerNumber { get; set; }
+        [XmlElement("OverBox1MaterialBoxLayerNumber")]
+        public int OverBox1MaterialBoxLayerNumber { get; set; }
+
+        /// <summary>
+        /// 烘箱2中的料盒层数
+        /// </summary>
+        [XmlElement("OverBox2MaterialBoxLayerNumber")]
+        public int OverBox2MaterialBoxLayerNumber { get; set; }
 
         /// <summary>
         /// 物料宽度、长度、厚度
@@ -112,6 +118,12 @@ namespace RecipeClsLib
         /// </summary>
         [XmlElement("OverTrackMaterialboxOutofoven")]
         public float OverTrackMaterialboxOutofoven { get; set; }
+
+        /// <summary>
+        /// 料盒出烘箱2位置
+        /// </summary>
+        [XmlElement("OverTrack2MaterialboxOutofoven")]
+        public float OverTrack2MaterialboxOutofoven { get; set; }
 
 
         //料盒钩爪到料盒上方
@@ -179,6 +191,11 @@ namespace RecipeClsLib
         [XmlElement("OverTrackMaterialboxInofoven")]
         public float OverTrackMaterialboxInofoven { get; set; }
 
+        /// <summary>
+        /// 料盒进烘箱2位置
+        /// </summary>
+        [XmlElement("OverTrack2MaterialboxInofoven")]
+        public float OverTrack2MaterialboxInofoven { get; set; }
 
 
         #endregion
