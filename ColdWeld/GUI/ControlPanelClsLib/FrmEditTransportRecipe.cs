@@ -209,6 +209,11 @@ namespace ControlPanelClsLib
         }
         private void SetParameters(TransportRecipe recipe=null)
         {
+            if (recipe == null)
+            {
+
+            }
+
             //if (recipe == null)
             //{
             //    _selRecipe.HookAxisZPreparePosForPullMaterialBox = float.Parse(this.teHookZPreparePosForPullMB.Text);
@@ -218,91 +223,91 @@ namespace ControlPanelClsLib
             //    _selRecipe.HookAxisXPreparePosForPullMBStep2 = float.Parse(this.teHookXPreparePosForPullMBStep2.Text);
 
 
-            //    _selRecipe.HookAxisXPosForPullMBStep2 = float.Parse(this.teHookXPosForPullMBStep2.Text);
-            //    _selRecipe.HookAxisZPosForPushMaterialbox = float.Parse(this.teHookZPosForPushMB.Text);
-            //    _selRecipe.HookAxisXPreparePosForPushMBStep1 = float.Parse(this.teHookXPreparePosForPushMBStep1.Text);
-            //    _selRecipe.HookAxisXPosForPushMBStep1 = float.Parse(this.teHookXPosForPushMBStep1.Text);
-            //    _selRecipe.HookAxisZPreparePosForPushMaterialbox = float.Parse(this.teHookZPreparePushWholePosForMB.Text);
-            //    _selRecipe.HookAxisXPreparePosForPushMBStep2 = float.Parse(this.teHookXPreparePosForPushMBStep2.Text);
-            //    _selRecipe.HookAxisXPosForPushMBStep2 = float.Parse(this.teHookXPosForPushMBStep2.Text);
-            //    _selRecipe.TrackXPosForPullMaterialBox = float.Parse(this.teTrackXPosForPullMaterialBox.Text);
-            //    _selRecipe.TrackXPosForPushMaterialBox = float.Parse(this.teTrackXPosForPushMaterialBox.Text);
-            //    _selRecipe.HookAxisXIdlePosForMaterialbox = float.Parse(this.teHookXIdlePosForMB.Text);
-            //    _selRecipe.HookAxisZIdlePosForMaterialbox = float.Parse(this.teHookZIdlePosForMB.Text);
-            //    _selRecipe.TrackXIdlePosForMaterialBox = float.Parse(this.teTrackXIdlePosForMB.Text);
-            //    _selRecipe.BufferLifterPosForLoadMaterialbox = float.Parse(this.teLifterPosForLoadMB.Text);
-            //    _selRecipe.BufferLifterPosForUnloadMaterialbox = float.Parse(this.teLifterPosForUnloadMB.Text);
+                //    _selRecipe.HookAxisXPosForPullMBStep2 = float.Parse(this.teHookXPosForPullMBStep2.Text);
+                //    _selRecipe.HookAxisZPosForPushMaterialbox = float.Parse(this.teHookZPosForPushMB.Text);
+                //    _selRecipe.HookAxisXPreparePosForPushMBStep1 = float.Parse(this.teHookXPreparePosForPushMBStep1.Text);
+                //    _selRecipe.HookAxisXPosForPushMBStep1 = float.Parse(this.teHookXPosForPushMBStep1.Text);
+                //    _selRecipe.HookAxisZPreparePosForPushMaterialbox = float.Parse(this.teHookZPreparePushWholePosForMB.Text);
+                //    _selRecipe.HookAxisXPreparePosForPushMBStep2 = float.Parse(this.teHookXPreparePosForPushMBStep2.Text);
+                //    _selRecipe.HookAxisXPosForPushMBStep2 = float.Parse(this.teHookXPosForPushMBStep2.Text);
+                //    _selRecipe.TrackXPosForPullMaterialBox = float.Parse(this.teTrackXPosForPullMaterialBox.Text);
+                //    _selRecipe.TrackXPosForPushMaterialBox = float.Parse(this.teTrackXPosForPushMaterialBox.Text);
+                //    _selRecipe.HookAxisXIdlePosForMaterialbox = float.Parse(this.teHookXIdlePosForMB.Text);
+                //    _selRecipe.HookAxisZIdlePosForMaterialbox = float.Parse(this.teHookZIdlePosForMB.Text);
+                //    _selRecipe.TrackXIdlePosForMaterialBox = float.Parse(this.teTrackXIdlePosForMB.Text);
+                //    _selRecipe.BufferLifterPosForLoadMaterialbox = float.Parse(this.teLifterPosForLoadMB.Text);
+                //    _selRecipe.BufferLifterPosForUnloadMaterialbox = float.Parse(this.teLifterPosForUnloadMB.Text);
 
 
-            //    _selRecipe.HookZPreparePosForPullStripFromMB = float.Parse(this.teHookZPreparePosForPullStripFormMB.Text);
-            //    _selRecipe.HookXPreparePosForPullStripFromMBStep1 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep1.Text);
-            //    _selRecipe.HookZPosForPullStripFromMB = float.Parse(this.teHookZPosForPullStripFormMB.Text);
-            //    _selRecipe.HookXPosForPullStripFromMBStep1 = float.Parse(this.teHookXPosForPullStripFormMBStep1.Text);
-            //    _selRecipe.HookXPreparePosForPullStripFromMBStep2 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep2.Text);
-            //    _selRecipe.HookXPosForPullStripFromMBStep2 = float.Parse(this.teHookXPosForPullStripFormMBStep2.Text);
-            //    _selRecipe.HookAxisZPosForPushStripToChuck = float.Parse(this.teHookZPosForPushStripToChuck.Text);
-            //    _selRecipe.HookAxisXPreparePosForPushStripToChuckStep1 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep1.Text);
-            //    _selRecipe.HookAxisXPosForPushStripToChuckStep1 = float.Parse(this.teHookXPosForPushStripToChuckStep1.Text);
-            //    _selRecipe.HookAxisZPreparePosForPushStripToChuck = float.Parse(this.teHookZPreparePosForPushStripToChuck.Text);
-            //    _selRecipe.HookAxisXPreparePosForPushStripToChuckStep2 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep2.Text);
-            //    _selRecipe.HookAxisXPosForPushStripToChuckStep2 = float.Parse(this.teHookXPosForPushStripToChuckStep2.Text);
-            //    _selRecipe.TrackXPosForPickStripFromMaterialbox = float.Parse(this.teTrackXPosForPullStripFromMB.Text);
-            //    _selRecipe.TrackXPosForPlaceStripToChuck = float.Parse(this.teTrackXPosForPushStripToChuck.Text);
-            //    _selRecipe.HookAxisXIdlePosForStrip = float.Parse(this.teHookXIdlePosForStrip.Text);
-            //    _selRecipe.HookAxisZIdlePosForStrip = float.Parse(this.teHookZIdlePosForStrip.Text);
-            //    _selRecipe.TrackXIdlePosForStrip = float.Parse(this.teTrackXIdlePosForStrip.Text);
-            //    _selRecipe.LidChuckLoadPosition.X = float.Parse(this.teChuckLoadLidPosX.Text);
-            //    _selRecipe.LidChuckLoadPosition.Y = float.Parse(this.teChuckLoadLidPosY.Text);
-            //    _selRecipe.ShellChuckLoadPosition.X = float.Parse(this.teChuckLoadShellPosX.Text);
-            //    _selRecipe.ShellChuckLoadPosition.Y = float.Parse(this.teChuckLoadShellPosY.Text);
-            //}
-            //else
-            //{
-            //    recipe.HookAxisZPreparePosForPullMaterialBox = float.Parse(this.teHookZPreparePosForPullMB.Text);
-            //    recipe.HookAxisXPreparePosForPullMBStep1 = float.Parse(this.teHookXPreparePosForPullMBStep1.Text);
-            //    recipe.HookAxisZPosForPullMaterialBox = float.Parse(this.teHookZPosForPullMB.Text);
-            //    recipe.HookAxisXPosForPullMBStep1 = float.Parse(this.teHookXPullHalfPosForMBStep1.Text);
-            //    recipe.HookAxisXPreparePosForPullMBStep2 = float.Parse(this.teHookXPreparePosForPullMBStep2.Text);
+                //    _selRecipe.HookZPreparePosForPullStripFromMB = float.Parse(this.teHookZPreparePosForPullStripFormMB.Text);
+                //    _selRecipe.HookXPreparePosForPullStripFromMBStep1 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep1.Text);
+                //    _selRecipe.HookZPosForPullStripFromMB = float.Parse(this.teHookZPosForPullStripFormMB.Text);
+                //    _selRecipe.HookXPosForPullStripFromMBStep1 = float.Parse(this.teHookXPosForPullStripFormMBStep1.Text);
+                //    _selRecipe.HookXPreparePosForPullStripFromMBStep2 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep2.Text);
+                //    _selRecipe.HookXPosForPullStripFromMBStep2 = float.Parse(this.teHookXPosForPullStripFormMBStep2.Text);
+                //    _selRecipe.HookAxisZPosForPushStripToChuck = float.Parse(this.teHookZPosForPushStripToChuck.Text);
+                //    _selRecipe.HookAxisXPreparePosForPushStripToChuckStep1 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep1.Text);
+                //    _selRecipe.HookAxisXPosForPushStripToChuckStep1 = float.Parse(this.teHookXPosForPushStripToChuckStep1.Text);
+                //    _selRecipe.HookAxisZPreparePosForPushStripToChuck = float.Parse(this.teHookZPreparePosForPushStripToChuck.Text);
+                //    _selRecipe.HookAxisXPreparePosForPushStripToChuckStep2 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep2.Text);
+                //    _selRecipe.HookAxisXPosForPushStripToChuckStep2 = float.Parse(this.teHookXPosForPushStripToChuckStep2.Text);
+                //    _selRecipe.TrackXPosForPickStripFromMaterialbox = float.Parse(this.teTrackXPosForPullStripFromMB.Text);
+                //    _selRecipe.TrackXPosForPlaceStripToChuck = float.Parse(this.teTrackXPosForPushStripToChuck.Text);
+                //    _selRecipe.HookAxisXIdlePosForStrip = float.Parse(this.teHookXIdlePosForStrip.Text);
+                //    _selRecipe.HookAxisZIdlePosForStrip = float.Parse(this.teHookZIdlePosForStrip.Text);
+                //    _selRecipe.TrackXIdlePosForStrip = float.Parse(this.teTrackXIdlePosForStrip.Text);
+                //    _selRecipe.LidChuckLoadPosition.X = float.Parse(this.teChuckLoadLidPosX.Text);
+                //    _selRecipe.LidChuckLoadPosition.Y = float.Parse(this.teChuckLoadLidPosY.Text);
+                //    _selRecipe.ShellChuckLoadPosition.X = float.Parse(this.teChuckLoadShellPosX.Text);
+                //    _selRecipe.ShellChuckLoadPosition.Y = float.Parse(this.teChuckLoadShellPosY.Text);
+                //}
+                //else
+                //{
+                //    recipe.HookAxisZPreparePosForPullMaterialBox = float.Parse(this.teHookZPreparePosForPullMB.Text);
+                //    recipe.HookAxisXPreparePosForPullMBStep1 = float.Parse(this.teHookXPreparePosForPullMBStep1.Text);
+                //    recipe.HookAxisZPosForPullMaterialBox = float.Parse(this.teHookZPosForPullMB.Text);
+                //    recipe.HookAxisXPosForPullMBStep1 = float.Parse(this.teHookXPullHalfPosForMBStep1.Text);
+                //    recipe.HookAxisXPreparePosForPullMBStep2 = float.Parse(this.teHookXPreparePosForPullMBStep2.Text);
 
 
-            //    recipe.HookAxisXPosForPullMBStep2 = float.Parse(this.teHookXPosForPullMBStep2.Text);
-            //    recipe.HookAxisZPosForPushMaterialbox = float.Parse(this.teHookZPosForPushMB.Text);
-            //    recipe.HookAxisXPreparePosForPushMBStep1 = float.Parse(this.teHookXPreparePosForPushMBStep1.Text);
-            //    recipe.HookAxisXPosForPushMBStep1 = float.Parse(this.teHookXPosForPushMBStep1.Text);
-            //    recipe.HookAxisZPreparePosForPushMaterialbox = float.Parse(this.teHookZPreparePushWholePosForMB.Text);
-            //    recipe.HookAxisXPreparePosForPushMBStep2 = float.Parse(this.teHookXPreparePosForPushMBStep2.Text);
-            //    recipe.HookAxisXPosForPushMBStep2 = float.Parse(this.teHookXPosForPushMBStep2.Text);
-            //    recipe.TrackXPosForPullMaterialBox = float.Parse(this.teTrackXPosForPullMaterialBox.Text);
-            //    recipe.TrackXPosForPushMaterialBox = float.Parse(this.teTrackXPosForPushMaterialBox.Text);
-            //    recipe.HookAxisXIdlePosForMaterialbox = float.Parse(this.teHookXIdlePosForMB.Text);
-            //    recipe.HookAxisZIdlePosForMaterialbox = float.Parse(this.teHookZIdlePosForMB.Text);
-            //    recipe.TrackXIdlePosForMaterialBox = float.Parse(this.teTrackXIdlePosForMB.Text);
-            //    recipe.BufferLifterPosForLoadMaterialbox = float.Parse(this.teLifterPosForLoadMB.Text);
-            //    recipe.BufferLifterPosForUnloadMaterialbox = float.Parse(this.teLifterPosForUnloadMB.Text);
+                //    recipe.HookAxisXPosForPullMBStep2 = float.Parse(this.teHookXPosForPullMBStep2.Text);
+                //    recipe.HookAxisZPosForPushMaterialbox = float.Parse(this.teHookZPosForPushMB.Text);
+                //    recipe.HookAxisXPreparePosForPushMBStep1 = float.Parse(this.teHookXPreparePosForPushMBStep1.Text);
+                //    recipe.HookAxisXPosForPushMBStep1 = float.Parse(this.teHookXPosForPushMBStep1.Text);
+                //    recipe.HookAxisZPreparePosForPushMaterialbox = float.Parse(this.teHookZPreparePushWholePosForMB.Text);
+                //    recipe.HookAxisXPreparePosForPushMBStep2 = float.Parse(this.teHookXPreparePosForPushMBStep2.Text);
+                //    recipe.HookAxisXPosForPushMBStep2 = float.Parse(this.teHookXPosForPushMBStep2.Text);
+                //    recipe.TrackXPosForPullMaterialBox = float.Parse(this.teTrackXPosForPullMaterialBox.Text);
+                //    recipe.TrackXPosForPushMaterialBox = float.Parse(this.teTrackXPosForPushMaterialBox.Text);
+                //    recipe.HookAxisXIdlePosForMaterialbox = float.Parse(this.teHookXIdlePosForMB.Text);
+                //    recipe.HookAxisZIdlePosForMaterialbox = float.Parse(this.teHookZIdlePosForMB.Text);
+                //    recipe.TrackXIdlePosForMaterialBox = float.Parse(this.teTrackXIdlePosForMB.Text);
+                //    recipe.BufferLifterPosForLoadMaterialbox = float.Parse(this.teLifterPosForLoadMB.Text);
+                //    recipe.BufferLifterPosForUnloadMaterialbox = float.Parse(this.teLifterPosForUnloadMB.Text);
 
 
-            //    recipe.HookZPreparePosForPullStripFromMB = float.Parse(this.teHookZPreparePosForPullStripFormMB.Text);
-            //    recipe.HookXPreparePosForPullStripFromMBStep1 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep1.Text);
-            //    recipe.HookZPosForPullStripFromMB = float.Parse(this.teHookZPosForPullStripFormMB.Text);
-            //    recipe.HookXPosForPullStripFromMBStep1 = float.Parse(this.teHookXPosForPullStripFormMBStep1.Text);
-            //    recipe.HookXPreparePosForPullStripFromMBStep2 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep2.Text);
-            //    recipe.HookXPosForPullStripFromMBStep2 = float.Parse(this.teHookXPosForPullStripFormMBStep2.Text);
-            //    recipe.HookAxisZPosForPushStripToChuck = float.Parse(this.teHookZPosForPushStripToChuck.Text);
-            //    recipe.HookAxisXPreparePosForPushStripToChuckStep1 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep1.Text);
-            //    recipe.HookAxisXPosForPushStripToChuckStep1 = float.Parse(this.teHookXPosForPushStripToChuckStep1.Text);
-            //    recipe.HookAxisZPreparePosForPushStripToChuck = float.Parse(this.teHookZPreparePosForPushStripToChuck.Text);
-            //    recipe.HookAxisXPreparePosForPushStripToChuckStep2 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep2.Text);
-            //    recipe.HookAxisXPosForPushStripToChuckStep2 = float.Parse(this.teHookXPosForPushStripToChuckStep2.Text);
-            //    recipe.TrackXPosForPickStripFromMaterialbox = float.Parse(this.teTrackXPosForPullStripFromMB.Text);
-            //    recipe.TrackXPosForPlaceStripToChuck = float.Parse(this.teTrackXPosForPushStripToChuck.Text);
-            //    recipe.HookAxisXIdlePosForStrip = float.Parse(this.teHookXIdlePosForStrip.Text);
-            //    recipe.HookAxisZIdlePosForStrip = float.Parse(this.teHookZIdlePosForStrip.Text);
-            //    recipe.TrackXIdlePosForStrip = float.Parse(this.teTrackXIdlePosForStrip.Text);
-            //    recipe.LidChuckLoadPosition.X = float.Parse(this.teChuckLoadLidPosX.Text);
-            //    recipe.LidChuckLoadPosition.Y = float.Parse(this.teChuckLoadLidPosY.Text);
-            //    recipe.ShellChuckLoadPosition.X = float.Parse(this.teChuckLoadShellPosX.Text);
-            //    recipe.ShellChuckLoadPosition.Y = float.Parse(this.teChuckLoadShellPosY.Text);
-            //}
+                //    recipe.HookZPreparePosForPullStripFromMB = float.Parse(this.teHookZPreparePosForPullStripFormMB.Text);
+                //    recipe.HookXPreparePosForPullStripFromMBStep1 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep1.Text);
+                //    recipe.HookZPosForPullStripFromMB = float.Parse(this.teHookZPosForPullStripFormMB.Text);
+                //    recipe.HookXPosForPullStripFromMBStep1 = float.Parse(this.teHookXPosForPullStripFormMBStep1.Text);
+                //    recipe.HookXPreparePosForPullStripFromMBStep2 = float.Parse(this.teHookXPreparePosForPullStripFormMBStep2.Text);
+                //    recipe.HookXPosForPullStripFromMBStep2 = float.Parse(this.teHookXPosForPullStripFormMBStep2.Text);
+                //    recipe.HookAxisZPosForPushStripToChuck = float.Parse(this.teHookZPosForPushStripToChuck.Text);
+                //    recipe.HookAxisXPreparePosForPushStripToChuckStep1 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep1.Text);
+                //    recipe.HookAxisXPosForPushStripToChuckStep1 = float.Parse(this.teHookXPosForPushStripToChuckStep1.Text);
+                //    recipe.HookAxisZPreparePosForPushStripToChuck = float.Parse(this.teHookZPreparePosForPushStripToChuck.Text);
+                //    recipe.HookAxisXPreparePosForPushStripToChuckStep2 = float.Parse(this.teHookXPreparePosForPushStripToChuckStep2.Text);
+                //    recipe.HookAxisXPosForPushStripToChuckStep2 = float.Parse(this.teHookXPosForPushStripToChuckStep2.Text);
+                //    recipe.TrackXPosForPickStripFromMaterialbox = float.Parse(this.teTrackXPosForPullStripFromMB.Text);
+                //    recipe.TrackXPosForPlaceStripToChuck = float.Parse(this.teTrackXPosForPushStripToChuck.Text);
+                //    recipe.HookAxisXIdlePosForStrip = float.Parse(this.teHookXIdlePosForStrip.Text);
+                //    recipe.HookAxisZIdlePosForStrip = float.Parse(this.teHookZIdlePosForStrip.Text);
+                //    recipe.TrackXIdlePosForStrip = float.Parse(this.teTrackXIdlePosForStrip.Text);
+                //    recipe.LidChuckLoadPosition.X = float.Parse(this.teChuckLoadLidPosX.Text);
+                //    recipe.LidChuckLoadPosition.Y = float.Parse(this.teChuckLoadLidPosY.Text);
+                //    recipe.ShellChuckLoadPosition.X = float.Parse(this.teChuckLoadShellPosX.Text);
+                //    recipe.ShellChuckLoadPosition.Y = float.Parse(this.teChuckLoadShellPosY.Text);
+                //}
         }
 
         private void btnAutoCal_Click(object sender, EventArgs e)

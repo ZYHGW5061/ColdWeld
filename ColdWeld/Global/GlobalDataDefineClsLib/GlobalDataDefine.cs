@@ -349,6 +349,8 @@ namespace GlobalDataDefineClsLib
         public EnumTrainsportMaterialParam()
         {
             MaterialSize = new XYZTCoordinateConfig();
+            TrackCameraIdentifyMaterialMatch = new MatchIdentificationParam();
+            WeldCameraIdentifyMaterialMatch = new MatchIdentificationParam();
         }
 
         [XmlElement("Name")]
@@ -359,6 +361,19 @@ namespace GlobalDataDefineClsLib
         /// </summary>
         [XmlElement("MaterialSize")]
         public XYZTCoordinateConfig MaterialSize { get; set; }
+
+        /// <summary>
+        /// 搬送相机识别物料
+        /// </summary>
+        [XmlElement("TrackCameraIdentifyMaterialMatch")]
+        public MatchIdentificationParam TrackCameraIdentifyMaterialMatch { get; set; }
+
+        /// <summary>
+        /// 焊接相机识别物料
+        /// </summary>
+        [XmlElement("WeldCameraIdentifyMaterialMatch")]
+        public MatchIdentificationParam WeldCameraIdentifyMaterialMatch { get; set; }
+
     }
 
 
@@ -368,6 +383,7 @@ namespace GlobalDataDefineClsLib
         public EnumTrainsportMaterialboxParam()
         {
             MaterialboxSize = new XYZTCoordinateConfig();
+            TrackCameraIdentifyMaterialBoxMatch = new MatchIdentificationParam();
         }
 
         [XmlElement("Name")]
@@ -389,11 +405,54 @@ namespace GlobalDataDefineClsLib
         /// </summary>
         [XmlElement("MaterialColNumber")]
         public int MaterialColNumber { get; set; }
+
+        /// <summary>
+        /// 物料行间距
+        /// </summary>
+        [XmlElement("MaterialRowinterval")]
+        public float MaterialRowinterval { get; set; }
+        /// <summary>
+        /// 物料行间距
+        /// </summary>
+        [XmlElement("MaterialColinterval")]
+        public float MaterialColinterval { get; set; }
+
+        /// <summary>
+        /// 搬送相机识别料盒
+        /// </summary>
+        [XmlElement("TrackCameraIdentifyMaterialBoxMatch")]
+        public MatchIdentificationParam TrackCameraIdentifyMaterialBoxMatch { get; set; }
+
     }
 
 
 
 
+    [Serializable]
+    public class EnumOverBoxParam
+    {
+        public EnumOverBoxParam()
+        {
+            MaterialboxParam = new List<EnumTrainsportMaterialboxParam>();
+        }
+
+        [XmlElement("Name")]
+        public string Name { get; set; }
+
+        /// <summary>
+        /// 料盒参数
+        /// </summary>
+        [XmlElement("MaterialboxParam")]
+        public List<EnumTrainsportMaterialboxParam> MaterialboxParam { get; set; }
+
+
+        /// <summary>
+        /// 料盒层数
+        /// </summary>
+        [XmlElement("OverBoxMaterialBoxLayerNumber")]
+        public int OverBoxMaterialBoxLayerNumber { get; set; }
+
+    }
 
 
 

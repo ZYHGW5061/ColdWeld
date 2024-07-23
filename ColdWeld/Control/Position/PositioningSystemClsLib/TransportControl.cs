@@ -203,6 +203,47 @@ namespace PositioningSystemClsLib
         }
 
 
+        public int OpenOvenBoxInteriorDoor(int OverBoxNum)
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public int CloseOvenBoxInteriorDoor(int OverBoxNum)
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+
         public int MaterialboxHooktoSafePositionAction()
         {
             if (_transportRecipe != null)
@@ -231,14 +272,22 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxOutofovenAction()
+        public int MaterialboxOutofovenAction(int OverBoxNum)
         {
 
             if (_transportRecipe != null)
             {
                 try
                 {
-                    AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrackMaterialboxOutofoven);
+                    if (OverBoxNum == 0)
+                    {
+                        AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrackMaterialboxOutofoven);
+                    }
+                    else if (OverBoxNum == 1)
+                    {
+                        AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrack2MaterialboxOutofoven);
+                    }
+
 
                     return 0;
                 }
@@ -253,7 +302,7 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxHooktoMaterialboxAction()
+        public int MaterialboxHooktoMaterialboxAction(int OverBoxNum)
         {
 
             if (_transportRecipe != null)
@@ -267,9 +316,20 @@ namespace PositioningSystemClsLib
                     double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
                     double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
 
-                    AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Theta);
+                    if (OverBoxNum == 0)
+                    {
+                        AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Theta);
 
-                    MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Z);
+                        MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition1.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Z);
+                    }
+                    else if (OverBoxNum == 1)
+                    {
+                        AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Theta);
+
+                        MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition2.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Z);
+                    }
+
+
 
 
 
@@ -286,15 +346,17 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxHookPickupMaterialboxAction()
+        public int MaterialboxHookPickupMaterialboxAction(double TargetZ)
         {
             if (_transportRecipe != null)
             {
                 try
                 {
+
+
                     AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
 
-                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookPickupMaterialboxPosition.Z);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, TargetZ);
 
                     AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookClose);
 
@@ -314,22 +376,22 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxHooktoTargetPositionAction()
+        public int MaterialboxHooktoTargetPositionAction(XYZTCoordinateConfig Target)
         {
 
             if (_transportRecipe != null)
             {
                 try
                 {
-                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHooktoTargetPosition.Z);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, Target.Z + _transportRecipe.MaterialboxHookUp);
 
                     double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
                     double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
 
 
-                    MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoTargetPosition.X, _transportRecipe.MaterialboxHooktoTargetPosition.Y, _transportRecipe.MaterialboxHooktoTargetPosition.Z);
+                    MaterialboxHookXYZAbsoluteMove(Target.X, Target.Y, Target.Z + _transportRecipe.MaterialboxHookUp);
 
-                    AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition.Theta);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxT, Target.Theta);
 
                     return 0;
                 }
@@ -373,13 +435,13 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxHookPutdownMaterialboxAction()
+        public int MaterialboxHookPutdownMaterialboxAction(double TargetZ)
         {
             if (_transportRecipe != null)
             {
                 try
                 {
-                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookPutdownMaterialboxPosition.Z);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, TargetZ);
 
                     AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
 
@@ -399,13 +461,22 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxInofovenAction()
+        public int MaterialboxInofovenAction(int OverBoxNum)
         {
             if (_transportRecipe != null)
             {
                 try
                 {
-                    AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrackMaterialboxInofoven);
+                    if (OverBoxNum == 0)
+                    {
+                        AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrack1MaterialboxInofoven);
+                    }
+                    else if (OverBoxNum == 1)
+                    {
+                        AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrack2MaterialboxInofoven);
+                    }
+
+
 
                     return 0;
                 }
@@ -446,7 +517,7 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialHooktoMaterialAction()
+        public int MaterialHooktoMaterialAction(XYZTCoordinateConfig MaterialPosition)
         {
             if (_transportRecipe != null)
             {
@@ -454,12 +525,12 @@ namespace PositioningSystemClsLib
                 {
                     AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialboxHookOpen);
 
-                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHooktoMaterialPosition.Z);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, MaterialPosition.Z);
 
                     double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
                     double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
 
-                    MaterialHookXYZAbsoluteMove(_transportRecipe.MaterialHooktoMaterialPosition.X, _transportRecipe.MaterialHooktoMaterialPosition.Y, _transportRecipe.MaterialHooktoMaterialPosition.Z);
+                    MaterialHookXYZAbsoluteMove(MaterialPosition.X, MaterialPosition.Y, MaterialPosition.Z);
 
 
 
@@ -476,7 +547,7 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialHookPickupMaterialAction()
+        public int MaterialHookPickupMaterialAction(double TargetZ)
         {
             if (_transportRecipe != null)
             {
@@ -484,7 +555,7 @@ namespace PositioningSystemClsLib
                 {
                     AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialHookOpen);
 
-                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHookPickupMaterialPosition.Z);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, TargetZ);
 
                     AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialHookClose);
 
@@ -541,13 +612,13 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialHookPutdownMaterialAction()
+        public int MaterialHookPutdownMaterialAction(double TargetZ)
         {
             if (_transportRecipe != null)
             {
                 try
                 {
-                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, _transportRecipe.MaterialHookPutdownMaterialPosition.Z);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, TargetZ);
 
                     AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialHookOpen);
 
@@ -567,6 +638,95 @@ namespace PositioningSystemClsLib
             }
         }
 
+        public int PressliftingLiftUpMaterialAction()
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.Presslifting, _transportRecipe.PressliftingWorkPosition);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public int PressliftingPutdownMaterialAction()
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    AxisAbsoluteMove(EnumStageAxis.Presslifting, _transportRecipe.PressliftingSafePosition);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public int WeldMaterialAction()
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    //AxisAbsoluteMove(EnumStageAxis.Presslifting, _transportRecipe.PressliftingSafePosition);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
+
+        public int WeldResetAction()
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+                    //AxisAbsoluteMove(EnumStageAxis.Presslifting, _transportRecipe.PressliftingSafePosition);
+
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+
+        }
 
 
         #endregion

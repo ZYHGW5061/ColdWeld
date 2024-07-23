@@ -25,18 +25,25 @@ namespace RecipeClsLib
         public TransportRecipe()
         {
             RecipeName = string.Empty;
-            MaterialboxSize = new XYZTCoordinateConfig();
-            MaterialSize = new XYZTCoordinateConfig();
+
+
+            OverBox1Param = new EnumOverBoxParam();
+            OverBox2Param = new EnumOverBoxParam();
 
             MaterialboxHookSafePosition = new XYZTCoordinateConfig();
-            MaterialboxHooktoMaterialboxPosition = new XYZTCoordinateConfig();
+            MaterialboxHooktoMaterialboxPosition1 = new XYZTCoordinateConfig();
+            MaterialboxHooktoMaterialboxPosition2 = new XYZTCoordinateConfig();
             MaterialboxHookPickupMaterialboxPosition = new XYZTCoordinateConfig();
-            MaterialboxHooktoTargetPosition = new XYZTCoordinateConfig();
+            MaterialboxHookPickupMaterialboxPosition2 = new XYZTCoordinateConfig();
+            MaterialboxHooktoTarget1Position = new XYZTCoordinateConfig();
+            MaterialboxHooktoTarget2Position = new XYZTCoordinateConfig();
+            MaterialboxHooktoTarget3Position = new XYZTCoordinateConfig();
+            MaterialboxHooktoTarget4Position = new XYZTCoordinateConfig();
             MaterialboxHooktoWeldPosition = new XYZTCoordinateConfig();
             MaterialboxHookPutdownMaterialboxPosition = new XYZTCoordinateConfig();
 
             MaterialHookSafePosition = new XYZTCoordinateConfig();
-            MaterialHooktoMaterialPosition = new XYZTCoordinateConfig();
+            MaterialHooktoMaterialPosition = new List<XYZTCoordinateConfig>();
             MaterialHookPickupMaterialPosition = new XYZTCoordinateConfig();
             MaterialHooktoTargetPosition = new List<XYZTCoordinateConfig>();
             MaterialHookPutdownMaterialPosition = new XYZTCoordinateConfig();
@@ -55,39 +62,16 @@ namespace RecipeClsLib
 
 
         /// <summary>
-        /// 料盒宽度、长度、厚度
+        /// 烘箱1参数
         /// </summary>
-        [XmlElement("MaterialboxSize")]
-        public XYZTCoordinateConfig MaterialboxSize { get; set; }
+        [XmlElement("OverBox1Param")]
+        public EnumOverBoxParam OverBox1Param { get; set; }
 
         /// <summary>
-        /// 烘箱1中的料盒层数
+        /// 烘箱2参数
         /// </summary>
-        [XmlElement("OverBox1MaterialBoxLayerNumber")]
-        public int OverBox1MaterialBoxLayerNumber { get; set; }
-
-        /// <summary>
-        /// 烘箱2中的料盒层数
-        /// </summary>
-        [XmlElement("OverBox2MaterialBoxLayerNumber")]
-        public int OverBox2MaterialBoxLayerNumber { get; set; }
-
-        /// <summary>
-        /// 物料宽度、长度、厚度
-        /// </summary>
-        [XmlElement("MaterialSize")]
-        public XYZTCoordinateConfig MaterialSize { get; set; }
-
-        /// <summary>
-        /// 物料行数
-        /// </summary>
-        [XmlElement("MaterialRowNumber")]
-        public int MaterialRowNumber { get; set; }
-        /// <summary>
-        /// 物料行数
-        /// </summary>
-        [XmlElement("MaterialColNumber")]
-        public int MaterialColNumber { get; set; }
+        [XmlElement("OverBox2Param")]
+        public EnumOverBoxParam OverBox2Param { get; set; }
 
 
 
@@ -131,8 +115,14 @@ namespace RecipeClsLib
         /// <summary>
         /// 料盒钩爪到料盒上方
         /// </summary>
-        [XmlElement("MaterialboxHooktoMaterialboxPosition")]
-        public XYZTCoordinateConfig MaterialboxHooktoMaterialboxPosition { get; set; }
+        [XmlElement("MaterialboxHooktoMaterialboxPosition1")]
+        public XYZTCoordinateConfig MaterialboxHooktoMaterialboxPosition1 { get; set; }
+
+        /// <summary>
+        /// 料盒钩爪到料盒上方
+        /// </summary>
+        [XmlElement("MaterialboxHooktoMaterialboxPosition2")]
+        public XYZTCoordinateConfig MaterialboxHooktoMaterialboxPosition2 { get; set; }
 
 
         //料盒钩爪拾起料盒
@@ -144,10 +134,22 @@ namespace RecipeClsLib
         public XYZTCoordinateConfig MaterialboxHookPickupMaterialboxPosition { get; set; }
 
         /// <summary>
+        /// 料盒钩爪拾起料盒位置
+        /// </summary>
+        [XmlElement("MaterialboxHookPickupMaterialboxPosition2")]
+        public XYZTCoordinateConfig MaterialboxHookPickupMaterialboxPosition2 { get; set; }
+
+        /// <summary>
         /// 料盒钩爪合
         /// </summary>
         [XmlElement("MaterialboxHookClose")]
         public float MaterialboxHookClose { get; set; }
+
+        /// <summary>
+        /// 料盒钩爪合
+        /// </summary>
+        [XmlElement("MaterialboxHookClose2")]
+        public float MaterialboxHookClose2 { get; set; }
 
         /// <summary>
         /// 料盒抬升距离
@@ -155,14 +157,38 @@ namespace RecipeClsLib
         [XmlElement("MaterialboxHookUp")]
         public float MaterialboxHookUp { get; set; }
 
+        /// <summary>
+        /// 料盒抬升距离
+        /// </summary>
+        [XmlElement("MaterialboxHookUp2")]
+        public float MaterialboxHookUp2 { get; set; }
+
 
         //料盒钩爪到目标位置
 
         /// <summary>
-        /// 料盒钩爪到目标位置
+        /// 料盒钩爪到目标位置1
         /// </summary>
-        [XmlElement("MaterialboxHooktoTargetPosition")]
-        public XYZTCoordinateConfig MaterialboxHooktoTargetPosition { get; set; }
+        [XmlElement("MaterialboxHooktoTarget1Position")]
+        public XYZTCoordinateConfig MaterialboxHooktoTarget1Position { get; set; }
+
+        /// <summary>
+        /// 料盒钩爪到目标位置2
+        /// </summary>
+        [XmlElement("MaterialboxHooktoTarget2Position")]
+        public XYZTCoordinateConfig MaterialboxHooktoTarget2Position { get; set; }
+
+        /// <summary>
+        /// 料盒钩爪到目标位置3
+        /// </summary>
+        [XmlElement("MaterialboxHooktoTarget3Position")]
+        public XYZTCoordinateConfig MaterialboxHooktoTarget3Position { get; set; }
+
+        /// <summary>
+        /// 料盒钩爪到目标位置4
+        /// </summary>
+        [XmlElement("MaterialboxHooktoTarget4Position")]
+        public XYZTCoordinateConfig MaterialboxHooktoTarget4Position { get; set; }
 
 
         //料盒钩爪到焊接位置
@@ -188,8 +214,8 @@ namespace RecipeClsLib
         /// <summary>
         /// 料盒进烘箱位置
         /// </summary>
-        [XmlElement("OverTrackMaterialboxInofoven")]
-        public float OverTrackMaterialboxInofoven { get; set; }
+        [XmlElement("OverTrack1MaterialboxInofoven")]
+        public float OverTrack1MaterialboxInofoven { get; set; }
 
         /// <summary>
         /// 料盒进烘箱2位置
@@ -224,7 +250,7 @@ namespace RecipeClsLib
         /// 物料钩爪到物料上方
         /// </summary>
         [XmlElement("MaterialHooktoMaterialPosition")]
-        public XYZTCoordinateConfig MaterialHooktoMaterialPosition { get; set; }
+        public List<XYZTCoordinateConfig> MaterialHooktoMaterialPosition { get; set; }
 
 
         //物料钩爪拾起物料
@@ -251,6 +277,12 @@ namespace RecipeClsLib
         //物料钩爪到目标位置
 
         /// <summary>
+        /// 焊台物料个数
+        /// </summary>
+        [XmlElement("WeldNum")]
+        public int WeldNum { get; set; }
+
+        /// <summary>
         /// 物料钩爪到目标位置
         /// </summary>
         [XmlElement("MaterialHooktoTargetPosition")]
@@ -270,6 +302,37 @@ namespace RecipeClsLib
         /// </summary>
         [XmlElement("MaterialHookUp2")]
         public float MaterialHookUp2 { get; set; }
+
+        /// <summary>
+        /// 顶升机构到空闲位置
+        /// </summary>
+        [XmlElement("PressliftingSafePosition")]
+        public float PressliftingSafePosition { get; set; }
+
+        /// <summary>
+        /// 顶升机构到工作位置
+        /// </summary>
+        [XmlElement("PressliftingWorkPosition")]
+        public float PressliftingWorkPosition { get; set; }
+
+
+
+        #endregion
+
+        #region 物料焊接
+
+        /// <summary>
+        /// 物料焊接时间
+        /// </summary>
+        [XmlElement("WeldTime")]
+        public float WeldTime { get; set; }
+
+        /// <summary>
+        /// 物料焊接压力
+        /// </summary>
+        [XmlElement("WeldPessure")]
+        public float WeldPessure { get; set; }
+
 
 
         #endregion
