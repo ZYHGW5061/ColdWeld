@@ -90,6 +90,8 @@ namespace ConfigurationClsLib
         [XmlElement("JoyStickController")]
         public JoyStickControllerConfig JoyStickControllerConfig { get; set; }
 
+        [XmlArray("TemperatureControllers"), XmlArrayItem(typeof(TemperatureControllerConfig))]
+        public List<TemperatureControllerConfig> TemperatureControllerConfig { get; set; }
 
         #endregion
 
@@ -397,6 +399,7 @@ namespace ConfigurationClsLib
         [XmlElement("SerialCommunicator")]
         public SerialPortConfig SerialCommunicator { get; set; }
     }
+
     [Serializable]
     public enum EnumPowerControllerProducer { None, Default }
     #endregion
@@ -429,8 +432,37 @@ namespace ConfigurationClsLib
         [XmlAttribute("RunningType")]
         public EnumRunningType RunningType { get; set; }
 
+        [XmlElement("TemperatureProducer")]
+        public EnumTemperatureProducer TemperatureProducer { get; set; }
+        [XmlElement("TemperatureFieldPosition")]
+        public EnumTemperatureType TemperatureFieldPosition { get; set; }
+        [XmlElement("CommunicationType")]
+        public EnumCommunicationType CommunicationType { get; set; }
+
+        [XmlElement("TemperatureName")]
+        public string TemperatureName { get; set; }
+
+        [XmlElement("IPAddress")]
+        public string IPAddress { get; set; }
+
+        [XmlElement("Port")]
+        public int Port { get; set; }
+
         [XmlElement("SerialCommunicator")]
         public SerialPortConfig SerialCommunicator { get; set; }
+        [XmlElement("CommunicatorID")]
+        public string CommunicatorID { get; set; }
+        [XmlElement("ChannelNumber")]
+        public int ChannelNumber { get; set; }
+
+        [XmlElement("MinIntensity")]
+        public float MinIntensity { get; set; }
+
+        [XmlElement("MaxIntensity")]
+        public float MaxIntensity { get; set; }
+
+        [XmlElement("ExposureMonitor")]
+        public ExposureMonitorConfig ExposureMonitor { get; set; }
     }
 
 }

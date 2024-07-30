@@ -1,6 +1,6 @@
 ﻿namespace ControlPanelClsLib
 {
-    partial class FrmRecipeSelect
+    partial class FrmHeatRecipeSelect
     {
         /// <summary>
         /// Required designer variable.
@@ -42,6 +42,10 @@
             this.textPage = new DevExpress.XtraEditors.TextEdit();
             this.labelPageCount = new DevExpress.XtraEditors.LabelControl();
             this.textFind = new System.Windows.Forms.TextBox();
+            this.btnAdd = new DevExpress.XtraEditors.SimpleButton();
+            this.btnEdit = new DevExpress.XtraEditors.SimpleButton();
+            this.btnCopy = new DevExpress.XtraEditors.SimpleButton();
+            this.btnDelete = new DevExpress.XtraEditors.SimpleButton();
             this.tableLayoutPanel2.SuspendLayout();
             ((System.ComponentModel.ISupportInitialize)(this.listBoxControl1)).BeginInit();
             this.tableLayoutPanel1.SuspendLayout();
@@ -50,45 +54,54 @@
             // 
             // btnCancel
             // 
-            this.btnCancel.Location = new System.Drawing.Point(692, 102);
+            this.btnCancel.Location = new System.Drawing.Point(693, 402);
             this.btnCancel.Margin = new System.Windows.Forms.Padding(2);
             this.btnCancel.Name = "btnCancel";
             this.btnCancel.Size = new System.Drawing.Size(112, 38);
             this.btnCancel.TabIndex = 1;
-            this.btnCancel.Text = "Cancel";
+            this.btnCancel.Text = "取消";
             this.btnCancel.Click += new System.EventHandler(this.btnCancel_Click);
             // 
             // btnOK
             // 
-            this.btnOK.Location = new System.Drawing.Point(692, 58);
+            this.btnOK.Location = new System.Drawing.Point(693, 358);
             this.btnOK.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
             this.btnOK.Name = "btnOK";
             this.btnOK.Size = new System.Drawing.Size(112, 38);
             this.btnOK.TabIndex = 0;
-            this.btnOK.Text = "OK";
+            this.btnOK.Text = "确认";
             this.btnOK.Click += new System.EventHandler(this.btnOK_Click);
             // 
             // tableLayoutPanel2
             // 
             this.tableLayoutPanel2.ColumnCount = 2;
             this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Percent, 100F));
-            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 125F));
+            this.tableLayoutPanel2.ColumnStyles.Add(new System.Windows.Forms.ColumnStyle(System.Windows.Forms.SizeType.Absolute, 124F));
             this.tableLayoutPanel2.Controls.Add(this.listBoxControl1, 0, 1);
             this.tableLayoutPanel2.Controls.Add(this.btnSelect, 1, 0);
-            this.tableLayoutPanel2.Controls.Add(this.btnCancel, 1, 2);
-            this.tableLayoutPanel2.Controls.Add(this.btnOK, 1, 1);
-            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnCancel, 1, 8);
+            this.tableLayoutPanel2.Controls.Add(this.tableLayoutPanel1, 0, 9);
             this.tableLayoutPanel2.Controls.Add(this.textFind, 0, 0);
+            this.tableLayoutPanel2.Controls.Add(this.btnOK, 1, 7);
+            this.tableLayoutPanel2.Controls.Add(this.btnAdd, 1, 2);
+            this.tableLayoutPanel2.Controls.Add(this.btnEdit, 1, 3);
+            this.tableLayoutPanel2.Controls.Add(this.btnCopy, 1, 4);
+            this.tableLayoutPanel2.Controls.Add(this.btnDelete, 1, 5);
             this.tableLayoutPanel2.Dock = System.Windows.Forms.DockStyle.Fill;
             this.tableLayoutPanel2.Location = new System.Drawing.Point(0, 0);
             this.tableLayoutPanel2.Margin = new System.Windows.Forms.Padding(2);
             this.tableLayoutPanel2.Name = "tableLayoutPanel2";
-            this.tableLayoutPanel2.RowCount = 4;
+            this.tableLayoutPanel2.RowCount = 10;
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
+            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 50F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Percent, 100F));
             this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 45F));
-            this.tableLayoutPanel2.RowStyles.Add(new System.Windows.Forms.RowStyle(System.Windows.Forms.SizeType.Absolute, 25F));
             this.tableLayoutPanel2.Size = new System.Drawing.Size(815, 802);
             this.tableLayoutPanel2.TabIndex = 1;
             // 
@@ -101,15 +114,15 @@
             this.listBoxControl1.Location = new System.Drawing.Point(2, 58);
             this.listBoxControl1.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
             this.listBoxControl1.Name = "listBoxControl1";
-            this.tableLayoutPanel2.SetRowSpan(this.listBoxControl1, 2);
-            this.listBoxControl1.Size = new System.Drawing.Size(686, 697);
+            this.tableLayoutPanel2.SetRowSpan(this.listBoxControl1, 8);
+            this.listBoxControl1.Size = new System.Drawing.Size(687, 697);
             this.listBoxControl1.TabIndex = 5;
             this.listBoxControl1.SelectedValueChanged += new System.EventHandler(this.listBoxControl1_SelectedValueChanged);
             this.listBoxControl1.DoubleClick += new System.EventHandler(this.listBoxControl1_DoubleClick);
             // 
             // btnSelect
             // 
-            this.btnSelect.Location = new System.Drawing.Point(692, 8);
+            this.btnSelect.Location = new System.Drawing.Point(693, 8);
             this.btnSelect.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
             this.btnSelect.Name = "btnSelect";
             this.btnSelect.Size = new System.Drawing.Size(112, 38);
@@ -135,7 +148,7 @@
             this.tableLayoutPanel1.Controls.Add(this.textPage, 2, 0);
             this.tableLayoutPanel1.Controls.Add(this.labelPageCount, 3, 0);
             this.tableLayoutPanel1.Dock = System.Windows.Forms.DockStyle.Right;
-            this.tableLayoutPanel1.Location = new System.Drawing.Point(136, 757);
+            this.tableLayoutPanel1.Location = new System.Drawing.Point(137, 757);
             this.tableLayoutPanel1.Margin = new System.Windows.Forms.Padding(0);
             this.tableLayoutPanel1.Name = "tableLayoutPanel1";
             this.tableLayoutPanel1.RowCount = 1;
@@ -149,7 +162,7 @@
             this.labEnd.Appearance.Options.UseForeColor = true;
             this.labEnd.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labEnd.Location = new System.Drawing.Point(460, 8);
-            this.labEnd.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.labEnd.Margin = new System.Windows.Forms.Padding(8);
             this.labEnd.Name = "labEnd";
             this.labEnd.Size = new System.Drawing.Size(86, 29);
             this.labEnd.TabIndex = 5;
@@ -162,7 +175,7 @@
             this.LabDown.Appearance.Options.UseForeColor = true;
             this.LabDown.Dock = System.Windows.Forms.DockStyle.Fill;
             this.LabDown.Location = new System.Drawing.Point(360, 8);
-            this.LabDown.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.LabDown.Margin = new System.Windows.Forms.Padding(8);
             this.LabDown.Name = "LabDown";
             this.LabDown.Size = new System.Drawing.Size(84, 29);
             this.LabDown.TabIndex = 4;
@@ -175,7 +188,7 @@
             this.labGo.Appearance.Options.UseForeColor = true;
             this.labGo.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labGo.Location = new System.Drawing.Point(332, 8);
-            this.labGo.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.labGo.Margin = new System.Windows.Forms.Padding(8);
             this.labGo.Name = "labGo";
             this.labGo.Size = new System.Drawing.Size(12, 29);
             this.labGo.TabIndex = 3;
@@ -189,7 +202,7 @@
             this.labUp.Appearance.Options.UseForeColor = true;
             this.labUp.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labUp.Location = new System.Drawing.Point(108, 8);
-            this.labUp.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.labUp.Margin = new System.Windows.Forms.Padding(8);
             this.labUp.Name = "labUp";
             this.labUp.Size = new System.Drawing.Size(84, 29);
             this.labUp.TabIndex = 1;
@@ -202,7 +215,7 @@
             this.labHome.Appearance.Options.UseForeColor = true;
             this.labHome.Dock = System.Windows.Forms.DockStyle.Fill;
             this.labHome.Location = new System.Drawing.Point(8, 8);
-            this.labHome.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.labHome.Margin = new System.Windows.Forms.Padding(8);
             this.labHome.Name = "labHome";
             this.labHome.Size = new System.Drawing.Size(84, 29);
             this.labHome.TabIndex = 0;
@@ -214,7 +227,7 @@
             this.textPage.Dock = System.Windows.Forms.DockStyle.Fill;
             this.textPage.EditValue = "1";
             this.textPage.Location = new System.Drawing.Point(208, 8);
-            this.textPage.Margin = new System.Windows.Forms.Padding(8, 8, 8, 8);
+            this.textPage.Margin = new System.Windows.Forms.Padding(8);
             this.textPage.Name = "textPage";
             this.textPage.Properties.AutoHeight = false;
             this.textPage.Size = new System.Drawing.Size(66, 29);
@@ -237,11 +250,51 @@
             this.textFind.Location = new System.Drawing.Point(2, 2);
             this.textFind.Margin = new System.Windows.Forms.Padding(2);
             this.textFind.Name = "textFind";
-            this.textFind.Size = new System.Drawing.Size(686, 34);
+            this.textFind.Size = new System.Drawing.Size(687, 34);
             this.textFind.TabIndex = 7;
             this.textFind.TextChanged += new System.EventHandler(this.textFind_TextChanged);
             // 
-            // FrmRecipeSelect
+            // btnAdd
+            // 
+            this.btnAdd.Location = new System.Drawing.Point(693, 108);
+            this.btnAdd.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
+            this.btnAdd.Name = "btnAdd";
+            this.btnAdd.Size = new System.Drawing.Size(112, 38);
+            this.btnAdd.TabIndex = 0;
+            this.btnAdd.Text = "新增";
+            this.btnAdd.Click += new System.EventHandler(this.btnAdd_Click);
+            // 
+            // btnEdit
+            // 
+            this.btnEdit.Location = new System.Drawing.Point(693, 158);
+            this.btnEdit.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
+            this.btnEdit.Name = "btnEdit";
+            this.btnEdit.Size = new System.Drawing.Size(112, 38);
+            this.btnEdit.TabIndex = 0;
+            this.btnEdit.Text = "编辑";
+            this.btnEdit.Click += new System.EventHandler(this.btnEdit_Click);
+            // 
+            // btnCopy
+            // 
+            this.btnCopy.Location = new System.Drawing.Point(693, 208);
+            this.btnCopy.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
+            this.btnCopy.Name = "btnCopy";
+            this.btnCopy.Size = new System.Drawing.Size(112, 38);
+            this.btnCopy.TabIndex = 0;
+            this.btnCopy.Text = "复制";
+            this.btnCopy.Click += new System.EventHandler(this.btnCopy_Click);
+            // 
+            // btnDelete
+            // 
+            this.btnDelete.Location = new System.Drawing.Point(693, 258);
+            this.btnDelete.Margin = new System.Windows.Forms.Padding(2, 8, 2, 2);
+            this.btnDelete.Name = "btnDelete";
+            this.btnDelete.Size = new System.Drawing.Size(112, 38);
+            this.btnDelete.TabIndex = 0;
+            this.btnDelete.Text = "删除";
+            this.btnDelete.Click += new System.EventHandler(this.btnDelete_Click);
+            // 
+            // FrmHeatRecipeSelect
             // 
             this.AcceptButton = this.btnOK;
             this.Appearance.Options.UseFont = true;
@@ -251,9 +304,9 @@
             this.Controls.Add(this.tableLayoutPanel2);
             this.Font = new System.Drawing.Font("微软雅黑", 20F, System.Drawing.FontStyle.Regular, System.Drawing.GraphicsUnit.Pixel);
             this.Margin = new System.Windows.Forms.Padding(2);
-            this.Name = "FrmRecipeSelect";
+            this.Name = "FrmHeatRecipeSelect";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "Select Recipe";
+            this.Text = "编辑加热配方";
             this.Shown += new System.EventHandler(this.FrmRecipeSelect_Shown);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();
@@ -281,5 +334,9 @@
         private DevExpress.XtraEditors.TextEdit textPage;
         private System.Windows.Forms.TextBox textFind;
         private DevExpress.XtraEditors.LabelControl labelPageCount;
+        private DevExpress.XtraEditors.SimpleButton btnAdd;
+        private DevExpress.XtraEditors.SimpleButton btnEdit;
+        private DevExpress.XtraEditors.SimpleButton btnCopy;
+        private DevExpress.XtraEditors.SimpleButton btnDelete;
     }
 }

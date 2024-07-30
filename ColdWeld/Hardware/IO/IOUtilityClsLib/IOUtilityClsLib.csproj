@@ -58,6 +58,10 @@
       <Project>{bec297a8-3688-414c-92de-60b7e3355e4a}</Project>
       <Name>BoardCardControllerClsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\TemperatureControlMeter\TemperatureControllerClsLib\TemperatureControllerClsLib.csproj">
+      <Project>{9B720372-F8F4-4E86-A815-0FCE39F1F8E9}</Project>
+      <Name>TemperatureControllerClsLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

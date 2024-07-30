@@ -107,6 +107,10 @@
       <Project>{8f2593f4-ddd8-4790-8182-2ede2a7e21bd}</Project>
       <Name>StageManagerClsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\TemperatureControlMeter\TemperatureControllerClsLib\TemperatureControllerClsLib.csproj">
+      <Project>{9B720372-F8F4-4E86-A815-0FCE39F1F8E9}</Project>
+      <Name>TemperatureControllerClsLib</Name>
+    </ProjectReference>
   </ItemGroup>
   <ItemGroup>
     <None Include="app.config" />

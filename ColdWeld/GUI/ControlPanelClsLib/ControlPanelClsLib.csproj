@@ -121,23 +121,77 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="CopyTransportRecipeForm.cs">
+    <Compile Include="Manual\OvenBoxControlPanel.cs">
+      <SubType>UserControl</SubType>
+    </Compile>
+    <Compile Include="Manual\OvenBoxControlPanel.designer.cs">
+      <DependentUpon>OvenBoxControlPanel.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\AddNewRecipeForm.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="CopyTransportRecipeForm.designer.cs">
+    <Compile Include="Recipe\AddNewRecipeForm.Designer.cs">
+      <DependentUpon>AddNewRecipeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\CopyHeatRecipeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe\CopyHeatRecipeForm.designer.cs">
+      <DependentUpon>CopyHeatRecipeForm.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\CopyTransportRecipeForm.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe\CopyTransportRecipeForm.designer.cs">
       <DependentUpon>CopyTransportRecipeForm.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmEditTransportRecipe.cs">
+    <Compile Include="Recipe\FrmCreateMaterialMatrixEditor.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmEditTransportRecipe.designer.cs">
+    <Compile Include="Recipe\FrmCreateMaterialMatrixEditor.Designer.cs">
+      <DependentUpon>FrmCreateMaterialMatrixEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\FrmEditHeatRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe\FrmEditHeatRecipe.designer.cs">
+      <DependentUpon>FrmEditHeatRecipe.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\FrmEditTransportRecipe.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe\FrmEditTransportRecipe.designer.cs">
       <DependentUpon>FrmEditTransportRecipe.cs</DependentUpon>
     </Compile>
-    <Compile Include="FrmRecipeSelect.cs">
+    <Compile Include="Recipe\FrmHeatRecipeSelect.cs">
       <SubType>Form</SubType>
     </Compile>
-    <Compile Include="FrmRecipeSelect.designer.cs">
+    <Compile Include="Recipe\FrmHeatRecipeSelect.designer.cs">
+      <DependentUpon>FrmHeatRecipeSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\FrmMaterialBoxRecipeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe\FrmMaterialBoxRecipeEditor.designer.cs">
+      <DependentUpon>FrmMaterialBoxRecipeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\FrmMaterialRecipeEditor.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe\FrmMaterialRecipeEditor.designer.cs">
+      <DependentUpon>FrmMaterialRecipeEditor.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Recipe\FrmRecipeSelect.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Recipe\FrmRecipeSelect.designer.cs">
       <DependentUpon>FrmRecipeSelect.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Manual\FrmTemperatureControlPanel.cs">
+      <SubType>Form</SubType>
+    </Compile>
+    <Compile Include="Manual\FrmTemperatureControlPanel.Designer.cs">
+      <DependentUpon>FrmTemperatureControlPanel.cs</DependentUpon>
     </Compile>
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -165,6 +219,10 @@
     <ProjectReference Include="..\..\Control\Process\RecipeClsLib\RecipeClsLib.csproj">
       <Project>{633b7024-d607-496e-9800-84284c801d06}</Project>
       <Name>RecipeClsLib</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\..\Control\Process\TechnologicalClsLib\TechnologicalClsLib.csproj">
+      <Project>{ADF9B943-8025-4DB7-B99A-9AF12DC33997}</Project>
+      <Name>TechnologicalClsLib</Name>
     </ProjectReference>
     <ProjectReference Include="..\..\Global\ConfigurationClsLib\ConfigurationClsLib.csproj">
       <Project>{6cbe338a-1abb-4397-bba8-bc8477b1a21d}</Project>
@@ -194,6 +252,10 @@
       <Project>{1653a6d9-6ae3-4d6c-9a40-2b1b6730edb8}</Project>
       <Name>StageControllerClsLib</Name>
     </ProjectReference>
+    <ProjectReference Include="..\..\Hardware\TemperatureControlMeter\TemperatureControllerClsLib\TemperatureControllerClsLib.csproj">
+      <Project>{9B720372-F8F4-4E86-A815-0FCE39F1F8E9}</Project>
+      <Name>TemperatureControllerClsLib</Name>
+    </ProjectReference>
     <ProjectReference Include="..\CommonPanelClsLib\CommonPanelClsLib.csproj">
       <Project>{377c6c14-f0d1-4b37-ac89-1d3716369b00}</Project>
       <Name>CommonPanelClsLib</Name>
@@ -204,19 +266,44 @@
     </ProjectReference>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="CopyTransportRecipeForm.resx">
+    <EmbeddedResource Include="Manual\OvenBoxControlPanel.resx">
+      <DependentUpon>OvenBoxControlPanel.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\AddNewRecipeForm.resx">
+      <DependentUpon>AddNewRecipeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\CopyHeatRecipeForm.resx">
+      <DependentUpon>CopyHeatRecipeForm.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\CopyTransportRecipeForm.resx">
       <DependentUpon>CopyTransportRecipeForm.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmEditTransportRecipe.resx">
+    <EmbeddedResource Include="Recipe\FrmCreateMaterialMatrixEditor.resx">
+      <DependentUpon>FrmCreateMaterialMatrixEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\FrmEditHeatRecipe.resx">
+      <DependentUpon>FrmEditHeatRecipe.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\FrmEditTransportRecipe.resx">
       <DependentUpon>FrmEditTransportRecipe.cs</DependentUpon>
     </EmbeddedResource>
-    <EmbeddedResource Include="FrmRecipeSelect.resx">
+    <EmbeddedResource Include="Recipe\FrmHeatRecipeSelect.resx">
+      <DependentUpon>FrmHeatRecipeSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\FrmMaterialBoxRecipeEditor.resx">
+      <DependentUpon>FrmMaterialBoxRecipeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\FrmMaterialRecipeEditor.resx">
+      <DependentUpon>FrmMaterialRecipeEditor.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Recipe\FrmRecipeSelect.resx">
       <DependentUpon>FrmRecipeSelect.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Manual\FrmTemperatureControlPanel.resx">
+      <DependentUpon>FrmTemperatureControlPanel.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="Properties\licenses.licx" />
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Recipe\" />
-  </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

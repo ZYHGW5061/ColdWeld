@@ -17,6 +17,8 @@ using DynamometerManagerClsLib;
 using LaserSensorControllerClsLib;
 using JoyStickManagerClsLib;
 using IJoyStickControllerClsLib;using System.IO.Ports;
+using TemperatureControllerClsLib;
+
 namespace HardwareManagerClsLib
 {
     public class HardwareManager
@@ -114,6 +116,32 @@ namespace HardwareManagerClsLib
             get { return PowerControllerManager.Instance.GetCurrentHardware(); }
         }
 
+        
+
+        private TemperatureControllerManager _TemperatureControllerManager
+        {
+            get { return TemperatureControllerManager.Instance; }
+        }
+
+        public ITemperatureController OvenBox1LowTemperatureController
+        {
+            get { return _TemperatureControllerManager.GetTemperatureController( EnumTemperatureType.OvenBox1Low); }
+        }
+
+        public ITemperatureController OvenBox1UpTemperatureController
+        {
+            get { return _TemperatureControllerManager.GetTemperatureController(EnumTemperatureType.OvenBox1Up); }
+        }
+
+        public ITemperatureController OvenBox2LowTemperatureController
+        {
+            get { return _TemperatureControllerManager.GetTemperatureController(EnumTemperatureType.OvenBox2Low); }
+        }
+
+        public ITemperatureController OvenBox2UpTemperatureController
+        {
+            get { return _TemperatureControllerManager.GetTemperatureController(EnumTemperatureType.OvenBox2Low); }
+        }
 
         /// <summary>
         /// 根据硬件类型连接硬件的
@@ -140,6 +168,9 @@ namespace HardwareManagerClsLib
                     break;
                 case EnumHardwareType.PowerController:
                     PowerControllerManager.Instance.Initialize();
+                    break;
+                case EnumHardwareType.TemperatureController:
+                    TemperatureControllerManager.Instance.Initialize();
                     break;
                 //case EnumHardwareType.LaserSensor:
                 //    LaserSensorManager.Instance.Initialize(PowerControl);
@@ -175,7 +206,10 @@ namespace HardwareManagerClsLib
                         //PLCControllerManager.Instance.Shutdown();
                         break;
                     case EnumHardwareType.PowerController:
-                        //PowerControllerManager.Instance.Shutdown();
+                        PowerControllerManager.Instance.Shutdown();
+                        break;
+                    case EnumHardwareType.TemperatureController:
+                        TemperatureControllerManager.Instance.Shutdown();
                         break;
                     default:
                         break;
@@ -198,6 +232,8 @@ namespace HardwareManagerClsLib
             DisconnectHardware(EnumHardwareType.Camera);
 
             DisconnectHardware(EnumHardwareType.PowerController);
+
+            DisconnectHardware(EnumHardwareType.TemperatureController);
 
         }
         /// <summary>
@@ -275,6 +311,14 @@ namespace HardwareManagerClsLib
             //if (LaserSensorManager.Instance != null)
             //{
             //    return LaserSensorManager.Instance.IsConnect;
+            //}
+            return true;
+        }
+        public bool CheckTemperatureControllerValid()
+        {
+            //if (PowerController != null)
+            //{
+            //    return PowerController.IsConnect;
             //}
             return true;
         }

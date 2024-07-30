@@ -306,7 +306,7 @@
             this.Margin = new System.Windows.Forms.Padding(2);
             this.Name = "FrmTransportRecipeEditor";
             this.StartPosition = System.Windows.Forms.FormStartPosition.CenterScreen;
-            this.Text = "编辑传送配方";
+            this.Text = "编辑生产配方";
             this.Shown += new System.EventHandler(this.FrmRecipeSelect_Shown);
             this.tableLayoutPanel2.ResumeLayout(false);
             this.tableLayoutPanel2.PerformLayout();

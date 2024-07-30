@@ -26,6 +26,7 @@ namespace StageCtrlPanelLib
                 return PositioningSystem.Instance;
             }
         }
+        private System.Windows.Forms.Timer _readPosTimer = new System.Windows.Forms.Timer();
         public StageQuickMove()
         {
             InitializeComponent();
@@ -44,9 +45,15 @@ namespace StageCtrlPanelLib
             //        joyStickController.ActSystemAxisChanged += SystemAxisChanged;
             //    }
             //}
+            _readPosTimer.Interval = 500;
+            _readPosTimer.Tick += OnTimedEvent;
+            _readPosTimer.Stop();
         }
 
-
+        private void OnTimedEvent(object sender, EventArgs e)
+        {
+            UpdateAxisPosition();
+        }
 
         private void StageSystemChanged(EnumStageSystem obj)
         {
@@ -90,6 +97,7 @@ namespace StageCtrlPanelLib
                 this.btnControlField.MouseMove -= ControlField_MouseMove;
 
                 JoyStickControl.Instance.JoyStickEnable(false);
+                UnsubscribeIO();
             }
             else
             {
@@ -293,11 +301,12 @@ namespace StageCtrlPanelLib
                     cmbSelectAxis.Items.Add("XY");
                     cmbSelectAxis.Items.Add("Z");
                     cmbSelectAxis.Items.Add("Theta");
+                    cmbSelectAxis.Items.Add("Hook");
                     break;
                 case EnumStageSystem.MaterialHook:
                     cmbSelectAxis.Items.Add("XY");
                     cmbSelectAxis.Items.Add("Z");
-                    cmbSelectAxis.Items.Add("Theta");
+                    cmbSelectAxis.Items.Add("Hook");
                     break;
                 case EnumStageSystem.OverTrack1:
                     //cmbSelectAxis.Items.Add("Z");
@@ -305,6 +314,9 @@ namespace StageCtrlPanelLib
                     break;
                 case EnumStageSystem.OverTrack2:
                     cmbSelectAxis.Items.Add("X");
+                    break;
+                case EnumStageSystem.Weld:
+                    cmbSelectAxis.Items.Add("Z");
                     break;
                 default:
                     break;
@@ -397,6 +409,19 @@ namespace StageCtrlPanelLib
                             break;
                     }
                     break;
+                case EnumStageSystem.Weld:
+                    switch (SelectedAxisSystem)
+                    {
+                        case EnumSystemAxis.Z:
+                            xAxis = EnumStageAxis.None;
+                            yAxis = EnumStageAxis.Presslifting;
+                            break;
+                        default:
+                            xAxis = EnumStageAxis.None;
+                            yAxis = EnumStageAxis.None;
+                            break;
+                    }
+                    break;
                 default:
                     xAxis = EnumStageAxis.None;
                     yAxis = EnumStageAxis.None;
@@ -405,8 +430,22 @@ namespace StageCtrlPanelLib
         }
         private void UpdateAxisPosition()
         {
-            string positionStr = $"{_positionSystem.ReadCurrentStagePosition(xAxis).ToString("0.000")},{_positionSystem.ReadCurrentStagePosition(yAxis).ToString("0.000")}";
-            this.labelCurrentAxisPosition.Text = positionStr;
+            if (xAxis == EnumStageAxis.None && yAxis != EnumStageAxis.None)
+            {
+                ypos = _positionSystem.ReadCurrentStagePosition(yAxis).ToString("0.000");
+                this.labelCurrentAxisPosition.Text = $"{ypos}";
+            }
+            else if (xAxis != EnumStageAxis.None && yAxis == EnumStageAxis.None)
+            {
+                xpos = _positionSystem.ReadCurrentStagePosition(xAxis).ToString("0.000");
+                this.labelCurrentAxisPosition.Text = $"{xpos}";
+            }
+            else if (xAxis != EnumStageAxis.None && yAxis != EnumStageAxis.None)
+            {
+                xpos = _positionSystem.ReadCurrentStagePosition(xAxis).ToString("0.000");
+                ypos = _positionSystem.ReadCurrentStagePosition(yAxis).ToString("0.000");
+                this.labelCurrentAxisPosition.Text = $"{xpos},{ypos}";
+            }
         }
         private void SubscribeIO()
         {
@@ -451,6 +490,9 @@ namespace StageCtrlPanelLib
                 case EnumStageAxis.OverTrack2:
                     IOManager.Instance.RegisterIOChannelChangedEvent("Stage.OverTrack2Position", AxisPositionChangeAct);
                     break;
+                case EnumStageAxis.Presslifting:
+                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.PressliftingPosition", AxisPositionChangeAct);
+                    break;
                 default:
                     break;
             }
@@ -464,45 +506,50 @@ namespace StageCtrlPanelLib
                 case EnumStageAxis.None:
                     break;
                 case EnumStageAxis.MaterialboxX:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialboxXPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialboxXPosition", AxisPositionChangeAct);
 
                     break;
                 case EnumStageAxis.MaterialboxY:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialboxYPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialboxYPosition", AxisPositionChangeAct);
 
                     break;
                 case EnumStageAxis.MaterialboxZ:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialboxZPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialboxZPosition", AxisPositionChangeAct);
 
                     break;
                 case EnumStageAxis.MaterialboxT:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialboxTPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialboxTPosition", AxisPositionChangeAct);
                     break;
                 case EnumStageAxis.MaterialboxHook:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialboxHookPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialboxHookPosition", AxisPositionChangeAct);
                     break;
                 case EnumStageAxis.MaterialX:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialXPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialXPosition", AxisPositionChangeAct);
                     break;
                 case EnumStageAxis.MaterialY:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialYPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialYPosition", AxisPositionChangeAct);
                     break;
                 case EnumStageAxis.MaterialZ:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialZPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialZPosition", AxisPositionChangeAct);
                     break;
                 case EnumStageAxis.MaterialHook:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.MaterialHookPosition", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.MaterialHookPosition", AxisPositionChangeAct);
                     break;
                 case EnumStageAxis.OverTrack1:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.OverTrack1Position", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.OverTrack1Position", AxisPositionChangeAct);
                     break;
                 case EnumStageAxis.OverTrack2:
-                    IOManager.Instance.RegisterIOChannelChangedEvent("Stage.OverTrack2Position", AxisPositionChangeAct);
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.OverTrack2Position", AxisPositionChangeAct);
+                    break;
+                case EnumStageAxis.Presslifting:
+                    IOManager.Instance.UnregisterIOChannelChangedEvent("Stage.PressliftingPosition", AxisPositionChangeAct);
                     break;
                 default:
                     break;
             }
         }
+        string xpos = "";
+        string ypos = "";
         private void AxisPositionChangeAct(string ioName, object preValue, object newValue)
         {
             if (this.InvokeRequired)
@@ -515,24 +562,41 @@ namespace StageCtrlPanelLib
                 lock (_refreshLockObj)
                 {
                     RefreshCurrentXAxis();
-                    string positionStr = "";
-                    if (xAxis == EnumStageAxis.None)
+                    var changedAxis = IOManager.Instance.GetAxisByIOName(ioName);
+
+                    string pos = "";
+                    if (xAxis == EnumStageAxis.None && yAxis != EnumStageAxis.None)
                     {
-                        positionStr = $"";
+                        if (changedAxis == yAxis)
+                        {
+                            pos = $"{newValue.ToString()}";
+                        }
+                    }
+                    else if (xAxis != EnumStageAxis.None && yAxis == EnumStageAxis.None)
+                    {
+                        if (changedAxis == xAxis)
+                        {
+                            pos = $"{newValue.ToString()}";
+                        }
+                    }
+                    else if (xAxis != EnumStageAxis.None && yAxis != EnumStageAxis.None)
+                    {
+                        if (changedAxis == xAxis)
+                        {
+                            xpos = $"{newValue.ToString()}";
+                        }
+                        if (changedAxis == yAxis)
+                        {
+                            ypos = $"{newValue.ToString()}";
+                        }
+                        pos = $"{xpos},{ypos}";
                     }
                     else
                     {
-                        positionStr = $"{newValue.ToString()}";
+                        pos = "";
                     }
-                    if (yAxis == EnumStageAxis.None)
-                    {
-                        positionStr = positionStr + $"";
-                    }
-                    else
-                    {
-                        positionStr = positionStr + (xAxis == EnumStageAxis.None ? "" : ",") + $"{newValue.ToString()}";
-                    }
-                    this.labelCurrentAxisPosition.Text = positionStr;
+
+                    this.labelCurrentAxisPosition.Text = pos;
                 }
             }
             catch (Exception)

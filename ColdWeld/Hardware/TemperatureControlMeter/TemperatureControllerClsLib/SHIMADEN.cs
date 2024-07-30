@@ -1,4 +1,5 @@
 ﻿using ConfigurationClsLib;
+using GlobalDataDefineClsLib;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel;
@@ -7,6 +8,7 @@ using System.Linq;
 using System.Reflection;
 using System.Text;
 using System.Threading.Tasks;
+using WestDragon.Framework.SerialCommunicationClsLib;
 
 namespace TemperatureControllerClsLib
 {
@@ -750,7 +752,7 @@ namespace TemperatureControllerClsLib
         Step32_PID_Number,
     }
 
-    public class SHIMADEN
+    public class SHIMADEN:ITemperatureController
     {
         SerialPort PowerControl = new SerialPort();
         private TemperatureControllerConfig _config = null;
@@ -766,6 +768,15 @@ namespace TemperatureControllerClsLib
 
         private MR13 TemperatureControl = new MR13();
 
+        public SerialPortController SerialPortEngine
+        {
+            get { return _serialPortEngine; }
+            set { _serialPortEngine = value; }
+        }
+        /// <summary>
+        /// 串口通信
+        /// </summary>
+        private SerialPortController _serialPortEngine;
 
         #region Private Method
         private int ByteToInt(byte[] BTData)
@@ -1120,7 +1131,20 @@ namespace TemperatureControllerClsLib
             PCwrite(PLCadd, TemperatureAdd.ProgramRunStandby, Data);
         }
 
+        public void Disconnect()
+        {
+            throw new NotImplementedException();
+        }
 
+        public void Write(TemperatureRtuAdd Add, int value)
+        {
+            throw new NotImplementedException();
+        }
+
+        public int Read(TemperatureRtuAdd Add)
+        {
+            throw new NotImplementedException();
+        }
     }
 
     public static class EnumExtensions

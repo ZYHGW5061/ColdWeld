@@ -152,7 +152,7 @@ namespace PositioningSystemClsLib
             stage.RelativeMoveSync(axis, (float)target);
         }
 
-        private double ReadCurrentAxisposition(EnumStageAxis axis)
+        public double ReadCurrentAxisposition(EnumStageAxis axis)
         {
 
             double position = stage.GetCurrentPosition(axis);
@@ -202,8 +202,25 @@ namespace PositioningSystemClsLib
             return _transportRecipe;
         }
 
+        public double ReadOvenVacuum(EnumOvenBoxNum OverBoxNum)
+        {
 
-        public int OpenOvenBoxInteriorDoor(int OverBoxNum)
+            return 0;
+        }
+
+        public double ReadBoxVacuum()
+        {
+
+            return 0;
+        }
+
+        public bool Readsensor(EnumSensor sensor)
+        {
+
+            return false;
+        }
+
+        public int OpenOvenBoxAerates(EnumOvenBoxNum OverBoxNum)
         {
             if (_transportRecipe != null)
             {
@@ -223,7 +240,48 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int CloseOvenBoxInteriorDoor(int OverBoxNum)
+        public int CloseOvenBoxAerates(EnumOvenBoxNum OverBoxNum)
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+
+        public int OpenOvenBoxInteriorDoor(EnumOvenBoxNum OverBoxNum)
+        {
+            if (_transportRecipe != null)
+            {
+                try
+                {
+
+                    return 0;
+                }
+                catch (Exception)
+                {
+                    return -1;
+                }
+            }
+            else
+            {
+                return -1;
+            }
+        }
+
+        public int CloseOvenBoxInteriorDoor(EnumOvenBoxNum OverBoxNum)
         {
             if (_transportRecipe != null)
             {
@@ -272,18 +330,18 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxOutofovenAction(int OverBoxNum)
+        public int MaterialboxOutofovenAction(EnumOvenBoxNum OverBoxNum)
         {
 
             if (_transportRecipe != null)
             {
                 try
                 {
-                    if (OverBoxNum == 0)
+                    if (OverBoxNum == EnumOvenBoxNum.Oven1)
                     {
                         AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrackMaterialboxOutofoven);
                     }
-                    else if (OverBoxNum == 1)
+                    else if (OverBoxNum == EnumOvenBoxNum.Oven2)
                     {
                         AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrack2MaterialboxOutofoven);
                     }
@@ -302,13 +360,22 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxHooktoMaterialboxAction(int OverBoxNum)
+        public int MaterialboxHooktoMaterialboxAction(EnumOvenBoxNum OverBoxNum)
         {
 
             if (_transportRecipe != null)
             {
                 try
                 {
+                    if(_transportRecipe.MaterialboxHookUp < 12)
+                    {
+                        _transportRecipe.MaterialboxHookUp = 12;
+                    }
+                    if (_transportRecipe.MaterialboxHookUp2 < 12)
+                    {
+                        _transportRecipe.MaterialboxHookUp2 = 12;
+                    }
+
                     AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
 
                     AxisAbsoluteMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookSafePosition.Z);
@@ -316,17 +383,17 @@ namespace PositioningSystemClsLib
                     double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
                     double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);
 
-                    if (OverBoxNum == 0)
+                    if (OverBoxNum == EnumOvenBoxNum.Oven1)
                     {
                         AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Theta);
 
-                        MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition1.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Z);
+                        MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition1.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition1.Z + _transportRecipe.MaterialboxHookUp);
                     }
-                    else if (OverBoxNum == 1)
+                    else if (OverBoxNum == EnumOvenBoxNum.Oven2)
                     {
                         AxisAbsoluteMove(EnumStageAxis.MaterialboxT, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Theta);
 
-                        MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition2.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Z);
+                        MaterialboxHookXYZAbsoluteMove(_transportRecipe.MaterialboxHooktoMaterialboxPosition2.X, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Y, _transportRecipe.MaterialboxHooktoMaterialboxPosition2.Z + _transportRecipe.MaterialboxHookUp2);
                     }
 
 
@@ -346,7 +413,7 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxHookPickupMaterialboxAction(double TargetZ)
+        public int MaterialboxHookPickupMaterialboxAction(double TargetZ, double HookUp)
         {
             if (_transportRecipe != null)
             {
@@ -360,7 +427,7 @@ namespace PositioningSystemClsLib
 
                     AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookClose);
 
-                    AxisRelativeMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookUp);
+                    AxisRelativeMove(EnumStageAxis.MaterialboxZ, HookUp);
 
 
                     return 0;
@@ -435,7 +502,7 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxHookPutdownMaterialboxAction(double TargetZ)
+        public int MaterialboxHookPutdownMaterialboxAction(double TargetZ, double HookUp)
         {
             if (_transportRecipe != null)
             {
@@ -445,7 +512,7 @@ namespace PositioningSystemClsLib
 
                     AxisAbsoluteMove(EnumStageAxis.MaterialboxHook, _transportRecipe.MaterialboxHookOpen);
 
-                    AxisRelativeMove(EnumStageAxis.MaterialboxZ, _transportRecipe.MaterialboxHookUp);
+                    AxisRelativeMove(EnumStageAxis.MaterialboxZ, HookUp);
 
 
                     return 0;
@@ -461,17 +528,17 @@ namespace PositioningSystemClsLib
             }
         }
 
-        public int MaterialboxInofovenAction(int OverBoxNum)
+        public int MaterialboxInofovenAction(EnumOvenBoxNum OverBoxNum)
         {
             if (_transportRecipe != null)
             {
                 try
                 {
-                    if (OverBoxNum == 0)
+                    if (OverBoxNum == EnumOvenBoxNum.Oven1)
                     {
                         AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrack1MaterialboxInofoven);
                     }
-                    else if (OverBoxNum == 1)
+                    else if (OverBoxNum == EnumOvenBoxNum.Oven2)
                     {
                         AxisAbsoluteMove(EnumStageAxis.OverTrack1, _transportRecipe.OverTrack2MaterialboxInofoven);
                     }
@@ -525,7 +592,7 @@ namespace PositioningSystemClsLib
                 {
                     AxisAbsoluteMove(EnumStageAxis.MaterialHook, _transportRecipe.MaterialboxHookOpen);
 
-                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, MaterialPosition.Z);
+                    AxisAbsoluteMove(EnumStageAxis.MaterialZ, MaterialPosition.Z + _transportRecipe.MaterialHookUp);
 
                     double MaterialboxHookX = ReadCurrentAxisposition(EnumStageAxis.MaterialboxX);
                     double MaterialboxHookY = ReadCurrentAxisposition(EnumStageAxis.MaterialboxY);

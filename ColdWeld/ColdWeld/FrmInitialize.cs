@@ -44,7 +44,7 @@ namespace BondTerminal
         private bool _VisualControlInitializeSuccess = false;
         private bool _ConnectLaserSensorSuccess = false;
         private bool _ConnectDynamometerSuccess = false;
-        
+        private bool _ConnectTemperatureControllerSuccess = false;
 
 
         public void SetProgressCaption(string caption, LabelControl labText)
@@ -81,6 +81,7 @@ namespace BondTerminal
                     ConnectingStage();
                     ConnectingLightController();
                     ConnectingPowerController();
+                    ConnectingTemperatureController();
                     ConnectingCameras();
                     //ConnectingLaserSensorController();
                     //ConnectingDynamometerController();
@@ -429,6 +430,59 @@ namespace BondTerminal
                     {
                         this.Invoke(new Action(() => {
                             SetProgressCaption("电源控制器初始化失败!", labelFailInfo);
+                            this.labelFailInfo.Visible = true; this.btnExit.Visible = true;
+                        }));
+                    }
+                }
+                if (!success) { return; }
+            }));
+            #endregion    
+        }
+
+        private void ConnectingTemperatureController()
+        {
+            #region Connecting TemperatureController
+            Task.Factory.StartNew(new Action(() =>
+            {
+                bool success = true;
+                //连接电源控制
+                try
+                {
+                    //SetProgressCaption(string.Format("Connecting Inspection Cameras..."), labelLineCameraText);
+                    if (_systemConfig.SystemRunningType == EnumRunningType.Actual)
+                    {
+                        HardwareManager.Instance.ConnectHardware(EnumHardwareType.TemperatureController);
+                        success = HardwareManager.Instance.CheckTemperatureControllerValid();
+                        _ConnectTemperatureControllerSuccess = success;
+                        if (success)
+                        {
+                            this.Invoke((MethodInvoker)delegate
+                            {
+                                //SetProgressCaption("Connect Power Controller Success.", labelRunningType);
+                                SetProgressCaption("温度控制器初始化完成。", labelRunningType);
+                            });
+                        }
+                    }
+                    else
+                    {
+                        this.Invoke((MethodInvoker)delegate
+                        {
+                            SetProgressCaption("温度控制器初始化完成。", labelRunningType);
+                        });
+                        _ConnectTemperatureControllerSuccess = true;
+                    }
+                }
+                catch (Exception ex)
+                {
+                    //LogRecorder.RecordLog(WestDragon.Framework.BaseLoggerClsLib.EnumLogContentType.Error, "Failed to connect PowerController.", ex);
+                    success = false;
+                }
+                finally
+                {
+                    if (!success)
+                    {
+                        this.Invoke(new Action(() => {
+                            SetProgressCaption("温度控制器初始化失败!", labelFailInfo);
                             this.labelFailInfo.Visible = true; this.btnExit.Visible = true;
                         }));
                     }

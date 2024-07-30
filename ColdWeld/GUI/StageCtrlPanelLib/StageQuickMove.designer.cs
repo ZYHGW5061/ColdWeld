@@ -19,6 +19,12 @@ namespace StageCtrlPanelLib
             if (disposing && (components != null))
             {
                 components.Dispose();
+                UnsubscribeIO();
+                _readPosTimer.Stop();
+            }
+            if (disposing)
+            {
+                UnsubscribeIO();
             }
             base.Dispose(disposing);
         }

@@ -62,12 +62,335 @@ namespace GlobalDataDefineClsLib
     }
 
     [Serializable]
+    public enum EnumOvenBoxNum
+    {
+        [Description("Over1")]
+        Oven1 = 0,
+        [Description("Over2")]
+        Oven2 = 1
+    }
+
+    [Serializable]
+    public enum EnumSensor
+    {
+        Oven1InteriorDoorOpen,
+        Oven1InteriorDoorClose,
+        Oven2InteriorDoorOpen,
+        Oven2InteriorDoorClose,
+    }
+
+
+    [Serializable]
+    public enum TemperatureRtuAdd
+    {
+        /// <summary>
+        /// 测量数值
+        /// </summary>
+        PV = 256,
+        /// <summary>
+        /// 设定值
+        /// </summary>
+        SV = 257,
+        /// <summary>
+        /// 控制输出1
+        /// </summary>
+        OUT1 = 258,
+        /// <summary>
+        /// 控制输出2
+        /// </summary>
+        OUT2 = 259,
+        /// <summary>
+        /// 状态标志
+        /// </summary>
+        EXE_FLG = 260,
+        /// <summary>
+        /// 事件输出标志
+        /// </summary>
+        EV_FLG = 261,
+        /// <summary>
+        /// 运行SV编号
+        /// </summary>
+        SV_No = 262,
+        /// <summary>
+        /// 运行PID编号
+        /// </summary>
+        EXE_PID = 263,
+        /// <summary>
+        /// 加热器1电流值
+        /// </summary>
+        HC1 = 265,
+        /// <summary>
+        /// 加热器2电流值
+        /// </summary>
+        HC2 = 266,
+        /// <summary>
+        /// DI输出状态标志
+        /// </summary>
+        DI_FLG = 267,
+        /// <summary>
+        /// 事件锁定输出标志
+        /// </summary>
+        EV_LAC = 269,
+        /// <summary>
+        /// 事件延迟ON/OFF标志
+        /// </summary>
+        EV_ACT = 270,
+        /// <summary>
+        /// 曲线运行标志
+        /// </summary>
+        E_PRG = 288,
+        /// <summary>
+        /// 曲线编号
+        /// </summary>
+        E_PTN = 289,
+        /// <summary>
+        /// 曲线数目
+        /// </summary>
+        E_PRG_Num = 291,
+        /// <summary>
+        /// 曲线步骤
+        /// </summary>
+        E_PTN_Num = 292,
+        /// <summary>
+        /// 曲线执行步骤剩余时间
+        /// </summary>
+        E_TIM = 293,
+        /// <summary>
+        /// 曲线执行PID号
+        /// </summary>
+        E_PID = 294,
+        /// <summary>
+        /// 执行SV编号
+        /// </summary>
+        SV_NO = 384,
+        /// <summary>
+        /// 手动设定时控制输出1设定值
+        /// </summary>
+        OUT1_Set = 386,
+        /// <summary>
+        /// 手动设定时控制输出2设定值
+        /// </summary>
+        OUT2_Set = 387,
+        /// <summary>
+        /// 自动/手动
+        /// </summary>
+        AT = 388,
+        /// <summary>
+        /// 手动/自动
+        /// </summary>
+        MAN = 391,
+        /// <summary>
+        /// 运行
+        /// </summary>
+        RUN = 396,
+        /// <summary>
+        /// 保持
+        /// </summary>
+        HLD = 400,
+        /// <summary>
+        /// 高级
+        /// </summary>
+        ADV = 401,
+        /// <summary>
+        /// 自锁
+        /// </summary>
+        RST_LACH = 402,
+        /// <summary>
+        /// 定值控制设定值1
+        /// </summary>
+        FIX_SV1 = 768,
+        /// <summary>
+        /// 定值控制设定值2
+        /// </summary>
+        FIX_SV2 = 769,
+        /// <summary>
+        /// 定值控制设定值3
+        /// </summary>
+        FIX_SV3 = 770,
+        /// <summary>
+        /// 设定值范围下限
+        /// </summary>
+        SV_L = 778,
+        /// <summary>
+        /// 设定值范围上限
+        /// </summary>
+        SV_H = 779,
+        /// <summary>
+        /// 控制输出1, 比例带1
+        /// </summary>
+        PB1 = 1024,
+        /// <summary>
+        /// 控制输出1, 积分时间1
+        /// </summary>
+        IT1 = 1025,
+        /// <summary>
+        /// 控制输出1, 微分时间1
+        /// </summary>
+        DT1 = 1026,
+        /// <summary>
+        /// 手动设定1
+        /// </summary>
+        MR1 = 1027,
+        /// <summary>
+        /// 控制输出1, 时间滞后1
+        /// </summary>
+        DF1 = 1028,
+        /// <summary>
+        /// 控制输出1, 输出范围上限1
+        /// </summary>
+        O11_H = 1029,
+        /// <summary>
+        /// 控制输出1, 目标值功能1
+        /// </summary>
+        SF1 = 1030,
+        /// <summary>
+        /// 控制输出1, 比例带2
+        /// </summary>
+        IT2 = 1031,
+        /// <summary>
+        /// 控制输出1, 积分时间2
+        /// </summary>
+        DT2 = 1032,
+        /// <summary>
+        /// 控制输出1, 微分时间2
+        /// </summary>
+        MR2 = 1033,
+        /// <summary>
+        /// 手动设定2
+        /// </summary>
+        DF2 = 1034,
+        /// <summary>
+        /// 控制输出1, 时间滞后2
+        /// </summary>
+        O12_L = 1035,
+        /// <summary>
+        /// 控制输出1, 输出范围下限2
+        /// </summary>
+        O12_H = 1036,
+        /// <summary>
+        /// 控制输出1, 输出范围上限2
+        /// </summary>
+        SF2 = 1037,
+        /// <summary>
+        /// 控制输出1, 目标值功能2
+        /// </summary>
+        PB3 = 1038,
+        /// <summary>
+        /// 控制输出1, 比例带3
+        /// </summary>
+        IT3 = 1039,
+        /// <summary>
+        /// 控制输出1, 积分时间3
+        /// </summary>
+        DT3 = 1040,
+        /// <summary>
+        /// 控制输出1, 微分时间3
+        /// </summary>
+        MR3 = 1041,
+        /// <summary>
+        /// 手动设定3
+        /// </summary>
+        DF3 = 1042,
+        /// <summary>
+        /// 控制输出1, 时间滞后3
+        /// </summary>
+        O13_L = 1043,
+        /// <summary>
+        /// 控制输出1, 输出范围下限3
+        /// </summary>
+        O13_H = 1044,
+        /// <summary>
+        /// 控制输出1, 输出范围上限3
+        /// </summary>
+        SF3 = 1045,
+        /// <summary>
+        /// 控制输出1, 目标值功能3
+        /// </summary>
+        ACTMD = 1046,
+        /// <summary>
+        /// 控制输出1, 输出特性
+        /// </summary>
+        O1_CYC = 1047,
+        /// <summary>
+        /// 控制输出1, 比例周期
+        /// </summary>
+        O2_CYC = 1536,
+        /// <summary>
+        /// 控制输出2, 输出特性
+        /// </summary>
+        ACTMD2 = 1537,
+        /// <summary>
+        /// 软启动设定数据1
+        /// </summary>
+        SOFTD1 = 1538,
+        /// <summary>
+        /// 软启动设定数据2
+        /// </summary>
+        SOFTD2 = 1540,
+        /// <summary>
+        /// 按键锁
+        /// </summary>
+        KLOCK = 1543,
+        /// <summary>
+        /// PV增益系数
+        /// </summary>
+        PV_G = 1546,
+        /// <summary>
+        /// PV偏移
+        /// </summary>
+        PV_B = 1547,
+        /// <summary>
+        /// PV滤波
+        /// </summary>
+        PV_F = 1553,
+        /// <summary>
+        /// 输入单位
+        /// </summary>
+        UNIT = 1792,
+        /// <summary>
+        /// 测量范围代码
+        /// </summary>
+        RANGE = 1793,
+        /// <summary>
+        /// 小数点
+        /// </summary>
+        DP = 1794,
+        /// <summary>
+        /// 输入修正值1
+        /// </summary>
+        SC_L = 1796,
+        /// <summary>
+        /// 输入修正值2
+        /// </summary>
+        SC_H = 1797,
+        /// <summary>
+        /// 程序模式
+        /// </summary>
+        PRG_MD = 1799,
+        /// <summary>
+        /// 曲线起始编号
+        /// </summary>
+        ST_PTN = 1800,
+        /// <summary>
+        /// 曲线段数
+        /// </summary>
+        PTN_CNT = 1801,
+        /// <summary>
+        /// 时间模式
+        /// </summary>
+        TIM_MOD = 2048,
+    }
+
+
+
+    [Serializable]
     public enum EnumStageSystem
     {
         MaterialboxHook,
         MaterialHook,
         OverTrack1,
-        OverTrack2
+        OverTrack2,
+        Weld
     }
     [Serializable]
     public enum EnumSystemAxis
@@ -105,6 +428,14 @@ namespace GlobalDataDefineClsLib
     public enum EnumLightSourceType
     {
         TrackRingField, WeldRingField
+    }
+    [Serializable]
+    public enum EnumTemperatureProducer { SHIMADEN, OMRON }
+
+    [Serializable]
+    public enum EnumTemperatureType
+    {
+        OvenBox1Low,OvenBox1Up, OvenBox2Low, OvenBox2Up,
     }
     [Serializable]
     public enum EnumCommunicationType { SerialPort, Ethernet }
@@ -291,6 +622,7 @@ namespace GlobalDataDefineClsLib
         PowerController,
         LaserSensor,
         Dynamometer,
+        TemperatureController,
     }
     [Serializable]
     public enum EnumCarrierType
@@ -342,6 +674,60 @@ namespace GlobalDataDefineClsLib
         CalibrationTable
     }
 
+    [Serializable]
+    public enum EnumMaterialstate
+    {
+        Unwelded,
+        Welded,
+        Jumping,
+    }
+
+    [Serializable]
+    public class EnumMaterialproperties
+    {
+        public EnumMaterialproperties()
+        {
+            MaterialPosition = new XYZTCoordinateConfig();
+            Materialstate = EnumMaterialstate.Unwelded;
+        }
+
+        /// <summary>
+        /// 物料位置
+        /// </summary>
+        [XmlElement("MaterialPosition")]
+        public XYZTCoordinateConfig MaterialPosition { get; set; }
+
+        /// <summary>
+        /// 物料状态
+        /// </summary>
+        [XmlElement("Materialstate")]
+        public EnumMaterialstate Materialstate;
+
+
+        /// <summary>
+        /// 物料行数
+        /// </summary>
+        [XmlElement("MaterialRowNumber")]
+        public int MaterialRowNumber { get; set; }
+
+
+        /// <summary>
+        /// 物料行数
+        /// </summary>
+        [XmlElement("MaterialColNumber")]
+        public int MaterialColNumber { get; set; }
+    }
+
+    [Serializable]
+    public class EnumReturnMaterialproperties
+    {
+        public EnumReturnMaterialproperties()
+        {
+            MaterialMat = new List<List<EnumMaterialproperties>>();
+        }
+        public int Re { get; set; }
+        public List<List<EnumMaterialproperties>> MaterialMat { get; set; }
+    }
 
     [Serializable]
     public class EnumTrainsportMaterialParam
@@ -382,12 +768,65 @@ namespace GlobalDataDefineClsLib
     {
         public EnumTrainsportMaterialboxParam()
         {
+            MaterialParam = new EnumTrainsportMaterialParam();
             MaterialboxSize = new XYZTCoordinateConfig();
             TrackCameraIdentifyMaterialBoxMatch = new MatchIdentificationParam();
+
+            MaterialRowNumber = 15;
+            MaterialColNumber = 15;
+
+            for (int i = 0; i < MaterialRowNumber; i++) // 添加3行  
+            {
+                List<EnumMaterialproperties> row = new List<EnumMaterialproperties>();
+                for (int j = 0; j < MaterialColNumber; j++) // 每行添加4列  
+                {
+                    row.Add(new EnumMaterialproperties() 
+                    { 
+                        Materialstate = EnumMaterialstate.Unwelded,
+                        MaterialPosition = new XYZTCoordinateConfig(),
+                        MaterialRowNumber = i,
+                        MaterialColNumber = j,
+
+                    });
+                }
+                MaterialMat.Add(row);
+            }
+            
+        }
+
+        public void InitMaterialMat()
+        {
+            if(MaterialMat?.Count == MaterialRowNumber && MaterialMat[0]?.Count == MaterialColNumber)
+            {
+                return;
+            }
+
+            for (int i = 0; i < this.MaterialRowNumber; i++) // 添加3行  
+            {
+                List<EnumMaterialproperties> row = new List<EnumMaterialproperties>();
+                for (int j = 0; j < this.MaterialColNumber; j++) // 每行添加4列  
+                {
+                    row.Add(new EnumMaterialproperties()
+                    {
+                        Materialstate = EnumMaterialstate.Unwelded,
+                        MaterialPosition = new XYZTCoordinateConfig(),
+                        MaterialRowNumber = i,
+                        MaterialColNumber = j,
+
+                    });
+                }
+                MaterialMat.Add(row);
+            }
         }
 
         [XmlElement("Name")]
         public string Name { get; set; }
+
+        /// <summary>
+        /// 物料参数
+        /// </summary>
+        [XmlElement("MaterialParam")]
+        public EnumTrainsportMaterialParam MaterialParam { get; set; }
 
         /// <summary>
         /// 料盒宽度、长度、厚度
@@ -407,6 +846,13 @@ namespace GlobalDataDefineClsLib
         public int MaterialColNumber { get; set; }
 
         /// <summary>
+        /// 物料矩阵
+        /// </summary>
+        [XmlArray("MaterialMat"), XmlArrayItem(typeof(List<EnumMaterialproperties>))]
+        public List<List<EnumMaterialproperties>> MaterialMat { get; set; }
+
+
+        /// <summary>
         /// 物料行间距
         /// </summary>
         [XmlElement("MaterialRowinterval")]
@@ -416,6 +862,9 @@ namespace GlobalDataDefineClsLib
         /// </summary>
         [XmlElement("MaterialColinterval")]
         public float MaterialColinterval { get; set; }
+
+
+
 
         /// <summary>
         /// 搬送相机识别料盒
@@ -442,7 +891,7 @@ namespace GlobalDataDefineClsLib
         /// <summary>
         /// 料盒参数
         /// </summary>
-        [XmlElement("MaterialboxParam")]
+        [XmlArray("MaterialboxParam"), XmlArrayItem(typeof(EnumTrainsportMaterialboxParam))]
         public List<EnumTrainsportMaterialboxParam> MaterialboxParam { get; set; }
 
 
@@ -678,7 +1127,7 @@ namespace GlobalDataDefineClsLib
     public abstract class ACustomActionBaseClass { }
 
     [Serializable]
-    public enum EnumRecipeType { INVALID = 0, Bonder = 1, Heat = 2, Transport = 3 }
+    public enum EnumRecipeType { INVALID = 0, Bonder = 1, Heat = 2, Transport = 3, Material = 4, MaterialBox = 5 }
     /// <summary>
     /// 用于保存Job分析结果的类
     /// </summary>
@@ -1343,14 +1792,288 @@ namespace GlobalDataDefineClsLib
         [XmlArray("MaskSetting"), XmlArrayItem(typeof(RecogniseMaskSetting))]
         public List<RecogniseMaskSetting> MaskSetting { get; set; }
     }
+
+    [Serializable]
+    public class EnumOvenBoxStates
+    {
+        #region 烘箱
+
+        /// <summary>
+        /// 烘箱抽气阀状态 bool
+        /// </summary>
+        public bool BakeOvenBleedstatus { get; set; }
+        /// <summary>
+        /// 烘箱排气阀状态 bool
+        /// </summary>
+        public bool BakeOvenExhauststatus { get; set; }
+        /// <summary>
+        /// 烘箱补气阀状态 bool
+        /// </summary>
+        public bool BakeOvenAeratestatus { get; set; }
+        /// <summary>
+        /// 烘箱内门压紧状态 bool
+        /// </summary>
+        public bool BakeOvenInnerdoor1Pressstatus { get; set; }
+        /// <summary>
+        /// 烘箱外门压紧状态 bool
+        /// </summary>
+        public bool BakeOvenOuterdoor1Pressstatus { get; set; }
+        /// <summary>
+        /// 烘箱内门松开状态 bool
+        /// </summary>
+        public bool BakeOvenInnerdoor1Releasestatus { get; set; }
+        /// <summary>
+        /// 烘箱外门松开状态 bool
+        /// </summary>
+        public bool BakeOvenOuterdoor1Releasestatus { get; set; }
+        /// <summary>
+        /// 烘箱内门升状态 bool
+        /// </summary>
+        public bool BakeOvenInnerdoor2Upstatus { get; set; }
+        /// <summary>
+        /// 烘箱外门升状态 bool
+        /// </summary>
+        public bool BakeOvenOuterdoor2Upstatus { get; set; }
+        /// <summary>
+        /// 烘箱内门降状态 bool
+        /// </summary>
+        public bool BakeOvenInnerdoor2Downstatus { get; set; }
+        /// <summary>
+        /// 烘箱外门降状态 bool
+        /// </summary>
+        public bool BakeOvenOuterdoor2Downstatus { get; set; }
+
+
+
+
+        /// <summary>
+        /// 烘箱外门开到位
+        /// </summary>
+        public bool BakeOvenOuterdoorUpSta { get; set; }
+        /// <summary>
+        /// 烘箱外门关到位
+        /// </summary>
+        public bool BakeOvenOuterdoorDownSta { get; set; }
+        /// <summary>
+        /// 烘箱外门压紧到位
+        /// </summary>
+        public bool BakeOvenOuterdoorPressSta { get; set; }
+        /// <summary>
+        /// 烘箱外门松开到位
+        /// </summary>
+        public bool BakeOvenOuterdoorReleaseSta { get; set; }
+        /// <summary>
+        /// 烘箱内门开到位
+        /// </summary>
+        public bool BakeOvenInnerdoorUpSta { get; set; }
+        /// <summary>
+        /// 烘箱内门关到位
+        /// </summary>
+        public bool BakeOvenInnerdoorDownSta { get; set; }
+        /// <summary>
+        /// 烘箱内门压紧到位
+        /// </summary>
+        public bool BakeOvenInnerdoorPressSta { get; set; }
+        /// <summary>
+        /// 烘箱内门松开到位
+        /// </summary>
+        public bool BakeOvenInnerdoorReleaseSta { get; set; }
+
+
+        /// <summary>
+        /// 烘箱压力 float
+        /// </summary>
+        public float BakeOvenPressure { get; set; }
+        /// <summary>
+        /// 烘箱真空 float 
+        /// </summary>
+        public float BakeOvenVacuum { get; set; }
+        /// <summary>
+        /// 烘箱上板温度 float 
+        /// </summary>
+        public float BakeOvenUPtemp { get; set; }
+        /// <summary>
+        /// 烘箱下板温度 float 
+        /// </summary>
+        public float BakeOvenDowntemp { get; set; }
+        /// <summary>
+        /// 烘箱加热目标温度 float 
+        /// </summary>
+        public float BakeOvenTargettemp { get; set; }
+        /// <summary>
+        /// 烘箱加热报警温度 float 
+        /// </summary>
+        public float BakeOvenAlarmtemp { get; set; }
+        /// <summary>
+        /// 烘箱保温时间分钟 short 分钟
+        /// </summary>
+        public short BakeOvenHoldingTimeM { get; set; }
+        /// <summary>
+        /// 烘箱已保温时间分钟 short 分钟
+        /// </summary>
+        public short BakeOvenPassedTimeM { get; set; }
+        /// <summary>
+        /// 烘箱报警压力 float
+        /// </summary>
+        public float BakeOvenAlarmPressure { get; set; }
+        /// <summary>
+        /// 烘箱上板P
+        /// </summary>
+        public float BakeOvenUpHeatPID_P { get; set; }
+        /// <summary>
+        /// 烘箱上板I
+        /// </summary>
+        public float BakeOvenUpHeatPID_I { get; set; }
+        /// <summary>
+        /// 烘箱上板D
+        /// </summary>
+        public float BakeOvenUpHeatPID_D { get; set; }
+        /// <summary>
+        /// 烘箱上板P
+        /// </summary>
+        public float BakeOvenDownHeatPID_P { get; set; }
+        /// <summary>
+        /// 烘箱上板I
+        /// </summary>
+        public float BakeOvenDownHeatPID_I { get; set; }
+        /// <summary>
+        /// 烘箱上板D
+        /// </summary>
+        public float BakeOvenDownHeatPID_D { get; set; }
+
+
+        /// <summary>
+        /// 烘箱抽充压力上限 float 
+        /// </summary>
+        public float BakeOvenPFUpPressure { get; set; }
+        /// <summary>
+        /// 烘箱抽充压力下限 float 
+        /// </summary>
+        public float BakeOvenPFDownPressure { get; set; }
+        /// <summary>
+        /// 烘箱抽充次数 short 
+        /// </summary>
+        public float BakeOvenPFnum { get; set; }
+        /// <summary>
+        /// 烘箱抽充已完成次数 short 
+        /// </summary>
+        public float BakeOvenPFCompletednum { get; set; }
+        /// <summary>
+        /// 烘箱抽充时间间隔 short 秒
+        /// </summary>
+        public float BakeOvenPFinterval { get; set; }
+
+
+        #endregion
+
+    }
+
+    [Serializable]
+    public class EnumBoxStates
+    {
+
+        #region 箱体
+
+        /// <summary>
+        /// 箱体抽气阀状态 bool
+        /// </summary>
+        public bool BoxBleedstatus { get; set; }
+        /// <summary>
+        /// 箱体排气阀状态 short
+        /// </summary>
+        public bool BoxExhauststatus { get; set; }
+        /// <summary>
+        /// 箱体补气阀状态 short
+        /// </summary>
+        public bool BoxAeratestatus { get; set; }
+        /// 箱体外门电缸压紧状态 bool
+        /// </summary>
+        public bool BoxOuterdoorElePressstatus { get; set; }
+        /// <summary>
+        /// 箱体外门电缸打开状态 bool
+        /// </summary>
+        public bool BoxOuterdoorEleReleasestatus { get; set; }
+
+
+        /// <summary>
+        /// 箱体外门压紧到位
+        /// </summary>
+        public bool BoxOuterdoorPressSta { get; set; }
+        /// <summary>
+        /// 箱体外门松开到位
+        /// </summary>
+        public bool BoxOuterdoorReleaseSta { get; set; }
+        /// <summary>
+        /// 箱体外门关闭到位
+        /// </summary>
+        public bool BoxOuterdoorCloseSta { get; set; }
+        /// <summary>
+        /// 箱体外门打开到位
+        /// </summary>
+        public bool BoxOuterdoorOpenSta { get; set; }
+
+
+        /// <summary>
+        /// 箱体压力 float 
+        /// </summary>
+        public bool BoxPressure { get; set; }
+        /// <summary>
+        /// 箱体真空 float 
+        /// </summary>
+        public bool BoxVacuum { get; set; }
+        /// <summary>
+        /// 箱体抽充压力上限 float 
+        /// </summary>
+        public bool BoxPFUpPressure { get; set; }
+        /// <summary>
+        /// 箱体抽充压力下限 float 
+        /// </summary>
+        public bool BoxPFDownPressure { get; set; }
+        /// <summary>
+        /// 箱体抽充次数 short 
+        /// </summary>
+        public bool BoxPFnum { get; set; }
+        /// <summary>
+        /// 箱体抽充已完成次数 short 
+        /// </summary>
+        public bool BoxPFCompletednum { get; set; }
+        /// <summary>
+        /// 箱体抽充时间间隔 short 秒
+        /// </summary>
+        public bool BoxPFinterval { get; set; }
+        /// <summary>
+        /// 箱体报警压力 float
+        /// </summary>
+        public bool BoxAlarmPressure { get; set; }
+
+
+
+        #endregion
+
+
+
+    }
+
+
+
+
+
     [Serializable]
     public enum EnumBoardcardDefineOutputIO
     {
         Undefine = 0,
 
-
+        /// <summary>
+        /// 塔灯 黄灯
+        /// </summary>
         TowerYellowLight = 1,
+        /// <summary>
+        /// 塔灯 绿灯
+        /// </summary>
         TowerGreenLight = 2,
+        /// <summary>
+        /// 塔灯 红灯
+        /// </summary>
         TowerRedLight = 3,
 
         #region 烘箱
@@ -1368,170 +2091,57 @@ namespace GlobalDataDefineClsLib
         /// 烘箱补气阀 bool
         /// </summary>
         BakeOvenAerate,
-        /// <summary>
-        /// 烘箱内门压紧 bool
-        /// </summary>
-        BakeOvenInnerdoor1Press,
-        /// <summary>
-        /// 烘箱外门压紧 bool
-        /// </summary>
-        BakeOvenOuterdoor1Press,
-        /// <summary>
-        /// 烘箱内门松开 bool
-        /// </summary>
-        BakeOvenInnerdoor1Release,
-        /// <summary>
-        /// 烘箱外门松开 bool
-        /// </summary>
-        BakeOvenOuterdoor1Release,
+
         /// <summary>
         /// 烘箱内门升 bool 按1松0
         /// </summary>
-        BakeOvenInnerdoor2Up,
-        /// <summary>
-        /// 烘箱外门升 bool 按1松0
-        /// </summary>
-        BakeOvenOuterdoor2Up,
+        BakeOvenInnerdoorUp,
         /// <summary>
         /// 烘箱内门降 bool 按1松0
         /// </summary>
-        BakeOvenInnerdoor2Down,
-        /// <summary>
-        /// 烘箱外门降 bool 按1松0
-        /// </summary>
-        BakeOvenOuterdoor2Down,
-        /// <summary>
-        /// 烘箱内门自动开 bool
-        /// </summary>
-        BakeOvenInnerdoorOpen,
-        /// <summary>
-        /// 烘箱外门自动开 bool
-        /// </summary>
-        BakeOvenOuterdoorOpen,
-        /// <summary>
-        /// 烘箱内门自动关 bool
-        /// </summary>
-        BakeOvenInnerdoorClose,
-        /// <summary>
-        /// 烘箱外门自动关 bool
-        /// </summary>
-        BakeOvenOuterdoorClose,
-        /// <summary>
-        /// 烘箱外门自动停 bool
-        /// </summary>
-        BakeOvenOuterdoorStop,
-        /// <summary>
-        /// 烘箱内门自动停 bool
-        /// </summary>
-        BakeOvenInnerdoorStop,
-
+        BakeOvenInnerdoorDown,
+        
 
         /// <summary>
-        /// 烘箱压力 float
+        /// 烘箱加热 bool
         /// </summary>
-        BakeOvenPressure,
-        /// <summary>
-        /// 烘箱真空 float 
-        /// </summary>
-        BakeOvenVacuum,
-        /// <summary>
-        /// 烘箱上板温度 float 
-        /// </summary>
-        BakeOvenUPtemp,
-        /// <summary>
-        /// 烘箱下板温度 float 
-        /// </summary>
-        BakeOvenDowntemp,
-        /// <summary>
-        /// 烘箱加热目标温度 float 
-        /// </summary>
-        BakeOvenTargettemp,
-        /// <summary>
-        /// 烘箱加热报警温度 float 
-        /// </summary>
-        BakeOvenAlarmtemp,
-        /// <summary>
-        /// 烘箱保温时间小时 short 小时
-        /// </summary>
-        BakeOvenHoldingTimeH,
-        /// <summary>
-        /// 烘箱保温时间分钟 short 分钟
-        /// </summary>
-        BakeOvenHoldingTimeM,
-        /// <summary>
-        /// 烘箱已保温时间小时 short 小时
-        /// </summary>
-        BakeOvenPassedTimeH,
-        /// <summary>
-        /// 烘箱已保温时间分钟 short 分钟
-        /// </summary>
-        BakeOvenPassedTimeM,
-        /// <summary>
-        /// 烘箱报警压力 float
-        /// </summary>
-        BakeOvenAlarmPressure,
-        /// <summary>
-        /// 烘箱上板P
-        /// </summary>
-        BakeOvenUpHeatPID_P,
-        /// <summary>
-        /// 烘箱上板I
-        /// </summary>
-        BakeOvenUpHeatPID_I,
-        /// <summary>
-        /// 烘箱上板D
-        /// </summary>
-        BakeOvenUpHeatPID_D,
-        /// <summary>
-        /// 烘箱上板P
-        /// </summary>
-        BakeOvenDownHeatPID_P,
-        /// <summary>
-        /// 烘箱上板I
-        /// </summary>
-        BakeOvenDownHeatPID_I,
-        /// <summary>
-        /// 烘箱上板D
-        /// </summary>
-        BakeOvenDownHeatPID_D,
-
-
-        /// <summary>
-        /// 烘箱抽充压力上限 float 
-        /// </summary>
-        BakeOvenPFUpPressure,
-        /// <summary>
-        /// 烘箱抽充压力下限 float 
-        /// </summary>
-        BakeOvenPFDownPressure,
-        /// <summary>
-        /// 烘箱抽充次数 short 
-        /// </summary>
-        BakeOvenPFnum,
-        /// <summary>
-        /// 烘箱抽充已完成次数 short 
-        /// </summary>
-        BakeOvenPFCompletednum,
-        /// <summary>
-        /// 烘箱抽充时间间隔 short 秒
-        /// </summary>
-        BakeOvenPFinterval,
-        /// <summary>
-        /// 烘箱手动抽充 bool
-        /// </summary>
-        BakeOvenPF,
-
-
-        /// <summary>
-        /// 烘箱自动加热1 bool 不包含抽充
-        /// </summary>
-        BakeOvenAutoHeat1,
-        /// <summary>
-        /// 烘箱自动加热1 bool 包含抽充
-        /// </summary>
-        BakeOvenAutoHeat2,
+        BakeOvenAutoHeat,
 
         #endregion
+
+        #region 烘箱2
+
+
+        /// <summary>
+        /// 烘箱抽气阀 bool
+        /// </summary>
+        BakeOven2Bleed,
+        /// <summary>
+        /// 烘箱排气阀 bool
+        /// </summary>
+        BakeOven2Exhaust,
+        /// <summary>
+        /// 烘箱补气阀 bool
+        /// </summary>
+        BakeOven2Aerate,
+
+        /// <summary>
+        /// 烘箱内门升 bool 按1松0
+        /// </summary>
+        BakeOven2InnerdoorUp,
+        /// <summary>
+        /// 烘箱内门降 bool 按1松0
+        /// </summary>
+        BakeOven2InnerdoorDown,
+
+
+        /// <summary>
+        /// 烘箱加热 bool
+        /// </summary>
+        BakeOven2AutoHeat,
+
+        #endregion
+
 
         #region 箱体
 
@@ -1548,90 +2158,7 @@ namespace GlobalDataDefineClsLib
         /// 箱体补气阀 short
         /// </summary>
         BoxAerate,
-        /// <summary>
-        /// 箱体外门压紧到位
-        /// </summary>
-        BoxOuterdoorPressSta,
-        /// <summary>
-        /// 箱体外门松开到位
-        /// </summary>
-        BoxOuterdoorReleaseSta,
-        /// <summary>
-        /// 箱体外门关闭到位
-        /// </summary>
-        BoxOuterdoorCloseSta,
-        /// <summary>
-        /// 箱体外门打开到位
-        /// </summary>
-        BoxOuterdoorOpenSta,
-        /// <summary>
-        /// 箱体外门电缸压紧 bool
-        /// </summary>
-        BoxOuterdoorElePress,
-        /// <summary>
-        /// 箱体外门电缸打开 bool
-        /// </summary>
-        BoxOuterdoorEleRelease,
-        /// <summary>
-        /// 箱体外门自动关 bool
-        /// </summary>
-        BoxOuterdoorClose,
-        /// <summary>
-        /// 箱体外门自动开 bool
-        /// </summary>
-        BoxOuterdoorOpen,
-        /// <summary>
-        /// 箱体外门自动停 bool
-        /// </summary>
-        BoxOuterdoorStop,
-        /// <summary>
-        /// 箱体外门电机压紧 bool 按1松0
-        /// </summary>
-        BoxOuterdoorPress,
-        /// <summary>
-        /// 箱体外门电机松开 bool 按1松0
-        /// </summary>
-        BoxOuterdoorRelease,
-        /// <summary>
-        /// 箱体压力 float 
-        /// </summary>
-        BoxPressure,
-        /// <summary>
-        /// 箱体真空 float 
-        /// </summary>
-        BoxVacuum,
-        /// <summary>
-        /// 箱体抽充压力上限 float 
-        /// </summary>
-        BoxPFUpPressure,
-        /// <summary>
-        /// 箱体抽充压力下限 float 
-        /// </summary>
-        BoxPFDownPressure,
-        /// <summary>
-        /// 箱体抽充次数 short 
-        /// </summary>
-        BoxPFnum,
-        /// <summary>
-        /// 箱体抽充已完成次数 short 
-        /// </summary>
-        BoxPFCompletednum,
-        /// <summary>
-        /// 箱体抽充时间间隔 short 秒
-        /// </summary>
-        BoxPFinterval,
-        /// <summary>
-        /// 箱体手动抽充 bool
-        /// </summary>
-        BoxPF,
-        /// <summary>
-        /// 箱体报警压力 float
-        /// </summary>
-        BoxAlarmPressure,
-        /// <summary>
-        /// 箱体外门速度
-        /// </summary>
-        BoxOuterdoorspeed,
+        
 
 
 
@@ -1645,85 +2172,22 @@ namespace GlobalDataDefineClsLib
         #region 烘箱
 
         /// <summary>
-        /// 烘箱抽气阀状态 bool
+        /// 烘箱内门打开状态 bool
         /// </summary>
-        BakeOvenBleedstatus,
+        BakeOvenInnerdoorOpenstatus,
         /// <summary>
-        /// 烘箱排气阀状态 bool
+        /// 烘箱外门打开状态 bool
         /// </summary>
-        BakeOvenExhauststatus,
+        BakeOvenOuterdoorOpenstatus,
         /// <summary>
-        /// 烘箱补气阀状态 bool
+        /// 烘箱内门关闭状态 bool
         /// </summary>
-        BakeOvenAeratestatus,
+        BakeOvenInnerdoorClosestatus,
         /// <summary>
-        /// 烘箱内门压紧状态 bool
+        /// 烘箱外门关闭状态 bool
         /// </summary>
-        BakeOvenInnerdoor1Pressstatus,
-        /// <summary>
-        /// 烘箱外门压紧状态 bool
-        /// </summary>
-        BakeOvenOuterdoor1Pressstatus,
-        /// <summary>
-        /// 烘箱内门松开状态 bool
-        /// </summary>
-        BakeOvenInnerdoor1Releasestatus,
-        /// <summary>
-        /// 烘箱外门松开状态 bool
-        /// </summary>
-        BakeOvenOuterdoor1Releasestatus,
-        /// <summary>
-        /// 烘箱内门升状态 bool
-        /// </summary>
-        BakeOvenInnerdoor2Upstatus,
-        /// <summary>
-        /// 烘箱外门升状态 bool
-        /// </summary>
-        BakeOvenOuterdoor2Upstatus,
-        /// <summary>
-        /// 烘箱内门降状态 bool
-        /// </summary>
-        BakeOvenInnerdoor2Downstatus,
-        /// <summary>
-        /// 烘箱外门降状态 bool
-        /// </summary>
-        BakeOvenOuterdoor2Downstatus,
+        BakeOvenOuterdoorClosestatus,
 
-
-
-
-        /// <summary>
-        /// 烘箱外门开到位
-        /// </summary>
-        BakeOvenOuterdoorUpSta,
-        /// <summary>
-        /// 烘箱外门关到位
-        /// </summary>
-        BakeOvenOuterdoorDownSta,
-        /// <summary>
-        /// 烘箱外门压紧到位
-        /// </summary>
-        BakeOvenOuterdoorPressSta,
-        /// <summary>
-        /// 烘箱外门松开到位
-        /// </summary>
-        BakeOvenOuterdoorReleaseSta,
-        /// <summary>
-        /// 烘箱内门开到位
-        /// </summary>
-        BakeOvenInnerdoorUpSta,
-        /// <summary>
-        /// 烘箱内门关到位
-        /// </summary>
-        BakeOvenInnerdoorDownSta,
-        /// <summary>
-        /// 烘箱内门压紧到位
-        /// </summary>
-        BakeOvenInnerdoorPressSta,
-        /// <summary>
-        /// 烘箱内门松开到位
-        /// </summary>
-        BakeOvenInnerdoorReleaseSta,
 
 
         /// <summary>
@@ -1734,127 +2198,47 @@ namespace GlobalDataDefineClsLib
         /// 烘箱真空 float 
         /// </summary>
         BakeOvenVacuum,
-        /// <summary>
-        /// 烘箱上板温度 float 
-        /// </summary>
-        BakeOvenUPtemp,
-        /// <summary>
-        /// 烘箱下板温度 float 
-        /// </summary>
-        BakeOvenDowntemp,
-        /// <summary>
-        /// 烘箱加热目标温度 float 
-        /// </summary>
-        BakeOvenTargettemp,
-        /// <summary>
-        /// 烘箱加热报警温度 float 
-        /// </summary>
-        BakeOvenAlarmtemp,
-        /// <summary>
-        /// 烘箱保温时间小时 short 小时
-        /// </summary>
-        BakeOvenHoldingTimeH,
-        /// <summary>
-        /// 烘箱保温时间分钟 short 分钟
-        /// </summary>
-        BakeOvenHoldingTimeM,
-        /// <summary>
-        /// 烘箱已保温时间小时 short 小时
-        /// </summary>
-        BakeOvenPassedTimeH,
-        /// <summary>
-        /// 烘箱已保温时间分钟 short 分钟
-        /// </summary>
-        BakeOvenPassedTimeM,
-        /// <summary>
-        /// 烘箱报警压力 float
-        /// </summary>
-        BakeOvenAlarmPressure,
-        /// <summary>
-        /// 烘箱上板P
-        /// </summary>
-        BakeOvenUpHeatPID_P,
-        /// <summary>
-        /// 烘箱上板I
-        /// </summary>
-        BakeOvenUpHeatPID_I,
-        /// <summary>
-        /// 烘箱上板D
-        /// </summary>
-        BakeOvenUpHeatPID_D,
-        /// <summary>
-        /// 烘箱上板P
-        /// </summary>
-        BakeOvenDownHeatPID_P,
-        /// <summary>
-        /// 烘箱上板I
-        /// </summary>
-        BakeOvenDownHeatPID_I,
-        /// <summary>
-        /// 烘箱上板D
-        /// </summary>
-        BakeOvenDownHeatPID_D,
-
-
-        /// <summary>
-        /// 烘箱抽充压力上限 float 
-        /// </summary>
-        BakeOvenPFUpPressure,
-        /// <summary>
-        /// 烘箱抽充压力下限 float 
-        /// </summary>
-        BakeOvenPFDownPressure,
-        /// <summary>
-        /// 烘箱抽充次数 short 
-        /// </summary>
-        BakeOvenPFnum,
-        /// <summary>
-        /// 烘箱抽充已完成次数 short 
-        /// </summary>
-        BakeOvenPFCompletednum,
-        /// <summary>
-        /// 烘箱抽充时间间隔 short 秒
-        /// </summary>
-        BakeOvenPFinterval,
-        /// <summary>
-        /// 烘箱手动抽充 bool
-        /// </summary>
-        BakeOvenPF,
 
 
         #endregion
 
+        #region 烘箱2
+
+        /// <summary>
+        /// 烘箱内门打开状态 bool
+        /// </summary>
+        BakeOven2InnerdoorOpenstatus,
+        /// <summary>
+        /// 烘箱外门打开状态 bool
+        /// </summary>
+        BakeOven2OuterdoorOpenstatus,
+        /// <summary>
+        /// 烘箱内门关闭状态 bool
+        /// </summary>
+        BakeOven2InnerdoorClosestatus,
+        /// <summary>
+        /// 烘箱外门关闭状态 bool
+        /// </summary>
+        BakeOven2OuterdoorClosestatus,
+
+
+
+        /// <summary>
+        /// 烘箱压力 float
+        /// </summary>
+        BakeOven2Pressure,
+        /// <summary>
+        /// 烘箱真空 float 
+        /// </summary>
+        BakeOven2Vacuum,
+
+
+        #endregion
+
+
         #region 箱体
 
-        /// <summary>
-        /// 箱体抽气阀状态 bool
-        /// </summary>
-        BoxBleedstatus,
-        /// <summary>
-        /// 箱体排气阀状态 short
-        /// </summary>
-        BoxExhauststatus,
-        /// <summary>
-        /// 箱体补气阀状态 short
-        /// </summary>
-        BoxAeratestatus,
-        /// 箱体外门电缸压紧状态 bool
-        /// </summary>
-        BoxOuterdoorElePressstatus,
-        /// <summary>
-        /// 箱体外门电缸打开状态 bool
-        /// </summary>
-        BoxOuterdoorEleReleasestatus,
 
-
-        /// <summary>
-        /// 箱体外门压紧到位
-        /// </summary>
-        BoxOuterdoorPressSta,
-        /// <summary>
-        /// 箱体外门松开到位
-        /// </summary>
-        BoxOuterdoorReleaseSta,
         /// <summary>
         /// 箱体外门关闭到位
         /// </summary>
@@ -1873,38 +2257,6 @@ namespace GlobalDataDefineClsLib
         /// 箱体真空 float 
         /// </summary>
         BoxVacuum,
-        /// <summary>
-        /// 箱体抽充压力上限 float 
-        /// </summary>
-        BoxPFUpPressure,
-        /// <summary>
-        /// 箱体抽充压力下限 float 
-        /// </summary>
-        BoxPFDownPressure,
-        /// <summary>
-        /// 箱体抽充次数 short 
-        /// </summary>
-        BoxPFnum,
-        /// <summary>
-        /// 箱体抽充已完成次数 short 
-        /// </summary>
-        BoxPFCompletednum,
-        /// <summary>
-        /// 箱体抽充时间间隔 short 秒
-        /// </summary>
-        BoxPFinterval,
-        /// <summary>
-        /// 箱体手动抽充 bool
-        /// </summary>
-        BoxPF,
-        /// <summary>
-        /// 箱体报警压力 float
-        /// </summary>
-        BoxAlarmPressure,
-        /// <summary>
-        /// 箱体外门速度
-        /// </summary>
-        BoxOuterdoorspeed,
 
 
 

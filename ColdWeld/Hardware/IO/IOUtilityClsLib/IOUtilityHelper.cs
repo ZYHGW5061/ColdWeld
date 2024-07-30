@@ -7,6 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Threading;
 using System.Threading.Tasks;
+using TemperatureControllerClsLib;
 
 namespace IOUtilityClsLib
 {
@@ -16,6 +17,11 @@ namespace IOUtilityClsLib
         private static volatile IOUtilityHelper _instance = null;
         private bool _enablePollingIO;
         IBoardCardController _boardCardController;
+        private TemperatureControllerManager _TemperatureControllerManager
+        {
+            get { return TemperatureControllerManager.Instance; }
+        }
+
         private Dictionary<EnumBoardcardDefineInputIO, string> _inputIOList;
         private Dictionary<EnumBoardcardDefineOutputIO, string> _outputIOList;
         public static IOUtilityHelper Instance
@@ -40,72 +46,26 @@ namespace IOUtilityClsLib
         {
             _inputIOList = new Dictionary<EnumBoardcardDefineInputIO, string>();
 
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenBleedstatus, "BakeOvenBleedstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenExhauststatus, "BakeOvenExhauststatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenAeratestatus, "BakeOvenAeratestatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoor1Pressstatus, "BakeOvenInnerdoor1Pressstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoor1Pressstatus, "BakeOvenOuterdoor1Pressstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoor1Releasestatus, "BakeOvenInnerdoor1Releasestatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoor1Releasestatus, "BakeOvenOuterdoor1Releasestatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoor2Upstatus, "BakeOvenInnerdoor2Upstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoor2Upstatus, "BakeOvenOuterdoor2Upstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoor2Downstatus, "BakeOvenInnerdoor2Downstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoor2Downstatus, "BakeOvenOuterdoor2Downstatus");
-
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoorUpSta, "BakeOvenOuterdoorUpSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoorDownSta, "BakeOvenOuterdoorDownSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoorPressSta, "BakeOvenOuterdoorPressSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoorReleaseSta, "BakeOvenOuterdoorReleaseSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoorUpSta, "BakeOvenInnerdoorUpSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoorDownSta, "BakeOvenInnerdoorDownSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoorPressSta, "BakeOvenInnerdoorPressSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoorReleaseSta, "BakeOvenInnerdoorReleaseSta");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoorOpenstatus, "BakeOvenInnerdoorOpenstatus");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoorOpenstatus, "BakeOvenOuterdoorOpenstatus");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenInnerdoorClosestatus, "BakeOvenInnerdoorClosestatus");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenOuterdoorClosestatus, "BakeOvenOuterdoorClosestatus");
 
             _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPressure, "BakeOvenPressure");
             _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenVacuum, "BakeOvenVacuum");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenUPtemp, "BakeOvenUPtemp");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenDowntemp, "BakeOvenDowntemp");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenTargettemp, "BakeOvenTargettemp");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenAlarmtemp, "BakeOvenAlarmtemp");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenHoldingTimeH, "BakeOvenHoldingTimeH");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenHoldingTimeM, "BakeOvenHoldingTimeM");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPassedTimeH, "BakeOvenPassedTimeH");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPassedTimeM, "BakeOvenPassedTimeM");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenAlarmPressure, "BakeOvenAlarmPressure");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenUpHeatPID_P, "BakeOvenUpHeatPID_P");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenUpHeatPID_I, "BakeOvenUpHeatPID_I");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenUpHeatPID_D, "BakeOvenUpHeatPID_D");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenDownHeatPID_P, "BakeOvenDownHeatPID_P");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenDownHeatPID_I, "BakeOvenDownHeatPID_I");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenDownHeatPID_D, "BakeOvenDownHeatPID_D");
 
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPFUpPressure, "BakeOvenPFUpPressure");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPFDownPressure, "BakeOvenPFDownPressure");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPFnum, "BakeOvenPFnum");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPFCompletednum, "BakeOvenPFCompletednum");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPFinterval, "BakeOvenPFinterval");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOvenPF, "BakeOvenPF");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOven2InnerdoorOpenstatus, "BakeOven2InnerdoorOpenstatus");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOven2OuterdoorOpenstatus, "BakeOven2OuterdoorOpenstatus");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOven2InnerdoorClosestatus, "BakeOven2InnerdoorClosestatus");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOven2OuterdoorClosestatus, "BakeOven2OuterdoorClosestatus");
 
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxBleedstatus, "BoxBleedstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxExhauststatus, "BoxExhauststatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxAeratestatus, "BoxAeratestatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxOuterdoorElePressstatus, "BoxOuterdoorElePressstatus");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxOuterdoorEleReleasestatus, "BoxOuterdoorEleReleasestatus");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOven2Pressure, "BakeOven2Pressure");
+            _inputIOList.Add(EnumBoardcardDefineInputIO.BakeOven2Vacuum, "BakeOven2Vacuum");
 
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxOuterdoorPressSta, "BoxOuterdoorPressSta");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxOuterdoorReleaseSta, "BoxOuterdoorReleaseSta");
             _inputIOList.Add(EnumBoardcardDefineInputIO.BoxOuterdoorCloseSta, "BoxOuterdoorCloseSta");
             _inputIOList.Add(EnumBoardcardDefineInputIO.BoxOuterdoorOpenSta, "BoxOuterdoorOpenSta");
             _inputIOList.Add(EnumBoardcardDefineInputIO.BoxPressure, "BoxPressure");
             _inputIOList.Add(EnumBoardcardDefineInputIO.BoxVacuum, "BoxVacuum");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxPFUpPressure, "BoxPFUpPressure");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxPFDownPressure, "BoxPFDownPressure");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxPFnum, "BoxPFnum");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxPFCompletednum, "BoxPFCompletednum");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxPFinterval, "BoxPFinterval");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxPF, "BoxPF");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxAlarmPressure, "BoxAlarmPressure");
-            _inputIOList.Add(EnumBoardcardDefineInputIO.BoxOuterdoorspeed, "BoxOuterdoorspeed");
 
 
             _outputIOList = new Dictionary<EnumBoardcardDefineOutputIO, string>();
@@ -118,73 +78,23 @@ namespace IOUtilityClsLib
             _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenBleed, "BakeOvenBleed");
             _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenExhaust, "BakeOvenExhaust");
             _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenAerate, "BakeOvenAerate");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoor1Press, "BakeOvenInnerdoor1Press");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenOuterdoor1Press, "BakeOvenOuterdoor1Press");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoor1Release, "BakeOvenInnerdoor1Release");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenOuterdoor1Release, "BakeOvenOuterdoor1Release");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoor2Up, "BakeOvenInnerdoor2Up");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenOuterdoor2Up, "BakeOvenOuterdoor2Up");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoor2Down, "BakeOvenInnerdoor2Down");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenOuterdoor2Down, "BakeOvenOuterdoor2Down");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoorOpen, "BakeOvenInnerdoorOpen");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenOuterdoorOpen, "BakeOvenOuterdoorOpen");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoorClose, "BakeOvenInnerdoorClose");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenOuterdoorClose, "BakeOvenOuterdoorClose");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenOuterdoorStop, "BakeOvenOuterdoorStop");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoorStop, "BakeOvenInnerdoorStop");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoorUp, "BakeOvenInnerdoorUp");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenInnerdoorDown, "BakeOvenInnerdoorDown");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenAutoHeat, "BakeOvenAutoHeat");
 
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPressure, "BakeOvenPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenVacuum, "BakeOvenVacuum");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenUPtemp, "BakeOvenUPtemp");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenDowntemp, "BakeOvenDowntemp");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenTargettemp, "BakeOvenTargettemp");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenAlarmtemp, "BakeOvenAlarmtemp");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenHoldingTimeH, "BakeOvenHoldingTimeH");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenHoldingTimeM, "BakeOvenHoldingTimeM");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPassedTimeH, "BakeOvenPassedTimeH");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPassedTimeM, "BakeOvenPassedTimeM");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenAlarmPressure, "BakeOvenAlarmPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenUpHeatPID_P, "BakeOvenUpHeatPID_P");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenUpHeatPID_I, "BakeOvenUpHeatPID_I");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenUpHeatPID_D, "BakeOvenUpHeatPID_D");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenDownHeatPID_P, "BakeOvenDownHeatPID_P");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenDownHeatPID_I, "BakeOvenDownHeatPID_I");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenDownHeatPID_D, "BakeOvenDownHeatPID_D");
 
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPFUpPressure, "BakeOvenPFUpPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPFDownPressure, "BakeOvenPFDownPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPFnum, "BakeOvenPFnum");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPFCompletednum, "BakeOvenPFCompletednum");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPFinterval, "BakeOvenPFinterval");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenPF, "BakeOvenPF");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenAutoHeat1, "BakeOvenAutoHeat1");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOvenAutoHeat2, "BakeOvenAutoHeat2");
+            //烘箱2
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOven2Bleed, "BakeOven2Bleed");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOven2Exhaust, "BakeOven2Exhaust");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOven2Aerate, "BakeOven2Aerate");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOven2InnerdoorUp, "BakeOvenInnerdoorUp");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOven2InnerdoorDown, "BakeOvenInnerdoorDown");
+            _outputIOList.Add(EnumBoardcardDefineOutputIO.BakeOven2AutoHeat, "BakeOvenAutoHeat");
 
 
             _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxBleed, "BoxBleed");
             _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxExhaust, "BoxExhaust");
             _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxAerate, "BoxAerate");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorPressSta, "BoxOuterdoorPressSta");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorReleaseSta, "BoxOuterdoorReleaseSta");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorCloseSta, "BoxOuterdoorCloseSta");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorOpenSta, "BoxOuterdoorOpenSta");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorElePress, "BoxOuterdoorElePress");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorEleRelease, "BoxOuterdoorEleRelease");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorClose, "BoxOuterdoorClose");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorOpen, "BoxOuterdoorOpen");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorStop, "BoxOuterdoorStop");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorPress, "BoxOuterdoorPress");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorRelease, "BoxOuterdoorRelease");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxPressure, "BoxPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxVacuum, "BoxVacuum");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxPFUpPressure, "BoxPFUpPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxPFDownPressure, "BoxPFDownPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxPFnum, "BoxPFnum");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxPFCompletednum, "BoxPFCompletednum");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxPFinterval, "BoxPFinterval");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxPF, "BoxPF");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxAlarmPressure, "BoxAlarmPressure");
-            _outputIOList.Add(EnumBoardcardDefineOutputIO.BoxOuterdoorspeed, "BoxOuterdoorspeed");
 
             _boardCardController = BoardCardManager.Instance.GetCurrentController();
         }
@@ -285,13 +195,41 @@ namespace IOUtilityClsLib
                 {
                     ParseDataAndUpdateOutputIOValue(data);
                 }
+
+                List<int> data1 = new List<int>(); ;
+                _boardCardController.IO_ReadAllInput(11, out data1);
+                if (data.Count > 0)
+                {
+                    ParseDataAndUpdateInputIOIntValue(data);
+                }
+
+
             }
         }
+
+
+
+
         /// <summary>
         /// 解析字符串并更新该IO点Value值
         /// </summary>
         internal void ParseDataAndUpdateInputIOValue(List<int> msg)
         {
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOvenInnerdoorOpenstatus], msg[(int)EnumBoardcardDefineInputIO.BakeOvenInnerdoorOpenstatus - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOvenOuterdoorOpenstatus], msg[(int)EnumBoardcardDefineInputIO.BakeOvenOuterdoorOpenstatus - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOvenInnerdoorClosestatus], msg[(int)EnumBoardcardDefineInputIO.BakeOvenInnerdoorClosestatus - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOvenOuterdoorClosestatus], msg[(int)EnumBoardcardDefineInputIO.BakeOvenOuterdoorClosestatus - 1] == 1 ? true : false);
+            
+            
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOven2InnerdoorOpenstatus], msg[(int)EnumBoardcardDefineInputIO.BakeOven2InnerdoorOpenstatus - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOven2OuterdoorOpenstatus], msg[(int)EnumBoardcardDefineInputIO.BakeOven2OuterdoorOpenstatus - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOven2InnerdoorClosestatus], msg[(int)EnumBoardcardDefineInputIO.BakeOven2InnerdoorClosestatus - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOven2OuterdoorClosestatus], msg[(int)EnumBoardcardDefineInputIO.BakeOven2OuterdoorClosestatus - 1] == 1 ? true : false);
+            
+
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BoxOuterdoorCloseSta], msg[(int)EnumBoardcardDefineInputIO.BoxOuterdoorCloseSta - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BoxOuterdoorOpenSta], msg[(int)EnumBoardcardDefineInputIO.BoxOuterdoorOpenSta - 1] == 1 ? true : false);
+            
 
         }
         internal void ParseDataAndUpdateOutputIOValue(List<int> msg)
@@ -300,7 +238,65 @@ namespace IOUtilityClsLib
             IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.TowerRedLight], msg[(int)EnumBoardcardDefineOutputIO.TowerRedLight - 1] == 1 ? true : false);
             IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.TowerYellowLight], msg[(int)EnumBoardcardDefineOutputIO.TowerYellowLight - 1] == 1 ? true : false);
             IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.TowerGreenLight], msg[(int)EnumBoardcardDefineOutputIO.TowerGreenLight - 1] == 1 ? true : false);
+
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOvenBleed], msg[(int)EnumBoardcardDefineOutputIO.BakeOvenBleed - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOvenExhaust], msg[(int)EnumBoardcardDefineOutputIO.BakeOvenExhaust - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOvenAerate], msg[(int)EnumBoardcardDefineOutputIO.BakeOvenAerate - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOvenInnerdoorUp], msg[(int)EnumBoardcardDefineOutputIO.BakeOvenInnerdoorUp - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOvenInnerdoorDown], msg[(int)EnumBoardcardDefineOutputIO.BakeOvenInnerdoorDown - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOvenAutoHeat], msg[(int)EnumBoardcardDefineOutputIO.BakeOvenAutoHeat - 1] == 1 ? true : false);
+            
+
+            //烘箱2
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOven2Bleed], msg[(int)EnumBoardcardDefineOutputIO.BakeOven2Bleed - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOven2Exhaust], msg[(int)EnumBoardcardDefineOutputIO.BakeOven2Exhaust - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOven2Aerate], msg[(int)EnumBoardcardDefineOutputIO.BakeOven2Aerate - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOven2InnerdoorUp], msg[(int)EnumBoardcardDefineOutputIO.BakeOven2InnerdoorUp - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOven2InnerdoorDown], msg[(int)EnumBoardcardDefineOutputIO.BakeOven2InnerdoorDown - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BakeOven2AutoHeat], msg[(int)EnumBoardcardDefineOutputIO.BakeOven2AutoHeat - 1] == 1 ? true : false);
+
+
+
+
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BoxBleed], msg[(int)EnumBoardcardDefineOutputIO.BoxBleed - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BoxExhaust], msg[(int)EnumBoardcardDefineOutputIO.BoxExhaust - 1] == 1 ? true : false);
+            IOManager.Instance.ChangeIOValue(_outputIOList[EnumBoardcardDefineOutputIO.BoxAerate], msg[(int)EnumBoardcardDefineOutputIO.BoxAerate - 1] == 1 ? true : false);
+            
+
+
+
         }
+
+        internal void ParseDataAndUpdateInputIOIntValue(List<int> msg)
+        {
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOvenPressure], msg[(int)EnumBoardcardDefineInputIO.BakeOvenPressure - 1]);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOvenVacuum], msg[(int)EnumBoardcardDefineInputIO.BakeOvenVacuum - 1]);
+
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOven2Pressure], msg[(int)EnumBoardcardDefineInputIO.BakeOven2Pressure - 1]);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BakeOven2Vacuum], msg[(int)EnumBoardcardDefineInputIO.BakeOven2Vacuum - 1]);
+
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BoxPressure], msg[(int)EnumBoardcardDefineInputIO.BoxPressure - 1]);
+            IOManager.Instance.ChangeIOValue(_inputIOList[EnumBoardcardDefineInputIO.BoxVacuum], msg[(int)EnumBoardcardDefineInputIO.BoxVacuum - 1]);
+
+
+        }
+
+        internal void ParseDataAndUpdateInputIOIntValue()
+        {
+            float BakeOvenUPtemp = _TemperatureControllerManager.GetTemperatureController(EnumTemperatureType.OvenBox1Up).Read(TemperatureRtuAdd.PV);
+            IOManager.Instance.ChangeIOValue("BakeOvenUPtemp", BakeOvenUPtemp);
+
+            float BakeOvenDowntemp = _TemperatureControllerManager.GetTemperatureController(EnumTemperatureType.OvenBox1Low).Read(TemperatureRtuAdd.PV);
+            IOManager.Instance.ChangeIOValue("BakeOvenDowntemp", BakeOvenDowntemp);
+
+            float BakeOven2UPtemp = _TemperatureControllerManager.GetTemperatureController(EnumTemperatureType.OvenBox2Up).Read(TemperatureRtuAdd.PV);
+            IOManager.Instance.ChangeIOValue("BakeOven2UPtemp", BakeOven2UPtemp);
+
+            float BakeOven2Downtemp = _TemperatureControllerManager.GetTemperatureController(EnumTemperatureType.OvenBox2Low).Read(TemperatureRtuAdd.PV);
+            IOManager.Instance.ChangeIOValue("BakeOven2Downtemp", BakeOven2Downtemp);
+
+        }
+
     }
 
 

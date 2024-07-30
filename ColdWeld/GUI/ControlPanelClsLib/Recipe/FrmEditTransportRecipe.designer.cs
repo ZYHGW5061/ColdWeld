@@ -351,6 +351,8 @@
             this.labelControl207 = new DevExpress.XtraEditors.LabelControl();
             this.MaterialMovetoWeldTableSave = new System.Windows.Forms.Button();
             this.groupBox25 = new System.Windows.Forms.GroupBox();
+            this.labelControl80 = new DevExpress.XtraEditors.LabelControl();
+            this.comboBox1 = new System.Windows.Forms.ComboBox();
             this.btnMaterialHooktoTargetPositionPutdown = new System.Windows.Forms.Button();
             this.btnMaterialHooktoTargetPositionPickup = new System.Windows.Forms.Button();
             this.btnMaterialHooktoTargetPositionMove = new System.Windows.Forms.Button();
@@ -371,8 +373,7 @@
             this.numWeldPessure = new System.Windows.Forms.NumericUpDown();
             this.numWeldTime = new System.Windows.Forms.NumericUpDown();
             this.labelControl153 = new DevExpress.XtraEditors.LabelControl();
-            this.comboBox1 = new System.Windows.Forms.ComboBox();
-            this.labelControl80 = new DevExpress.XtraEditors.LabelControl();
+            this.btnCreateMaterialMatrix = new System.Windows.Forms.Button();
             ((System.ComponentModel.ISupportInitialize)(this.teName.Properties)).BeginInit();
             this.TransportTab.SuspendLayout();
             this.ParamPage.SuspendLayout();
@@ -609,6 +610,7 @@
             this.btnWeldNumSave.TabIndex = 24;
             this.btnWeldNumSave.Text = "保存";
             this.btnWeldNumSave.UseVisualStyleBackColor = true;
+            this.btnWeldNumSave.Click += new System.EventHandler(this.btnWeldNumSave_Click);
             // 
             // labelControl119
             // 
@@ -650,6 +652,7 @@
             this.btnSaveOverBox2.TabIndex = 25;
             this.btnSaveOverBox2.Text = "保存";
             this.btnSaveOverBox2.UseVisualStyleBackColor = true;
+            this.btnSaveOverBox2.Click += new System.EventHandler(this.btnSaveOverBox2_Click);
             // 
             // labelControl15
             // 
@@ -669,6 +672,7 @@
             this.btnOverBox2SelectMaterialBox.TabIndex = 22;
             this.btnOverBox2SelectMaterialBox.Text = "选择";
             this.btnOverBox2SelectMaterialBox.UseVisualStyleBackColor = true;
+            this.btnOverBox2SelectMaterialBox.Click += new System.EventHandler(this.btnOverBox2SelectMaterialBox_Click);
             // 
             // numOverBox2MaterialBoxLayerNumber
             // 
@@ -680,12 +684,14 @@
             // teOverBox2SelectMaterialBoxName
             // 
             this.teOverBox2SelectMaterialBoxName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.teOverBox2SelectMaterialBoxName.Enabled = false;
             this.teOverBox2SelectMaterialBoxName.Location = new System.Drawing.Point(85, 45);
             this.teOverBox2SelectMaterialBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.teOverBox2SelectMaterialBoxName.Name = "teOverBox2SelectMaterialBoxName";
             this.teOverBox2SelectMaterialBoxName.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.teOverBox2SelectMaterialBoxName.Properties.Appearance.Options.UseBackColor = true;
             this.teOverBox2SelectMaterialBoxName.Properties.AutoHeight = false;
+            this.teOverBox2SelectMaterialBoxName.Properties.ReadOnly = true;
             this.teOverBox2SelectMaterialBoxName.Size = new System.Drawing.Size(218, 31);
             this.teOverBox2SelectMaterialBoxName.TabIndex = 21;
             // 
@@ -722,6 +728,7 @@
             this.btnSaveOverBox1.TabIndex = 24;
             this.btnSaveOverBox1.Text = "保存";
             this.btnSaveOverBox1.UseVisualStyleBackColor = true;
+            this.btnSaveOverBox1.Click += new System.EventHandler(this.btnSaveOverBox1_Click);
             // 
             // labelControl14
             // 
@@ -748,6 +755,7 @@
             this.btnOverBox1SelectMaterialBox.TabIndex = 19;
             this.btnOverBox1SelectMaterialBox.Text = "选择";
             this.btnOverBox1SelectMaterialBox.UseVisualStyleBackColor = true;
+            this.btnOverBox1SelectMaterialBox.Click += new System.EventHandler(this.btnOverBox1SelectMaterialBox_Click);
             // 
             // labelControl12
             // 
@@ -762,17 +770,20 @@
             // teOverBox1SelectMaterialBoxName
             // 
             this.teOverBox1SelectMaterialBoxName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.teOverBox1SelectMaterialBoxName.Enabled = false;
             this.teOverBox1SelectMaterialBoxName.Location = new System.Drawing.Point(82, 45);
             this.teOverBox1SelectMaterialBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.teOverBox1SelectMaterialBoxName.Name = "teOverBox1SelectMaterialBoxName";
             this.teOverBox1SelectMaterialBoxName.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.teOverBox1SelectMaterialBoxName.Properties.Appearance.Options.UseBackColor = true;
             this.teOverBox1SelectMaterialBoxName.Properties.AutoHeight = false;
+            this.teOverBox1SelectMaterialBoxName.Properties.ReadOnly = true;
             this.teOverBox1SelectMaterialBoxName.Size = new System.Drawing.Size(218, 31);
             this.teOverBox1SelectMaterialBoxName.TabIndex = 18;
             // 
             // MaterialboxgroupBox
             // 
+            this.MaterialboxgroupBox.Controls.Add(this.btnCreateMaterialMatrix);
             this.MaterialboxgroupBox.Controls.Add(this.labelControl124);
             this.MaterialboxgroupBox.Controls.Add(this.numMaterialColinterval);
             this.MaterialboxgroupBox.Controls.Add(this.labelControl125);
@@ -885,6 +896,7 @@
             this.btnMaterialBoxSelectMaterial.TabIndex = 28;
             this.btnMaterialBoxSelectMaterial.Text = "选择";
             this.btnMaterialBoxSelectMaterial.UseVisualStyleBackColor = true;
+            this.btnMaterialBoxSelectMaterial.Click += new System.EventHandler(this.btnMaterialBoxSelectMaterial_Click);
             // 
             // labelControl9
             // 
@@ -899,12 +911,14 @@
             // teMaterialBoxSelectMaterialName
             // 
             this.teMaterialBoxSelectMaterialName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.teMaterialBoxSelectMaterialName.Enabled = false;
             this.teMaterialBoxSelectMaterialName.Location = new System.Drawing.Point(82, 65);
             this.teMaterialBoxSelectMaterialName.Margin = new System.Windows.Forms.Padding(4);
             this.teMaterialBoxSelectMaterialName.Name = "teMaterialBoxSelectMaterialName";
             this.teMaterialBoxSelectMaterialName.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.teMaterialBoxSelectMaterialName.Properties.Appearance.Options.UseBackColor = true;
             this.teMaterialBoxSelectMaterialName.Properties.AutoHeight = false;
+            this.teMaterialBoxSelectMaterialName.Properties.ReadOnly = true;
             this.teMaterialBoxSelectMaterialName.Size = new System.Drawing.Size(218, 31);
             this.teMaterialBoxSelectMaterialName.TabIndex = 27;
             // 
@@ -973,6 +987,7 @@
             this.btnSaveMaterialBox.TabIndex = 19;
             this.btnSaveMaterialBox.Text = "保存";
             this.btnSaveMaterialBox.UseVisualStyleBackColor = true;
+            this.btnSaveMaterialBox.Click += new System.EventHandler(this.btnSaveMaterialBox_Click);
             // 
             // btnDeleteMaterialBox
             // 
@@ -982,6 +997,7 @@
             this.btnDeleteMaterialBox.TabIndex = 18;
             this.btnDeleteMaterialBox.Text = "删除";
             this.btnDeleteMaterialBox.UseVisualStyleBackColor = true;
+            this.btnDeleteMaterialBox.Click += new System.EventHandler(this.btnDeleteMaterialBox_Click);
             // 
             // btnNewMaterialBox
             // 
@@ -991,6 +1007,7 @@
             this.btnNewMaterialBox.TabIndex = 17;
             this.btnNewMaterialBox.Text = "新建";
             this.btnNewMaterialBox.UseVisualStyleBackColor = true;
+            this.btnNewMaterialBox.Click += new System.EventHandler(this.btnNewMaterialBox_Click);
             // 
             // btnSelectMaterialBox
             // 
@@ -1000,6 +1017,7 @@
             this.btnSelectMaterialBox.TabIndex = 16;
             this.btnSelectMaterialBox.Text = "选择";
             this.btnSelectMaterialBox.UseVisualStyleBackColor = true;
+            this.btnSelectMaterialBox.Click += new System.EventHandler(this.btnSelectMaterialBox_Click);
             // 
             // labelControl8
             // 
@@ -1014,12 +1032,14 @@
             // teMaterialBoxName
             // 
             this.teMaterialBoxName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.teMaterialBoxName.Enabled = false;
             this.teMaterialBoxName.Location = new System.Drawing.Point(82, 26);
             this.teMaterialBoxName.Margin = new System.Windows.Forms.Padding(4);
             this.teMaterialBoxName.Name = "teMaterialBoxName";
             this.teMaterialBoxName.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.teMaterialBoxName.Properties.Appearance.Options.UseBackColor = true;
             this.teMaterialBoxName.Properties.AutoHeight = false;
+            this.teMaterialBoxName.Properties.ReadOnly = true;
             this.teMaterialBoxName.Size = new System.Drawing.Size(218, 31);
             this.teMaterialBoxName.TabIndex = 15;
             // 
@@ -1109,6 +1129,7 @@
             this.btnSaveMaterial.TabIndex = 7;
             this.btnSaveMaterial.Text = "保存";
             this.btnSaveMaterial.UseVisualStyleBackColor = true;
+            this.btnSaveMaterial.Click += new System.EventHandler(this.btnSaveMaterial_Click);
             // 
             // btnDeleteMaterial
             // 
@@ -1118,6 +1139,7 @@
             this.btnDeleteMaterial.TabIndex = 6;
             this.btnDeleteMaterial.Text = "删除";
             this.btnDeleteMaterial.UseVisualStyleBackColor = true;
+            this.btnDeleteMaterial.Click += new System.EventHandler(this.btnDeleteMaterial_Click);
             // 
             // btnNewMaterial
             // 
@@ -1127,6 +1149,7 @@
             this.btnNewMaterial.TabIndex = 5;
             this.btnNewMaterial.Text = "新建";
             this.btnNewMaterial.UseVisualStyleBackColor = true;
+            this.btnNewMaterial.Click += new System.EventHandler(this.btnNewMaterial_Click);
             // 
             // btnSelectMaterial
             // 
@@ -1136,6 +1159,7 @@
             this.btnSelectMaterial.TabIndex = 4;
             this.btnSelectMaterial.Text = "选择";
             this.btnSelectMaterial.UseVisualStyleBackColor = true;
+            this.btnSelectMaterial.Click += new System.EventHandler(this.btnSelectMaterial_Click);
             // 
             // labelControl1
             // 
@@ -1150,12 +1174,14 @@
             // teMaterialName
             // 
             this.teMaterialName.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.teMaterialName.Enabled = false;
             this.teMaterialName.Location = new System.Drawing.Point(82, 27);
             this.teMaterialName.Margin = new System.Windows.Forms.Padding(4);
             this.teMaterialName.Name = "teMaterialName";
             this.teMaterialName.Properties.Appearance.BackColor = System.Drawing.Color.White;
             this.teMaterialName.Properties.Appearance.Options.UseBackColor = true;
             this.teMaterialName.Properties.AutoHeight = false;
+            this.teMaterialName.Properties.ReadOnly = true;
             this.teMaterialName.Size = new System.Drawing.Size(218, 31);
             this.teMaterialName.TabIndex = 3;
             // 
@@ -1207,6 +1233,7 @@
             this.OvenBox1OutputSave.TabIndex = 36;
             this.OvenBox1OutputSave.Text = "保存";
             this.OvenBox1OutputSave.UseVisualStyleBackColor = true;
+            this.OvenBox1OutputSave.Click += new System.EventHandler(this.OvenBox1OutputSave_Click);
             // 
             // groupBox4
             // 
@@ -1238,6 +1265,7 @@
             this.btnMaterialboxHooktoTarget1PositionPickup.TabIndex = 41;
             this.btnMaterialboxHooktoTarget1PositionPickup.Text = "夹取";
             this.btnMaterialboxHooktoTarget1PositionPickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1PositionPickup.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1PositionPickup_Click);
             // 
             // btnMaterialboxHooktoTarget1PositionPutdown
             // 
@@ -1247,6 +1275,7 @@
             this.btnMaterialboxHooktoTarget1PositionPutdown.TabIndex = 40;
             this.btnMaterialboxHooktoTarget1PositionPutdown.Text = "放下";
             this.btnMaterialboxHooktoTarget1PositionPutdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1PositionPutdown.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1PositionPutdown_Click);
             // 
             // btnMaterialboxHooktoTarget1PositionMove
             // 
@@ -1256,6 +1285,7 @@
             this.btnMaterialboxHooktoTarget1PositionMove.TabIndex = 35;
             this.btnMaterialboxHooktoTarget1PositionMove.Text = "移动";
             this.btnMaterialboxHooktoTarget1PositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1PositionMove.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1PositionMove_Click);
             // 
             // btnMaterialboxHooktoTarget1PositionRead
             // 
@@ -1265,6 +1295,7 @@
             this.btnMaterialboxHooktoTarget1PositionRead.TabIndex = 34;
             this.btnMaterialboxHooktoTarget1PositionRead.Text = "读取";
             this.btnMaterialboxHooktoTarget1PositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1PositionRead.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1PositionRead_Click);
             // 
             // labelControl39
             // 
@@ -1388,6 +1419,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition1Putdown.TabIndex = 41;
             this.btnMaterialboxHooktoMaterialboxPosition1Putdown.Text = "放下";
             this.btnMaterialboxHooktoMaterialboxPosition1Putdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition1Putdown.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition1Putdown_Click);
             // 
             // btnMaterialboxHooktoMaterialboxPosition1Pickup
             // 
@@ -1397,6 +1429,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition1Pickup.TabIndex = 39;
             this.btnMaterialboxHooktoMaterialboxPosition1Pickup.Text = "夹取";
             this.btnMaterialboxHooktoMaterialboxPosition1Pickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition1Pickup.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition1Pickup_Click);
             // 
             // labelControl33
             // 
@@ -1435,6 +1468,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition1Move.TabIndex = 35;
             this.btnMaterialboxHooktoMaterialboxPosition1Move.Text = "移动";
             this.btnMaterialboxHooktoMaterialboxPosition1Move.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition1Move.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition1Move_Click);
             // 
             // btnMaterialboxHooktoMaterialboxPosition1Read
             // 
@@ -1444,6 +1478,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition1Read.TabIndex = 34;
             this.btnMaterialboxHooktoMaterialboxPosition1Read.Text = "读取";
             this.btnMaterialboxHooktoMaterialboxPosition1Read.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition1Read.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition1Read_Click);
             // 
             // labelControl24
             // 
@@ -1586,6 +1621,7 @@
             this.checkbtnOvenBox1Aerates.Size = new System.Drawing.Size(159, 29);
             this.checkbtnOvenBox1Aerates.TabIndex = 40;
             this.checkbtnOvenBox1Aerates.Text = "烘箱充气阀";
+            this.checkbtnOvenBox1Aerates.CheckedChanged += new System.EventHandler(this.checkbtnOvenBox1Aerates_CheckedChanged);
             // 
             // labelControl23
             // 
@@ -1614,6 +1650,7 @@
             this.btnBakeOven1InnerdoorClose.TabIndex = 37;
             this.btnBakeOven1InnerdoorClose.Text = "烘箱关内门";
             this.btnBakeOven1InnerdoorClose.UseVisualStyleBackColor = true;
+            this.btnBakeOven1InnerdoorClose.Click += new System.EventHandler(this.btnBakeOven1InnerdoorClose_Click);
             // 
             // btnBakeOven1InnerdoorOpen
             // 
@@ -1623,6 +1660,7 @@
             this.btnBakeOven1InnerdoorOpen.TabIndex = 36;
             this.btnBakeOven1InnerdoorOpen.Text = "烘箱开内门";
             this.btnBakeOven1InnerdoorOpen.UseVisualStyleBackColor = true;
+            this.btnBakeOven1InnerdoorOpen.Click += new System.EventHandler(this.btnBakeOven1InnerdoorOpen_Click);
             // 
             // btnOverTrack1MaterialboxOutofovenMove
             // 
@@ -1632,6 +1670,7 @@
             this.btnOverTrack1MaterialboxOutofovenMove.TabIndex = 35;
             this.btnOverTrack1MaterialboxOutofovenMove.Text = "移动";
             this.btnOverTrack1MaterialboxOutofovenMove.UseVisualStyleBackColor = true;
+            this.btnOverTrack1MaterialboxOutofovenMove.Click += new System.EventHandler(this.btnOverTrack1MaterialboxOutofovenMove_Click);
             // 
             // btnOverTrack1MaterialboxOutofovenRead
             // 
@@ -1641,6 +1680,7 @@
             this.btnOverTrack1MaterialboxOutofovenRead.TabIndex = 34;
             this.btnOverTrack1MaterialboxOutofovenRead.Text = "读取";
             this.btnOverTrack1MaterialboxOutofovenRead.UseVisualStyleBackColor = true;
+            this.btnOverTrack1MaterialboxOutofovenRead.Click += new System.EventHandler(this.btnOverTrack1MaterialboxOutofovenRead_Click);
             // 
             // labelControl28
             // 
@@ -1702,6 +1742,7 @@
             this.btnMaterialboxHookSafePositionMove.TabIndex = 35;
             this.btnMaterialboxHookSafePositionMove.Text = "移动";
             this.btnMaterialboxHookSafePositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookSafePositionMove.Click += new System.EventHandler(this.btnMaterialboxHookSafePositionMove_Click);
             // 
             // btnMaterialboxHookSafePositionRead
             // 
@@ -1711,6 +1752,7 @@
             this.btnMaterialboxHookSafePositionRead.TabIndex = 34;
             this.btnMaterialboxHookSafePositionRead.Text = "读取";
             this.btnMaterialboxHookSafePositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookSafePositionRead.Click += new System.EventHandler(this.btnMaterialboxHookSafePositionRead_Click);
             // 
             // labelControl22
             // 
@@ -1849,6 +1891,7 @@
             this.OvenBox2OutputSave.TabIndex = 37;
             this.OvenBox2OutputSave.Text = "保存";
             this.OvenBox2OutputSave.UseVisualStyleBackColor = true;
+            this.OvenBox2OutputSave.Click += new System.EventHandler(this.OvenBox2OutputSave_Click);
             // 
             // groupBox10
             // 
@@ -1880,6 +1923,7 @@
             this.btnMaterialboxHooktoTarget1Position2Pickup.TabIndex = 41;
             this.btnMaterialboxHooktoTarget1Position2Pickup.Text = "夹取";
             this.btnMaterialboxHooktoTarget1Position2Pickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1Position2Pickup.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1Position2Pickup_Click);
             // 
             // btnMaterialboxHooktoTarget1Position2Putdown
             // 
@@ -1889,6 +1933,7 @@
             this.btnMaterialboxHooktoTarget1Position2Putdown.TabIndex = 40;
             this.btnMaterialboxHooktoTarget1Position2Putdown.Text = "放下";
             this.btnMaterialboxHooktoTarget1Position2Putdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1Position2Putdown.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1Position2Putdown_Click);
             // 
             // btnMaterialboxHooktoTarget1Position2Move
             // 
@@ -1898,6 +1943,7 @@
             this.btnMaterialboxHooktoTarget1Position2Move.TabIndex = 35;
             this.btnMaterialboxHooktoTarget1Position2Move.Text = "移动";
             this.btnMaterialboxHooktoTarget1Position2Move.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1Position2Move.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1Position2Move_Click);
             // 
             // btnMaterialboxHooktoTarget1Position2Read
             // 
@@ -1907,6 +1953,7 @@
             this.btnMaterialboxHooktoTarget1Position2Read.TabIndex = 34;
             this.btnMaterialboxHooktoTarget1Position2Read.Text = "读取";
             this.btnMaterialboxHooktoTarget1Position2Read.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget1Position2Read.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget1Position2Read_Click);
             // 
             // labelControl58
             // 
@@ -2030,6 +2077,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition2Putdown.TabIndex = 41;
             this.btnMaterialboxHooktoMaterialboxPosition2Putdown.Text = "放下";
             this.btnMaterialboxHooktoMaterialboxPosition2Putdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition2Putdown.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition2Putdown_Click);
             // 
             // btnMaterialboxHooktoMaterialboxPosition2Pickup
             // 
@@ -2039,6 +2087,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition2Pickup.TabIndex = 39;
             this.btnMaterialboxHooktoMaterialboxPosition2Pickup.Text = "夹取";
             this.btnMaterialboxHooktoMaterialboxPosition2Pickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition2Pickup.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition2Pickup_Click);
             // 
             // labelControl68
             // 
@@ -2077,6 +2126,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition2Move.TabIndex = 35;
             this.btnMaterialboxHooktoMaterialboxPosition2Move.Text = "移动";
             this.btnMaterialboxHooktoMaterialboxPosition2Move.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition2Move.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition2Move_Click);
             // 
             // btnMaterialboxHooktoMaterialboxPosition2Read
             // 
@@ -2086,6 +2136,7 @@
             this.btnMaterialboxHooktoMaterialboxPosition2Read.TabIndex = 34;
             this.btnMaterialboxHooktoMaterialboxPosition2Read.Text = "读取";
             this.btnMaterialboxHooktoMaterialboxPosition2Read.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoMaterialboxPosition2Read.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition2Read_Click);
             // 
             // labelControl70
             // 
@@ -2228,6 +2279,7 @@
             this.checkButton3.Size = new System.Drawing.Size(159, 29);
             this.checkButton3.TabIndex = 40;
             this.checkButton3.Text = "烘箱充气阀";
+            this.checkButton3.CheckedChanged += new System.EventHandler(this.checkButton3_CheckedChanged);
             // 
             // labelControl77
             // 
@@ -2256,6 +2308,7 @@
             this.button44.TabIndex = 37;
             this.button44.Text = "烘箱关内门";
             this.button44.UseVisualStyleBackColor = true;
+            this.button44.Click += new System.EventHandler(this.button44_Click);
             // 
             // button45
             // 
@@ -2265,6 +2318,7 @@
             this.button45.TabIndex = 36;
             this.button45.Text = "烘箱开内门";
             this.button45.UseVisualStyleBackColor = true;
+            this.button45.Click += new System.EventHandler(this.button45_Click);
             // 
             // btnOverTrack2MaterialboxOutofovenMove
             // 
@@ -2274,6 +2328,7 @@
             this.btnOverTrack2MaterialboxOutofovenMove.TabIndex = 35;
             this.btnOverTrack2MaterialboxOutofovenMove.Text = "移动";
             this.btnOverTrack2MaterialboxOutofovenMove.UseVisualStyleBackColor = true;
+            this.btnOverTrack2MaterialboxOutofovenMove.Click += new System.EventHandler(this.btnOverTrack2MaterialboxOutofovenMove_Click);
             // 
             // btnOverTrack2MaterialboxOutofovenRead
             // 
@@ -2283,6 +2338,7 @@
             this.btnOverTrack2MaterialboxOutofovenRead.TabIndex = 34;
             this.btnOverTrack2MaterialboxOutofovenRead.Text = "读取";
             this.btnOverTrack2MaterialboxOutofovenRead.UseVisualStyleBackColor = true;
+            this.btnOverTrack2MaterialboxOutofovenRead.Click += new System.EventHandler(this.btnOverTrack2MaterialboxOutofovenRead_Click);
             // 
             // labelControl78
             // 
@@ -2335,6 +2391,7 @@
             this.OvenBox1MaterialBoxToTragetSave.TabIndex = 37;
             this.OvenBox1MaterialBoxToTragetSave.Text = "保存";
             this.OvenBox1MaterialBoxToTragetSave.UseVisualStyleBackColor = true;
+            this.OvenBox1MaterialBoxToTragetSave.Click += new System.EventHandler(this.OvenBox1MaterialBoxToTragetSave_Click);
             // 
             // groupBox7
             // 
@@ -2366,6 +2423,7 @@
             this.btnMaterialboxHooktoTarget4PositionPutdown.TabIndex = 45;
             this.btnMaterialboxHooktoTarget4PositionPutdown.Text = "放下";
             this.btnMaterialboxHooktoTarget4PositionPutdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget4PositionPutdown.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget4PositionPutdown_Click);
             // 
             // btnMaterialboxHooktoTarget4PositionMove
             // 
@@ -2375,6 +2433,7 @@
             this.btnMaterialboxHooktoTarget4PositionMove.TabIndex = 35;
             this.btnMaterialboxHooktoTarget4PositionMove.Text = "移动";
             this.btnMaterialboxHooktoTarget4PositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget4PositionMove.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget4PositionMove_Click);
             // 
             // btnMaterialboxHooktoTarget4PositionPickup
             // 
@@ -2384,6 +2443,7 @@
             this.btnMaterialboxHooktoTarget4PositionPickup.TabIndex = 44;
             this.btnMaterialboxHooktoTarget4PositionPickup.Text = "夹取";
             this.btnMaterialboxHooktoTarget4PositionPickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget4PositionPickup.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget4PositionPickup_Click);
             // 
             // btnMaterialboxHooktoTarget4PositionRead
             // 
@@ -2393,6 +2453,7 @@
             this.btnMaterialboxHooktoTarget4PositionRead.TabIndex = 34;
             this.btnMaterialboxHooktoTarget4PositionRead.Text = "读取";
             this.btnMaterialboxHooktoTarget4PositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget4PositionRead.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget4PositionRead_Click);
             // 
             // labelControl52
             // 
@@ -2511,6 +2572,7 @@
             this.btnGreateMaterialBoxRecognition.TabIndex = 44;
             this.btnGreateMaterialBoxRecognition.Text = "创建料盒识别";
             this.btnGreateMaterialBoxRecognition.UseVisualStyleBackColor = true;
+            this.btnGreateMaterialBoxRecognition.Click += new System.EventHandler(this.btnGreateMaterialBoxRecognition_Click);
             // 
             // btnMaterialboxHooktoTarget3PositionPutdown
             // 
@@ -2520,6 +2582,7 @@
             this.btnMaterialboxHooktoTarget3PositionPutdown.TabIndex = 43;
             this.btnMaterialboxHooktoTarget3PositionPutdown.Text = "放下";
             this.btnMaterialboxHooktoTarget3PositionPutdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget3PositionPutdown.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget3PositionPutdown_Click);
             // 
             // btnMaterialboxHooktoTarget3PositionPickup
             // 
@@ -2529,6 +2592,7 @@
             this.btnMaterialboxHooktoTarget3PositionPickup.TabIndex = 42;
             this.btnMaterialboxHooktoTarget3PositionPickup.Text = "夹取";
             this.btnMaterialboxHooktoTarget3PositionPickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget3PositionPickup.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget3PositionPickup_Click);
             // 
             // btnMaterialboxHooktoTarget3PositionMove
             // 
@@ -2538,6 +2602,7 @@
             this.btnMaterialboxHooktoTarget3PositionMove.TabIndex = 35;
             this.btnMaterialboxHooktoTarget3PositionMove.Text = "移动";
             this.btnMaterialboxHooktoTarget3PositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget3PositionMove.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget3PositionMove_Click);
             // 
             // btnMaterialboxHooktoTarget3PositionRead
             // 
@@ -2547,6 +2612,7 @@
             this.btnMaterialboxHooktoTarget3PositionRead.TabIndex = 34;
             this.btnMaterialboxHooktoTarget3PositionRead.Text = "读取";
             this.btnMaterialboxHooktoTarget3PositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget3PositionRead.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget3PositionRead_Click);
             // 
             // labelControl37
             // 
@@ -2664,6 +2730,7 @@
             this.btnMaterialboxHooktoTarget2PositionPutdown.TabIndex = 41;
             this.btnMaterialboxHooktoTarget2PositionPutdown.Text = "放下";
             this.btnMaterialboxHooktoTarget2PositionPutdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget2PositionPutdown.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition2Putdown_Click);
             // 
             // btnMaterialboxHooktoTarget2PositionPickup
             // 
@@ -2673,6 +2740,7 @@
             this.btnMaterialboxHooktoTarget2PositionPickup.TabIndex = 40;
             this.btnMaterialboxHooktoTarget2PositionPickup.Text = "夹取";
             this.btnMaterialboxHooktoTarget2PositionPickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget2PositionPickup.Click += new System.EventHandler(this.btnMaterialboxHooktoMaterialboxPosition2Pickup_Click);
             // 
             // btnMaterialboxHooktoTarget2PositionMove
             // 
@@ -2682,6 +2750,7 @@
             this.btnMaterialboxHooktoTarget2PositionMove.TabIndex = 35;
             this.btnMaterialboxHooktoTarget2PositionMove.Text = "移动";
             this.btnMaterialboxHooktoTarget2PositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget2PositionMove.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget2PositionMove_Click);
             // 
             // btnMaterialboxHooktoTarget2PositionRead
             // 
@@ -2691,6 +2760,7 @@
             this.btnMaterialboxHooktoTarget2PositionRead.TabIndex = 34;
             this.btnMaterialboxHooktoTarget2PositionRead.Text = "读取";
             this.btnMaterialboxHooktoTarget2PositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHooktoTarget2PositionRead.Click += new System.EventHandler(this.btnMaterialboxHooktoTarget2PositionRead_Click);
             // 
             // labelControl44
             // 
@@ -2800,6 +2870,7 @@
             this.OvenBox1InputSave.TabIndex = 38;
             this.OvenBox1InputSave.Text = "保存";
             this.OvenBox1InputSave.UseVisualStyleBackColor = true;
+            this.OvenBox1InputSave.Click += new System.EventHandler(this.OvenBox1InputSave_Click);
             // 
             // groupBox8
             // 
@@ -2827,6 +2898,7 @@
             this.checkButton2.Size = new System.Drawing.Size(159, 29);
             this.checkButton2.TabIndex = 40;
             this.checkButton2.Text = "烘箱充气阀";
+            this.checkButton2.CheckedChanged += new System.EventHandler(this.checkButton2_CheckedChanged);
             // 
             // labelControl35
             // 
@@ -2855,6 +2927,7 @@
             this.button19.TabIndex = 37;
             this.button19.Text = "烘箱关内门";
             this.button19.UseVisualStyleBackColor = true;
+            this.button19.Click += new System.EventHandler(this.button19_Click);
             // 
             // button20
             // 
@@ -2864,6 +2937,7 @@
             this.button20.TabIndex = 36;
             this.button20.Text = "烘箱开内门";
             this.button20.UseVisualStyleBackColor = true;
+            this.button20.Click += new System.EventHandler(this.button20_Click);
             // 
             // btnOverTrack1MaterialboxInofovenMove
             // 
@@ -2873,6 +2947,7 @@
             this.btnOverTrack1MaterialboxInofovenMove.TabIndex = 35;
             this.btnOverTrack1MaterialboxInofovenMove.Text = "移动";
             this.btnOverTrack1MaterialboxInofovenMove.UseVisualStyleBackColor = true;
+            this.btnOverTrack1MaterialboxInofovenMove.Click += new System.EventHandler(this.btnOverTrack1MaterialboxInofovenMove_Click);
             // 
             // btnOverTrack1MaterialboxInofovenRead
             // 
@@ -2882,6 +2957,7 @@
             this.btnOverTrack1MaterialboxInofovenRead.TabIndex = 34;
             this.btnOverTrack1MaterialboxInofovenRead.Text = "读取";
             this.btnOverTrack1MaterialboxInofovenRead.UseVisualStyleBackColor = true;
+            this.btnOverTrack1MaterialboxInofovenRead.Click += new System.EventHandler(this.btnOverTrack1MaterialboxInofovenRead_Click);
             // 
             // labelControl36
             // 
@@ -2942,6 +3018,7 @@
             this.btnMaterialboxHookPickupMaterialboxPositionPutdown.TabIndex = 43;
             this.btnMaterialboxHookPickupMaterialboxPositionPutdown.Text = "放下";
             this.btnMaterialboxHookPickupMaterialboxPositionPutdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPositionPutdown.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPositionPutdown_Click);
             // 
             // btnMaterialboxHookPickupMaterialboxPositionPickup
             // 
@@ -2951,6 +3028,7 @@
             this.btnMaterialboxHookPickupMaterialboxPositionPickup.TabIndex = 42;
             this.btnMaterialboxHookPickupMaterialboxPositionPickup.Text = "夹取";
             this.btnMaterialboxHookPickupMaterialboxPositionPickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPositionPickup.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPositionPickup_Click);
             // 
             // btnMaterialboxHookPickupMaterialboxPositionMove
             // 
@@ -2960,6 +3038,7 @@
             this.btnMaterialboxHookPickupMaterialboxPositionMove.TabIndex = 35;
             this.btnMaterialboxHookPickupMaterialboxPositionMove.Text = "移动";
             this.btnMaterialboxHookPickupMaterialboxPositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPositionMove.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPositionMove_Click);
             // 
             // btnMaterialboxHookPickupMaterialboxPositionRead
             // 
@@ -2969,6 +3048,7 @@
             this.btnMaterialboxHookPickupMaterialboxPositionRead.TabIndex = 34;
             this.btnMaterialboxHookPickupMaterialboxPositionRead.Text = "读取";
             this.btnMaterialboxHookPickupMaterialboxPositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPositionRead.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPositionRead_Click);
             // 
             // labelControl60
             // 
@@ -3077,6 +3157,7 @@
             this.OvenBox2InputSave.TabIndex = 41;
             this.OvenBox2InputSave.Text = "保存";
             this.OvenBox2InputSave.UseVisualStyleBackColor = true;
+            this.OvenBox2InputSave.Click += new System.EventHandler(this.OvenBox2InputSave_Click);
             // 
             // groupBox17
             // 
@@ -3104,6 +3185,7 @@
             this.checkButton4.Size = new System.Drawing.Size(159, 29);
             this.checkButton4.TabIndex = 40;
             this.checkButton4.Text = "烘箱充气阀";
+            this.checkButton4.CheckedChanged += new System.EventHandler(this.checkButton4_CheckedChanged);
             // 
             // labelControl102
             // 
@@ -3132,6 +3214,7 @@
             this.button65.TabIndex = 37;
             this.button65.Text = "烘箱关内门";
             this.button65.UseVisualStyleBackColor = true;
+            this.button65.DpiChangedAfterParent += new System.EventHandler(this.button65_Click);
             // 
             // button66
             // 
@@ -3141,6 +3224,7 @@
             this.button66.TabIndex = 36;
             this.button66.Text = "烘箱开内门";
             this.button66.UseVisualStyleBackColor = true;
+            this.button66.DpiChangedAfterParent += new System.EventHandler(this.button66_Click);
             // 
             // btnOverTrack2MaterialboxInofovenMove
             // 
@@ -3150,6 +3234,7 @@
             this.btnOverTrack2MaterialboxInofovenMove.TabIndex = 35;
             this.btnOverTrack2MaterialboxInofovenMove.Text = "移动";
             this.btnOverTrack2MaterialboxInofovenMove.UseVisualStyleBackColor = true;
+            this.btnOverTrack2MaterialboxInofovenMove.Click += new System.EventHandler(this.btnOverTrack2MaterialboxInofovenMove_Click);
             // 
             // btnOverTrack2MaterialboxInofovenRead
             // 
@@ -3159,6 +3244,7 @@
             this.btnOverTrack2MaterialboxInofovenRead.TabIndex = 34;
             this.btnOverTrack2MaterialboxInofovenRead.Text = "读取";
             this.btnOverTrack2MaterialboxInofovenRead.UseVisualStyleBackColor = true;
+            this.btnOverTrack2MaterialboxInofovenRead.Click += new System.EventHandler(this.btnOverTrack2MaterialboxInofovenRead_Click);
             // 
             // labelControl103
             // 
@@ -3219,6 +3305,7 @@
             this.btnMaterialboxHookPickupMaterialboxPosition2Putdown.TabIndex = 43;
             this.btnMaterialboxHookPickupMaterialboxPosition2Putdown.Text = "放下";
             this.btnMaterialboxHookPickupMaterialboxPosition2Putdown.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPosition2Putdown.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPosition2Putdown_Click);
             // 
             // btnMaterialboxHookPickupMaterialboxPosition2Pickup
             // 
@@ -3228,6 +3315,7 @@
             this.btnMaterialboxHookPickupMaterialboxPosition2Pickup.TabIndex = 42;
             this.btnMaterialboxHookPickupMaterialboxPosition2Pickup.Text = "夹取";
             this.btnMaterialboxHookPickupMaterialboxPosition2Pickup.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPosition2Pickup.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPosition2Pickup_Click);
             // 
             // btnMaterialboxHookPickupMaterialboxPosition2Move
             // 
@@ -3237,6 +3325,7 @@
             this.btnMaterialboxHookPickupMaterialboxPosition2Move.TabIndex = 35;
             this.btnMaterialboxHookPickupMaterialboxPosition2Move.Text = "移动";
             this.btnMaterialboxHookPickupMaterialboxPosition2Move.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPosition2Move.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPosition2Move_Click);
             // 
             // btnMaterialboxHookPickupMaterialboxPosition2Read
             // 
@@ -3246,6 +3335,7 @@
             this.btnMaterialboxHookPickupMaterialboxPosition2Read.TabIndex = 34;
             this.btnMaterialboxHookPickupMaterialboxPosition2Read.Text = "读取";
             this.btnMaterialboxHookPickupMaterialboxPosition2Read.UseVisualStyleBackColor = true;
+            this.btnMaterialboxHookPickupMaterialboxPosition2Read.Click += new System.EventHandler(this.btnMaterialboxHookPickupMaterialboxPosition2Read_Click);
             // 
             // labelControl105
             // 
@@ -3412,6 +3502,7 @@
             this.btnGreateMaterialRecognition.TabIndex = 50;
             this.btnGreateMaterialRecognition.Text = "创建物料识别";
             this.btnGreateMaterialRecognition.UseVisualStyleBackColor = true;
+            this.btnGreateMaterialRecognition.Click += new System.EventHandler(this.btnGreateMaterialRecognition_Click);
             // 
             // btnMaterialHookPickupMaterialPositionPickup
             // 
@@ -3421,6 +3512,7 @@
             this.btnMaterialHookPickupMaterialPositionPickup.TabIndex = 39;
             this.btnMaterialHookPickupMaterialPositionPickup.Text = "夹取";
             this.btnMaterialHookPickupMaterialPositionPickup.UseVisualStyleBackColor = true;
+            this.btnMaterialHookPickupMaterialPositionPickup.Click += new System.EventHandler(this.btnMaterialHookPickupMaterialPositionPickup_Click);
             // 
             // btnMaterialHookPickupMaterialPositionPutdown
             // 
@@ -3430,6 +3522,7 @@
             this.btnMaterialHookPickupMaterialPositionPutdown.TabIndex = 40;
             this.btnMaterialHookPickupMaterialPositionPutdown.Text = "放下";
             this.btnMaterialHookPickupMaterialPositionPutdown.UseVisualStyleBackColor = true;
+            this.btnMaterialHookPickupMaterialPositionPutdown.Click += new System.EventHandler(this.btnMaterialHookPickupMaterialPositionPutdown_Click);
             // 
             // labelControl115
             // 
@@ -3468,6 +3561,7 @@
             this.btnMaterialHookPickupMaterialPositionMove.TabIndex = 35;
             this.btnMaterialHookPickupMaterialPositionMove.Text = "移动";
             this.btnMaterialHookPickupMaterialPositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialHookPickupMaterialPositionMove.Click += new System.EventHandler(this.btnMaterialHookPickupMaterialPositionMove_Click);
             // 
             // btnMaterialHookPickupMaterialPositionRead
             // 
@@ -3477,6 +3571,7 @@
             this.btnMaterialHookPickupMaterialPositionRead.TabIndex = 34;
             this.btnMaterialHookPickupMaterialPositionRead.Text = "读取";
             this.btnMaterialHookPickupMaterialPositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialHookPickupMaterialPositionRead.Click += new System.EventHandler(this.btnMaterialHookPickupMaterialPositionRead_Click);
             // 
             // labelControl117
             // 
@@ -3603,6 +3698,7 @@
             this.btnMaterialHookSafePositionMove.TabIndex = 35;
             this.btnMaterialHookSafePositionMove.Text = "移动";
             this.btnMaterialHookSafePositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialHookSafePositionMove.Click += new System.EventHandler(this.btnMaterialHookSafePositionMove_Click);
             // 
             // btnMaterialHookSafePositionRead
             // 
@@ -3612,6 +3708,7 @@
             this.btnMaterialHookSafePositionRead.TabIndex = 34;
             this.btnMaterialHookSafePositionRead.Text = "读取";
             this.btnMaterialHookSafePositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialHookSafePositionRead.Click += new System.EventHandler(this.btnMaterialHookSafePositionRead_Click);
             // 
             // labelControl127
             // 
@@ -3749,6 +3846,7 @@
             this.btnGreateMaterialStatsRecognition.TabIndex = 49;
             this.btnGreateMaterialStatsRecognition.Text = "创建物料状态识别";
             this.btnGreateMaterialStatsRecognition.UseVisualStyleBackColor = true;
+            this.btnGreateMaterialStatsRecognition.Click += new System.EventHandler(this.btnGreateMaterialStatsRecognition_Click);
             // 
             // labelControl129
             // 
@@ -3787,6 +3885,7 @@
             this.btnPressliftingWorkPositionMove.TabIndex = 45;
             this.btnPressliftingWorkPositionMove.Text = "移动";
             this.btnPressliftingWorkPositionMove.UseVisualStyleBackColor = true;
+            this.btnPressliftingWorkPositionMove.Click += new System.EventHandler(this.btnPressliftingWorkPositionMove_Click);
             // 
             // btnPressliftingSafePositionMove
             // 
@@ -3796,6 +3895,7 @@
             this.btnPressliftingSafePositionMove.TabIndex = 35;
             this.btnPressliftingSafePositionMove.Text = "移动";
             this.btnPressliftingSafePositionMove.UseVisualStyleBackColor = true;
+            this.btnPressliftingSafePositionMove.Click += new System.EventHandler(this.btnPressliftingSafePositionMove_Click);
             // 
             // btnPressliftingWorkPositionRead
             // 
@@ -3805,6 +3905,7 @@
             this.btnPressliftingWorkPositionRead.TabIndex = 44;
             this.btnPressliftingWorkPositionRead.Text = "读取";
             this.btnPressliftingWorkPositionRead.UseVisualStyleBackColor = true;
+            this.btnPressliftingWorkPositionRead.Click += new System.EventHandler(this.btnPressliftingWorkPositionRead_Click);
             // 
             // btnPressliftingSafePositionRead
             // 
@@ -3814,6 +3915,7 @@
             this.btnPressliftingSafePositionRead.TabIndex = 34;
             this.btnPressliftingSafePositionRead.Text = "读取";
             this.btnPressliftingSafePositionRead.UseVisualStyleBackColor = true;
+            this.btnPressliftingSafePositionRead.Click += new System.EventHandler(this.btnPressliftingSafePositionRead_Click);
             // 
             // labelControl204
             // 
@@ -3876,6 +3978,31 @@
             this.groupBox25.TabStop = false;
             this.groupBox25.Text = "物料到焊接位置1";
             // 
+            // labelControl80
+            // 
+            this.labelControl80.Anchor = System.Windows.Forms.AnchorStyles.Left;
+            this.labelControl80.Location = new System.Drawing.Point(23, 64);
+            this.labelControl80.Margin = new System.Windows.Forms.Padding(4);
+            this.labelControl80.Name = "labelControl80";
+            this.labelControl80.Size = new System.Drawing.Size(65, 18);
+            this.labelControl80.TabIndex = 43;
+            this.labelControl80.Text = "当前位置:";
+            // 
+            // comboBox1
+            // 
+            this.comboBox1.DisplayMember = "0";
+            this.comboBox1.FormattingEnabled = true;
+            this.comboBox1.Items.AddRange(new object[] {
+            "1",
+            "2",
+            "3",
+            "4"});
+            this.comboBox1.Location = new System.Drawing.Point(128, 61);
+            this.comboBox1.Name = "comboBox1";
+            this.comboBox1.Size = new System.Drawing.Size(100, 26);
+            this.comboBox1.TabIndex = 42;
+            this.comboBox1.SelectedIndexChanged += new System.EventHandler(this.comboBox1_SelectedIndexChanged);
+            // 
             // btnMaterialHooktoTargetPositionPutdown
             // 
             this.btnMaterialHooktoTargetPositionPutdown.Location = new System.Drawing.Point(713, 58);
@@ -3884,6 +4011,7 @@
             this.btnMaterialHooktoTargetPositionPutdown.TabIndex = 41;
             this.btnMaterialHooktoTargetPositionPutdown.Text = "放下";
             this.btnMaterialHooktoTargetPositionPutdown.UseVisualStyleBackColor = true;
+            this.btnMaterialHooktoTargetPositionPutdown.Click += new System.EventHandler(this.btnMaterialHooktoTargetPositionPutdown_Click);
             // 
             // btnMaterialHooktoTargetPositionPickup
             // 
@@ -3893,6 +4021,7 @@
             this.btnMaterialHooktoTargetPositionPickup.TabIndex = 40;
             this.btnMaterialHooktoTargetPositionPickup.Text = "夹取";
             this.btnMaterialHooktoTargetPositionPickup.UseVisualStyleBackColor = true;
+            this.btnMaterialHooktoTargetPositionPickup.Click += new System.EventHandler(this.btnMaterialHooktoTargetPositionPickup_Click);
             // 
             // btnMaterialHooktoTargetPositionMove
             // 
@@ -3902,6 +4031,7 @@
             this.btnMaterialHooktoTargetPositionMove.TabIndex = 35;
             this.btnMaterialHooktoTargetPositionMove.Text = "移动";
             this.btnMaterialHooktoTargetPositionMove.UseVisualStyleBackColor = true;
+            this.btnMaterialHooktoTargetPositionMove.Click += new System.EventHandler(this.btnMaterialHooktoTargetPositionMove_Click);
             // 
             // btnMaterialHooktoTargetPositionRead
             // 
@@ -3911,6 +4041,7 @@
             this.btnMaterialHooktoTargetPositionRead.TabIndex = 34;
             this.btnMaterialHooktoTargetPositionRead.Text = "读取";
             this.btnMaterialHooktoTargetPositionRead.UseVisualStyleBackColor = true;
+            this.btnMaterialHooktoTargetPositionRead.Click += new System.EventHandler(this.btnMaterialHooktoTargetPositionRead_Click);
             // 
             // labelControl145
             // 
@@ -4024,6 +4155,7 @@
             this.btnWeldReset.TabIndex = 35;
             this.btnWeldReset.Text = "复位";
             this.btnWeldReset.UseVisualStyleBackColor = true;
+            this.btnWeldReset.Click += new System.EventHandler(this.btnWeldReset_Click);
             // 
             // btnWeld
             // 
@@ -4033,6 +4165,7 @@
             this.btnWeld.TabIndex = 34;
             this.btnWeld.Text = "焊接";
             this.btnWeld.UseVisualStyleBackColor = true;
+            this.btnWeld.Click += new System.EventHandler(this.btnWeld_Click);
             // 
             // labelControl126
             // 
@@ -4072,29 +4205,15 @@
             this.labelControl153.TabIndex = 23;
             this.labelControl153.Text = "焊接时间:";
             // 
-            // comboBox1
+            // btnCreateMaterialMatrix
             // 
-            this.comboBox1.DisplayMember = "0";
-            this.comboBox1.FormattingEnabled = true;
-            this.comboBox1.Items.AddRange(new object[] {
-            "1",
-            "2",
-            "3",
-            "4"});
-            this.comboBox1.Location = new System.Drawing.Point(128, 61);
-            this.comboBox1.Name = "comboBox1";
-            this.comboBox1.Size = new System.Drawing.Size(100, 26);
-            this.comboBox1.TabIndex = 42;
-            // 
-            // labelControl80
-            // 
-            this.labelControl80.Anchor = System.Windows.Forms.AnchorStyles.Left;
-            this.labelControl80.Location = new System.Drawing.Point(23, 64);
-            this.labelControl80.Margin = new System.Windows.Forms.Padding(4);
-            this.labelControl80.Name = "labelControl80";
-            this.labelControl80.Size = new System.Drawing.Size(65, 18);
-            this.labelControl80.TabIndex = 43;
-            this.labelControl80.Text = "目标焊台:";
+            this.btnCreateMaterialMatrix.Location = new System.Drawing.Point(306, 167);
+            this.btnCreateMaterialMatrix.Name = "btnCreateMaterialMatrix";
+            this.btnCreateMaterialMatrix.Size = new System.Drawing.Size(75, 31);
+            this.btnCreateMaterialMatrix.TabIndex = 37;
+            this.btnCreateMaterialMatrix.Text = "创建Map";
+            this.btnCreateMaterialMatrix.UseVisualStyleBackColor = true;
+            this.btnCreateMaterialMatrix.Click += new System.EventHandler(this.btnCreateMaterialMatrix_Click);
             // 
             // FrmEditTransportRecipe
             // 
@@ -4614,5 +4733,6 @@
         private System.Windows.Forms.Button btnMaterialboxHooktoMaterialboxPosition2Putdown;
         private DevExpress.XtraEditors.LabelControl labelControl80;
         private System.Windows.Forms.ComboBox comboBox1;
+        private System.Windows.Forms.Button btnCreateMaterialMatrix;
     }
 }

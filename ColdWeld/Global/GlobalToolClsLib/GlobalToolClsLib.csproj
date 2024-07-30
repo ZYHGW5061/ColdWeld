@@ -75,5 +75,11 @@
     <Compile Include="Source.cs" />
     <Compile Include="Win32ApiHelper.cs" />
   </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\GlobalDataDefineClsLib\GlobalDataDefineClsLib.csproj">
+      <Project>{B0F0BD56-7EFF-414B-9D41-F4E7ACA2A8B2}</Project>
+      <Name>GlobalDataDefineClsLib</Name>
+    </ProjectReference>
+  </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
 </Project>

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using GlobalDataDefineClsLib;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -58,5 +59,53 @@ namespace GlobalToolClsLib
         {
             IOChannelManager.GetHandler().UnregisterIOChannelEvt(ioName, action);
         }
+
+        public EnumStageAxis GetAxisByIOName(string ioName)
+        {
+            var ret = EnumStageAxis.None;
+            switch (ioName)
+            {
+                case "Stage.MaterialboxXPosition":
+                    ret = EnumStageAxis.MaterialboxX;
+                    break;
+                case "Stage.MaterialboxYPosition":
+                    ret = EnumStageAxis.MaterialboxY;
+                    break;
+                case "Stage.MaterialboxZPosition":
+                    ret = EnumStageAxis.MaterialboxZ;
+                    break;
+                case "Stage.MaterialboxTPosition":
+                    ret = EnumStageAxis.MaterialboxT;
+                    break;
+                case "Stage.MaterialboxHookPosition":
+                    ret = EnumStageAxis.MaterialboxHook;
+                    break;
+                case "Stage.MaterialXPosition":
+                    ret = EnumStageAxis.MaterialX;
+                    break;
+                case "Stage.MaterialYPosition":
+                    ret = EnumStageAxis.MaterialY;
+                    break;
+                case "Stage.MaterialZPosition":
+                    ret = EnumStageAxis.MaterialZ;
+                    break;
+                case "Stage.MaterialHookPosition":
+                    ret = EnumStageAxis.MaterialHook;
+                    break;
+                case "Stage.OverTrack1Position":
+                    ret = EnumStageAxis.OverTrack1;
+                    break;
+                case "Stage.OverTrack2Position":
+                    ret = EnumStageAxis.OverTrack2;
+                    break;
+                case "Stage.PressliftingPosition":
+                    ret = EnumStageAxis.Presslifting;
+                    break;
+                default:
+                    break;
+            }
+            return ret;
+        }
+
     }
 }

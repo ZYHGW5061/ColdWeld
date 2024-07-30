@@ -475,13 +475,51 @@ namespace VisionGUI
         {
             this.RingLightintensity = param.RingLightintensity;
             this.DirectLightintensity = param.DirectLightintensity;
-            this.Score = param.Score;
-            this.AngleRange = param.MaxAngle;
-            this.TemplateRoi = param.TemplateRoi;
-            this.SearchRoi = param.SearchRoi;
+            if (param.Score == 0)
+            {
+                this.Score = 0.5f;
+            }
+            else
+            {
+                this.Score = param.Score;
+            }
+            if (param.MaxAngle == 0)
+            {
+                this.AngleRange = 15;
+            }
+            else
+            {
+                this.AngleRange = param.MaxAngle;
+            }
+            _TemplateRoi = new RectangleF(CameraWindow.ImageWidth / 3, CameraWindow.ImageHeight / 3, CameraWindow.ImageWidth / 3, CameraWindow.ImageHeight / 3);
+            _SearchRoi = new RectangleF(CameraWindow.ImageWidth / 3, CameraWindow.ImageHeight / 3, CameraWindow.ImageWidth / 3, CameraWindow.ImageHeight / 3);
+            if (param.TemplateRoi == null || (param.TemplateRoi.X == 0 && param.TemplateRoi.Y == 0 && param.TemplateRoi.Width == 0 && param.TemplateRoi.Height == 0))
+            {
+                this.TemplateRoi = new RectangleFV() { X = _TemplateRoi.X, Y = _TemplateRoi.Y, Height = _TemplateRoi.Height, Width = _TemplateRoi.Width };
+            }
+            else
+            {
+                this.TemplateRoi = param.TemplateRoi;
+            }
+            if (param.SearchRoi == null || (param.SearchRoi.X == 0 && param.SearchRoi.Y == 0 && param.SearchRoi.Width == 0 && param.SearchRoi.Height == 0))
+            {
+                this.SearchRoi = new RectangleFV() { X = _SearchRoi.X, Y = _SearchRoi.Y, Height = _SearchRoi.Height, Width = _SearchRoi.Width };
+            }
+            else
+            {
+                this.SearchRoi = param.TemplateRoi;
+            }
             //this.Templateresult = param.Templateresult;
             this.MatchTemplatefilepath = param.Templatexml;
             this.MatchRunfilepath = param.Runxml;
+            if (param.Runxml == null)
+            {
+                this.MatchRunfilepath = "";
+            }
+            else
+            {
+                this.MatchRunfilepath = param.Runxml;
+            }
         }
 
         public GlobalDataDefineClsLib.MatchIdentificationParam GetVisualParam()
@@ -492,6 +530,7 @@ namespace VisionGUI
             param1.DirectLightintensity = this.DirectLightintensity;
             param1.Score = this.Score;
             param1.MaxAngle = this.AngleRange;
+            param1.MinAngle = -this.AngleRange;
             param1.TemplateRoi = this.TemplateRoi;
             param1.SearchRoi = this.SearchRoi;
             //param1.Templateresult = this.Templateresult;
@@ -500,6 +539,8 @@ namespace VisionGUI
 
             return param1;
         }
+
+
 
 
         private void RingLightBar_Scroll(object sender, EventArgs e)

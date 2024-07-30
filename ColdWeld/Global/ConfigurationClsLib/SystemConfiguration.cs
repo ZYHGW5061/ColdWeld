@@ -108,6 +108,12 @@ namespace ConfigurationClsLib
         public List<PPToolSettings> PPToolSettings { get; set; }
         [XmlArray("ESToolSettings"), XmlArrayItem(typeof(ESToolSettings))]
         public List<ESToolSettings> ESToolSettings { get; set; }
+
+        [XmlElement("OvenBoxConfig")]
+        public OvenBoxConfig OvenBoxConfig { get; set; }
+        
+
+
         #endregion
 
     }
@@ -207,6 +213,136 @@ namespace ConfigurationClsLib
         
 
     }
+
+    /// <summary>
+    /// 烘箱手套箱参数
+    /// </summary>
+    [Serializable]
+    public class OvenBoxConfig
+    {
+        public OvenBoxConfig()
+        {
+        }
+
+        /// <summary>
+        /// 烘箱1抽充次数
+        /// </summary>
+        [XmlElement("OvenPurgeTime")]
+        public int OvenPurgeTime { get; set; }
+        /// <summary>
+        /// 烘箱1抽充压力上限
+        /// </summary>
+        [XmlElement("OvenPurgePressureUpperLimit")]
+        public int OvenPurgePressureUpperLimit { get; set; }
+        /// <summary>
+        /// 烘箱1抽充压力下限
+        /// </summary>
+        [XmlElement("OvenPurgePressureLowerLimit")]
+        public int OvenPurgePressureLowerLimit { get; set; }
+        /// <summary>
+        /// 烘箱1抽充间隔秒
+        /// </summary>
+        [XmlElement("OvenPurgeInterval")]
+        public int OvenPurgeInterval { get; set; }
+        /// <summary>
+        /// 烘箱1超压上限
+        /// </summary>
+        [XmlElement("OvenOverPressureThreshold")]
+        public int OvenOverPressureThreshold { get; set; }
+
+
+        /// <summary>
+        /// 烘箱1目标温度
+        /// </summary>
+        [XmlElement("HeatTargetTemperature")]
+        public int HeatTargetTemperature { get; set; }
+        /// <summary>
+        /// 烘箱1保温时间分钟
+        /// </summary>
+        [XmlElement("HeatPreservationMinute")]
+        public int HeatPreservationMinute { get; set; }
+        /// <summary>
+        /// 烘箱1超温上限
+        /// </summary>
+        [XmlElement("OverTemperatureThreshold")]
+        public int OverTemperatureThreshold { get; set; }
+
+
+        /// <summary>
+        /// 烘箱2抽充次数
+        /// </summary>
+        [XmlElement("Oven2PurgeTime")]
+        public int Oven2PurgeTime { get; set; }
+        /// <summary>
+        /// 烘箱2抽充压力上限
+        /// </summary>
+        [XmlElement("Oven2PurgePressureUpperLimit")]
+        public int Oven2PurgePressureUpperLimit { get; set; }
+        /// <summary>
+        /// 烘箱2抽充压力下限
+        /// </summary>
+        [XmlElement("Oven2PurgePressureLowerLimit")]
+        public int Oven2PurgePressureLowerLimit { get; set; }
+        /// <summary>
+        /// 烘箱2抽充间隔秒
+        /// </summary>
+        [XmlElement("Oven2PurgeInterval")]
+        public int Oven2PurgeInterval { get; set; }
+        /// <summary>
+        /// 烘箱2超压上限
+        /// </summary>
+        [XmlElement("Oven2OverPressureThreshold")]
+        public int Oven2OverPressureThreshold { get; set; }
+
+
+        /// <summary>
+        /// 烘箱2目标温度
+        /// </summary>
+        [XmlElement("HeatTargetTemperature2")]
+        public int HeatTargetTemperature2 { get; set; }
+        /// <summary>
+        /// 烘箱2保温时间分钟
+        /// </summary>
+        [XmlElement("HeatPreservationMinute2")]
+        public int HeatPreservationMinute2 { get; set; }
+        /// <summary>
+        /// 烘箱2超温上限
+        /// </summary>
+        [XmlElement("OverTemperatureThreshold2")]
+        public int OverTemperatureThreshold2 { get; set; }
+
+
+
+        /// <summary>
+        /// 工作箱抽充次数
+        /// </summary>
+        [XmlElement("BoxPurgeTime")]
+        public int BoxPurgeTime { get; set; }
+        /// <summary>
+        /// 工作箱抽充压力上限
+        /// </summary>
+        [XmlElement("BoxPurgePressureUpperLimit")]
+        public int BoxPurgePressureUpperLimit { get; set; }
+        /// <summary>
+        /// 工作箱抽充压力下限
+        /// </summary>
+        [XmlElement("BoxPurgePressureLowerLimit")]
+        public int BoxPurgePressureLowerLimit { get; set; }
+        /// <summary>
+        /// 工作箱抽充间隔秒
+        /// </summary>
+        [XmlElement("BoxPurgeInterval")]
+        public int BoxPurgeInterval { get; set; }
+        /// <summary>
+        /// 工作箱超压上限
+        /// </summary>
+        [XmlElement("BoxOverPressureThreshold")]
+        public int BoxOverPressureThreshold { get; set; }
+
+
+    }
+
+
 
     [Serializable]
     public class CalibrationConfig
